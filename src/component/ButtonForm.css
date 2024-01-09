@@ -1,0 +1,14 @@
+button{
+    max-width: 625px;
+    max-height: 45px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 45px;
+    outline: none;
+    font-size: 1rem;
+    background: #FFF85A;
+    color: white;
+    margin: 1%;
+}
