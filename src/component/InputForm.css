@@ -1,0 +1,48 @@
+.div-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 625px;
+    max-height: 45px;
+    margin-top: 3%;
+}
+
+.div-form input{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 45px;
+    outline: none;
+    font-size: 1rem;
+    background: black;
+}
+
+.div-form span{
+    position: absolute;
+    left: 10px;
+    padding: 15px;
+    font-size: 1.25rem;
+    color: white;
+    pointer-events: none;
+    transition: 0.65s;
+}
+
+.div-form input:valid ~ span,
+.div-form input:focus ~ span
+{
+    color: #FFF973;
+    transform: translateX(10px) translateY(-20px);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 10px;
+    background: black;
+    letter-spacing: 0.1rem;
+}
+
+.div-form input:valid,
+.div-form input:focus{
+    border-color: #FFF973;
+}
