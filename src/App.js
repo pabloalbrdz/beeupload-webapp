@@ -14,7 +14,7 @@ function App() {
       <div className="d-flex flex-column min-vh-100 align-items-center justify-content-center">
         <div className='container'>
           <div className='row mt-5 align-items-center'>
-            <div className='col-8 d-none d-md-flex'>
+            <div className='col-7 d-none d-md-flex'>
               <TextAnimatedForm text="Prueba ..."/>
             </div>
             <div className='col text-center'>
