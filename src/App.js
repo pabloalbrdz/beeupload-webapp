@@ -20,8 +20,8 @@ function App() {
             <div className='col text-center'>
               <div className='mt-5'>
                 <CgBee className='app-icon' size={128}/>
-                <InputForm type="text" placeholder="Usuario"/>
-                <InputForm type="password" placeholder="Contraseña"/>
+                <InputForm type="text" icon="user" placeholder="Usuario"/>
+                <InputForm type="password" icon="password" placeholder="Contraseña"/>
                 <ButtonForm text="Iniciar Sesion"/>
               </div>
             </div>
