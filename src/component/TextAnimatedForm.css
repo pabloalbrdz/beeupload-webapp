@@ -1,4 +1,4 @@
-h2{
+p{
     position: relative;
     font-size: 4.5vw;
     color: black;
@@ -6,7 +6,7 @@ h2{
     text-transform: uppercase;
 }
 
-h2::before{
+p::before{
     content: attr(datatext);
     position: absolute;
     top: 0;
