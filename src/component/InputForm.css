@@ -45,3 +45,16 @@
 .div-form input:focus{
     border-color: #FFF973;
 }
+
+.btnIcon{
+    position: absolute;
+    width: 15%;
+    right: 0%;
+    background-color: transparent;
+    border: none;
+}
+
+.icon{
+    width: 64px;
+    margin-bottom: 5px;
+}
