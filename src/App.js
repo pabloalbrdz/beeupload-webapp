@@ -14,14 +14,16 @@ function App() {
       <div className="d-flex flex-column min-vh-100 align-items-center justify-content-center">
         <div className='container'>
           <div className='row mt-5 align-items-center'>
-            <div className='col-8'>
-              <TextAnimatedForm text="Prueba ..."></TextAnimatedForm>
+            <div className='col-8 d-none d-md-flex'>
+              <TextAnimatedForm text="Prueba ..."/>
             </div>
             <div className='col text-center'>
-              <CgBee className='app-icon' size={128}/>
-              <InputForm type="text" placeholder="Usuario"></InputForm>
-              <InputForm type="password" placeholder="Contraseña"></InputForm>
-              <ButtonForm text="Iniciar Sesion"></ButtonForm>
+              <div className='mt-5'>
+                <CgBee className='app-icon' size={128}/>
+                <InputForm type="text" placeholder="Usuario"/>
+                <InputForm type="password" placeholder="Contraseña"/>
+                <ButtonForm text="Iniciar Sesion"/>
+              </div>
             </div>
           </div>
         </div>

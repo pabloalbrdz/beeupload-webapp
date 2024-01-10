@@ -3,7 +3,7 @@ import './TextAnimatedForm.css';
 
 function TextAnimatedForm(props){
     return(
-        <p datatext={props.text}>{props.text}</p>
+        <h2 datatext={props.text}>{props.text}</h2>
     );
 }
 
