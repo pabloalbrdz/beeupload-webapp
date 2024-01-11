@@ -18,10 +18,10 @@
     -webkit-text-stroke: 0vw black;
     border-right: 2px solid #FFF973;
     overflow: hidden;
-    animation: animation 6s linear infinite;
+    animation: animationtitleanimatedform 6s linear infinite;
 }
 
-@keyframes animation
+@keyframes animationtitleanimatedform
 {
     0%, 10%, 100%
     {
