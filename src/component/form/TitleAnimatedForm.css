@@ -1,12 +1,13 @@
-h2{
+#titleAnimatedForm{
     position: relative;
-    font-size: 4.5vw;
+    font-size: 4.5rem;
     color: black;
     -webkit-text-stroke: 0.3vw #FFF973;
     text-transform: uppercase;
+    max-width: 360px;
 }
 
-h2::before{
+#titleAnimatedForm::before{
     content: attr(datatext);
     position: absolute;
     top: 0;

@@ -3,7 +3,7 @@ import './ButtonForm.css';
 
 function ButtonForm(props){
     return(
-        <button>{props.text}</button>
+        <button id="btn-form">{props.text}</button>
     );
 }
 
