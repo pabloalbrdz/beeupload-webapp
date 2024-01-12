@@ -5,12 +5,14 @@ import InputForm from './component/form/InputForm';
 import ButtonForm from './component/form/ButtonForm';
 import TitleAnimatedForm from './component/form/TitleAnimatedForm';
 import TextAnimatedForm from './component/form/TextAnimatedForm';
+import BackgroundAnimatedForm from './component/form/BackgroundAnimatedForm';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
+      <BackgroundAnimatedForm></BackgroundAnimatedForm>
       <div className="d-flex flex-column min-vh-100 align-items-center justify-content-center">
         <div className='container'>
           <div className='row min-vh-100 align-items-center justify-content-center'>
