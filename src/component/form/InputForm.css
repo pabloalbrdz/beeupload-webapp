@@ -60,3 +60,9 @@
     margin-bottom: 0.25em;
     color: white;
 }
+
+.div-form input:valid ~ .btnIcon .icon,
+.div-form input:focus ~ .btnIcon .icon
+{
+    color: #FFF973;
+}

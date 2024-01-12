@@ -11,8 +11,8 @@ function TextAnimatedForm(props){
         deleteSpeed: 40
     });
     return (
-        <div>
-            <h2 className="textanimatedform">{props.normalWord}<span>{typeEffect}</span></h2>
+        <div className="textanimatedform">
+            <h2>{props.normalWord}<span className="textanimatedformkeyword">{typeEffect}</span></h2>
         </div>
     );
 }
