@@ -17,7 +17,8 @@ function App() {
         <div className='container'>
           <div className='row min-vh-100 align-items-center justify-content-center'>
             <div className='col-7 d-none d-md-flex flex-column'>
-              <TitleAnimatedForm text="Prueba ..."/>
+              {/* <TitleAnimatedForm text="Prueba ..."/> */}
+              <TextAnimatedForm normalWord="Prueba " keyWords={["hola", "prueba", "buenas", "adios"]}></TextAnimatedForm>
               <TextAnimatedForm normalWord="Prueba " keyWords={["hola", "prueba", "buenas", "adios"]}></TextAnimatedForm>
             </div>
             <div className='col text-center'>
