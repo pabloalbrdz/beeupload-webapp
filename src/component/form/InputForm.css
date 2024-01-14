@@ -7,13 +7,16 @@
     max-width: 625px;
     max-height: 45px;
     margin: 6% 1% 6% 1%;
+    border-radius: 45px;
+    background-color: transparent;
+    box-shadow: 0 0 0.75rem white;
 }
 
 .div-form input{
-    width: 100%;
+    width: 90%;
     height: 100%;
     padding: 10px;
-    border: 2px solid white;
+    border: transparent;
     border-radius: 45px;
     outline: none;
     background: black;
@@ -41,9 +44,8 @@
     letter-spacing: 0.1rem;
 }
 
-.div-form input:valid,
-.div-form input:focus{
-    border-color: #FFF973;
+.div-form:focus-within {
+    box-shadow: 0 0 0.75rem #FFF974;
 }
 
 .btnIcon{

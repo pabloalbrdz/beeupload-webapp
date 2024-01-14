@@ -1,15 +1,22 @@
-#btn-form{
+.btn-form{
     max-width: 625px;
     max-height: 45px;
     width: 100%;
     height: 100%;
     padding: 10px;
-    border: 2px solid white;
+    border: 2px solid;
     border-radius: 45px;
     outline: none;
     font-size: 1rem;
-    background: #FFF85A;
+    background: linear-gradient(to right, #000000, #191919);
     color: white;
     margin: 1%;
     position: relative;
+    box-shadow: 0 0 0.75rem white;
+}
+
+.btn-form:hover{
+    box-shadow: 0 0 1.25rem #FFF974;
+    background: linear-gradient(to right, #FFF974, #FFF981);
+    color: #000000;
 }
