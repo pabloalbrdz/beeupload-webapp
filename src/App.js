@@ -16,15 +16,17 @@ function App() {
         <div className='container'>
           <div className='row min-vh-100 align-items-center justify-content-center'>
             <div className='col-7 d-none d-md-flex flex-column'>
-              <TextAnimatedForm normalWord="Prueba " keyWords={["hola", "prueba", "buenas", "adios"]}></TextAnimatedForm>
-              <TextAnimatedForm normalWord="Prueba " keyWords={["hola", "prueba", "buenas", "adios"]}></TextAnimatedForm>
+              <TextAnimatedForm normalWord="Prueba " keyWords={["texto", "texto2", "texto3", "texto4", "texto5"]}></TextAnimatedForm>
             </div>
             <div className='col text-center'>
               <div className='mt-5'>
                 <LogoForm size={128}></LogoForm>
                 <InputForm type="text" icon="user" placeholder="Usuario"/>
+                {/* <InputForm type="email" icon="email" placeholder="Correo Electronico"/> */}
                 <InputForm type="password" icon="password" placeholder="Contraseña"/>
+                {/* <InputForm type="password" icon="password" placeholder="Repetir Contraseña"/> */}
                 <ButtonForm text="Iniciar Sesion"/>
+                <ButtonForm text="Registrar Usuario"/>
               </div>
             </div>
           </div>

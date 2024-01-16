@@ -12,6 +12,14 @@
     box-shadow: 0 0 0.75rem white;
 }
 
+.div-form:focus-within {
+    box-shadow: 0 0 0.75rem #FFF974;
+}
+
+.div-form:has(input:valid){
+    box-shadow: 0 0 0.75rem #FFF974;
+}
+
 .div-form input{
     width: 90%;
     height: 100%;
@@ -42,10 +50,7 @@
     padding: 0 10px;
     background: black;
     letter-spacing: 0.1rem;
-}
-
-.div-form:focus-within {
-    box-shadow: 0 0 0.75rem #FFF974;
+    text-shadow: 0 0 0.75rem #FFF974;
 }
 
 .btnIcon{

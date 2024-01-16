@@ -13,10 +13,12 @@
     margin: 1%;
     position: relative;
     box-shadow: 0 0 0.75rem white;
+    text-shadow: 0 0 0.75rem white;
 }
 
 .btn-form:hover{
     box-shadow: 0 0 1.25rem #FFF974;
     background: linear-gradient(to right, #FFF974, #FFF981);
     color: #000000;
+    text-shadow: 0 0 0.75rem #000000;
 }
