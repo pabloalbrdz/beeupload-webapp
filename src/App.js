@@ -5,8 +5,10 @@ import ButtonForm from './component/form/ButtonForm';
 import TextAnimatedForm from './component/form/TextAnimatedForm';
 import BackgroundAnimatedForm from './component/form/BackgroundAnimatedForm';
 import LogoForm from './component/form/LogoForm';
+import SocialMediaIcon from './component/form/SocialMediaIcon';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
                 <InputForm type="password" icon="password" placeholder="Contraseña"/>
                 {/* <InputForm type="password" icon="password" placeholder="Repetir Contraseña"/> */}
                 <ButtonForm text="Iniciar Sesion"/>
+                <SocialMediaIcon></SocialMediaIcon>
                 <ButtonForm text="Registrar Usuario"/>
               </div>
             </div>
