@@ -1,4 +1,4 @@
-.div-form{
+.input-form-div{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -12,15 +12,15 @@
     box-shadow: 0 0 0.75rem white;
 }
 
-.div-form:focus-within {
+.input-form-div:focus-within {
     box-shadow: 0 0 0.75rem #FFF974;
 }
 
-.div-form:has(input:valid){
+.input-form-div:has(input:valid){
     box-shadow: 0 0 0.75rem #FFF974;
 }
 
-.div-form input{
+.input-form-div input{
     width: 90%;
     height: 100%;
     padding: 10px;
@@ -32,7 +32,7 @@
     text-indent: 20px;
 }
 
-.div-form span{
+.input-form-div span{
     position: absolute;
     left: 10px;
     padding: 15px;
@@ -41,8 +41,8 @@
     transition: 0.65s;
 }
 
-.div-form input:valid ~ span,
-.div-form input:focus ~ span
+.input-form-div input:valid ~ span,
+.input-form-div input:focus ~ span
 {
     color: #FFF973;
     transform: translateX(10px) translateY(-20px);
@@ -53,7 +53,7 @@
     text-shadow: 0 0 0.75rem #FFF974;
 }
 
-.btnIcon{
+.input-form-btn{
     position: absolute;
     width: 15%;
     right: 0%;
@@ -61,15 +61,15 @@
     border: none;
 }
 
-.icon{
+.input-form-icon{
     width: 1.15em;
     height: 1.15em;
     margin-bottom: 0.25em;
     color: white;
 }
 
-.div-form input:valid ~ .btnIcon .icon,
-.div-form input:focus ~ .btnIcon .icon
+.input-form-div input:valid ~ .input-form-btn .input-form-icon,
+.input-form-div input:focus ~ .input-form-btn .input-form-icon
 {
     color: #FFF973;
 }

@@ -1,8 +1,8 @@
-.app-icon-div{
+.logo-form-div{
     position: relative;
 }
 
-.app-icon{
+.logo-form-icon{
     color: #FFF85A;
     margin-top: 4%;
     margin-bottom: 2%;
@@ -12,12 +12,12 @@
     filter: drop-shadow(0 0 0.75rem #FFF974);
 }
 
-.app-icon-title{
+.logo-form-title{
     position: relative;
     font-size: 2.75rem;
 }
 
-.app-icon-title > span{
+.logo-form-title > span{
     animation: glow 3s ease-in-out infinite;
     color: #FFFCC5;
     text-shadow: 0 0 25px #FFFDDC;
@@ -34,35 +34,35 @@
     }
 }
 
-.app-icon-title > span:nth-child(2){
+.logo-form-title > span:nth-child(2){
     animation-delay: 0.25s;
 }
 
-.app-icon-title > span:nth-child(3){
+.logo-form-title > span:nth-child(3){
     animation-delay: 0.50s;
 }
 
-.app-icon-title > span:nth-child(4){
+.logo-form-title > span:nth-child(4){
     animation-delay: 0.75s;
 }
 
-.app-icon-title > span:nth-child(5){
+.logo-form-title > span:nth-child(5){
     animation-delay: 1s;
 }
 
-.app-icon-title > span:nth-child(6){
+.logo-form-title > span:nth-child(6){
     animation-delay: 1.25s;
 }
 
-.app-icon-title > span:nth-child(7){
+.logo-form-title > span:nth-child(7){
     animation-delay: 1.5s;
 }
 
-.app-icon-title > span:nth-child(8){
+.logo-form-title > span:nth-child(8){
     animation-delay: 1.75s;
 }
 
-.app-icon-title > span:nth-child(9){
+.logo-form-title > span:nth-child(9){
     animation-delay: 2s;
 }
 

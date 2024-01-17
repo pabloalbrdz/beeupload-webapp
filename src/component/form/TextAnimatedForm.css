@@ -1,11 +1,11 @@
-.textanimatedform{
+.text-animated-form-h2{
     color: white;
     position: relative;
     font-size: 5.5vh;
     text-shadow: 0 0 0.25rem white;
 }
 
-.textanimatedformkeyword{
+.text-animated-form-span{
     background: linear-gradient(43deg, #FFF974 0%, #E5E068 46%, #E7E377 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -4,9 +4,9 @@ import { CgBee } from "react-icons/cg";
 
 function LogoForm(props){
     return(
-        <div className="app-icon-div">
-            <CgBee className='app-icon neon' size={props.size}/>
-            <div className='app-icon-title'>
+        <div className="logo-form-div">
+            <CgBee className='logo-form-icon neon' size={props.size}/>
+            <div className='logo-form-title'>
                 <span>B</span>
                 <span>e</span>
                 <span>e</span>
