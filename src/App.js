@@ -16,7 +16,7 @@ function App() {
       <BackgroundAnimatedForm></BackgroundAnimatedForm>
       <div className="d-flex flex-column min-vh-100 align-items-center justify-content-center">
         <div className='container'>
-          <div className='row min-vh-100 align-items-center justify-content-center'>
+          <div className='row min-vh-100 align-items-center justify-content-center align-center'>
             <div className='col-7 d-none d-md-flex flex-column'>
               <TextAnimatedForm normalWord="Prueba " keyWords={["texto", "texto2", "texto3", "texto4", "texto5"]}></TextAnimatedForm>
             </div>
@@ -28,7 +28,10 @@ function App() {
                 <InputForm type="password" icon="password" placeholder="Contraseña"/>
                 {/* <InputForm type="password" icon="password" placeholder="Repetir Contraseña"/> */}
                 <ButtonForm text="Iniciar Sesion"/>
-                <SocialMediaIcon></SocialMediaIcon>
+                <div>
+                  <SocialMediaIcon></SocialMediaIcon>
+                  <SocialMediaIcon></SocialMediaIcon>
+                </div>
                 <ButtonForm text="Registrar Usuario"/>
               </div>
             </div>
