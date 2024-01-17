@@ -1,4 +1,4 @@
-.btn-form{
+.button-form-btn{
     max-width: 625px;
     max-height: 45px;
     width: 100%;
@@ -16,7 +16,7 @@
     text-shadow: 0 0 0.75rem white;
 }
 
-.btn-form:hover{
+.button-form-btn:hover{
     box-shadow: 0 0 1.25rem #FFF974;
     background: linear-gradient(to right, #FFF974, #FFF981);
     color: #000000;

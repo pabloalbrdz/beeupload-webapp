@@ -569,7 +569,7 @@ function BackgroundAnimatedForm(){
 
   if (init) {
     return (
-      <div className="backgroundanimatedform">
+      <div className="background-animated-form-div">
         <Particles id="tsparticles" particlesLoaded={particlesLoaded} options={options}/>
       </div>
     );

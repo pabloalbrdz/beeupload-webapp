@@ -8,17 +8,17 @@ import { RiLockPasswordFill } from "react-icons/ri";
 function InputForm(props){
     let icon;
     if (props.icon === "user"){
-        icon = <FaUser className="icon"/>;
+        icon = <FaUser className="input-form-icon"/>;
     }else if(props.icon === "email"){
-        icon = <MdEmail className="icon"/>;
+        icon = <MdEmail className="input-form-icon"/>;
     }else if(props.icon === "password"){
-        icon = <RiLockPasswordFill className="icon"/>;
+        icon = <RiLockPasswordFill className="input-form-icon"/>;
     }
     return(
-        <div className="div-form">
+        <div className="input-form-div">
             <input type={props.type} required />
             <span>{props.placeholder}</span>
-            <button className="btnIcon" disabled>{icon}</button>
+            <button className="input-form-btn" disabled>{icon}</button>
         </div>
     );
 }

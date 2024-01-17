@@ -12,7 +12,7 @@ function TextAnimatedForm(props){
     });
     return (
         <div>
-            <h2 className="textanimatedform">{props.normalWord}<span className="textanimatedformkeyword">{typeEffect}</span></h2>
+            <h2 className="text-animated-form-h2">{props.normalWord}<span className="text-animated-form-span">{typeEffect}</span></h2>
         </div>
     );
 }
