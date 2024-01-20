@@ -20,7 +20,6 @@ function LoginView() {
         <SocialMediaIcon></SocialMediaIcon>
         <SocialMediaIcon></SocialMediaIcon>
       </div>
-      <ButtonForm text="Registrar Usuario" />
     </div>
   );
 }

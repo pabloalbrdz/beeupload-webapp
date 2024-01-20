@@ -21,7 +21,6 @@ function LoginView() {
         <SocialMediaIcon></SocialMediaIcon>
         <SocialMediaIcon></SocialMediaIcon>
       </div>
-      <ButtonForm text="Iniciar Sesion" />
     </div>
   );
 }
