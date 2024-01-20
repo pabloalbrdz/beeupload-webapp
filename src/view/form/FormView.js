@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import TextAnimatedForm from "../../component/form/TextAnimatedForm";
 import BackgroundAnimatedForm from "../../component/form/BackgroundAnimatedForm";
+import ButtonForm from "../../component/form/ButtonForm";
 
 import LoginView from "./LoginView";
 import SignUpView from "./SignUpView";
@@ -9,6 +10,28 @@ import SignUpView from "./SignUpView";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Login() {
+  const [view, changeView] = useState(
+    {
+      "form": "login",
+      "view": <LoginView></LoginView>
+    }
+  );
+  function goToSignUpView(){
+    changeView(
+      {
+        "form": "signup",
+        "view": <SignUpView></SignUpView>
+      }
+    );
+  }
+  function goToLoginView(){
+    changeView(
+      {
+        "form": "login",
+        "view": <LoginView></LoginView>
+      }      
+    );
+  }
   return (
     <div>
       <BackgroundAnimatedForm></BackgroundAnimatedForm>
@@ -20,7 +43,8 @@ function Login() {
             </div>
             <div className="col text-center">
               <div className="mt-5">
-                  <SignUpView></SignUpView>
+                  {view.view}
+                  <ButtonForm text={view.form == "login" ? "Registrar Usuario" : "Iniciar Sesion"} onClick={view.form == "login" ? goToSignUpView : goToLoginView}/>
               </div>
             </div>
           </div>
