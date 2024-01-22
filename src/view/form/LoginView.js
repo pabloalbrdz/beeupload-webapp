@@ -3,7 +3,6 @@ import React from "react";
 import InputForm from "../../component/form/InputForm";
 import ButtonForm from "../../component/form/ButtonForm";
 import LogoForm from "../../component/form/LogoForm";
-import SocialMediaIcon from "../../component/form/SocialMediaIcon";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -16,10 +15,6 @@ function LoginView() {
         <InputForm type="password" icon="password" placeholder="Contraseña" />
         <ButtonForm text="Iniciar Sesion" />
       </form>
-      <div>
-        <SocialMediaIcon></SocialMediaIcon>
-        <SocialMediaIcon></SocialMediaIcon>
-      </div>
     </div>
   );
 }
