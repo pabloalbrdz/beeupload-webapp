@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import TextAnimatedForm from "../component/form/TextAnimatedForm";
 import BackgroundAnimatedForm from "../component/form/BackgroundAnimatedForm";
 import ButtonForm from "../component/form/ButtonForm";
+import TextDescriptionForm from "../component/form/TextDescriptionForm";
 
 import LoginView from "../view/form/LoginView";
 import SignUpView from "../view/form/SignUpView";
@@ -39,7 +40,8 @@ function FormPage() {
         <div className="container">
           <div className="row min-vh-100 align-items-center justify-content-center align-center">
             <div className="col-7 d-none d-md-flex flex-column">
-              <TextAnimatedForm normalWord="Prueba " keyWords={["texto", "texto2", "texto3", "texto4", "texto5"]}></TextAnimatedForm>
+            <TextAnimatedForm normalWord="You can * " keyWords={["upload your files", "read your docs", "listen to your music", "see your pics", "watch your videos"]}></TextAnimatedForm>
+            <TextDescriptionForm text="*at the same time"></TextDescriptionForm>
             </div>
             <div className="col text-center">
               <div className="mt-5">

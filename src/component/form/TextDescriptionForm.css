@@ -1,13 +1,9 @@
-.text-animated-form-h2{
+.text-description-form-h2{
     color: white;
     position: relative;
-    font-size: 5.3vh;
-    text-shadow: 0 0 0.25rem white;
-}
-
-.text-animated-form-span{
+    font-size: 2vh;
+    text-shadow: 0 0 0.75rem #FFF974;
     background: linear-gradient(43deg, #FFF974 0%, #E5E068 46%, #E7E377 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 0.75rem #FFF974;
 }
