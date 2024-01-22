@@ -44,7 +44,7 @@ function FormPage() {
             <div className="col text-center">
               <div className="mt-5">
                   {view.view}
-                  <ButtonForm text={view.form == "login" ? "Registrar Usuario" : "Iniciar Sesion"} onClick={view.form == "login" ? goToSignUpView : goToLoginView}/>
+                  <ButtonForm text={view.form == "login" ? "No tengo cuenta" : "Ya tengo cuenta"} onClick={view.form == "login" ? goToSignUpView : goToLoginView}/>
               </div>
             </div>
           </div>

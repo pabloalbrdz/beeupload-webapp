@@ -570,7 +570,7 @@ function BackgroundAnimatedForm(props){
   if (init) {
     return (
       <div className="background-animated-form-div">
-        <Particles className={props.className} id="tsparticles" particlesLoaded={particlesLoaded} options={options} />
+        <Particles id="tsparticles" particlesLoaded={particlesLoaded} options={options} />
       </div>
     );
   }
