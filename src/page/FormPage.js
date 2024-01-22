@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import TextAnimatedForm from "../../component/form/TextAnimatedForm";
-import BackgroundAnimatedForm from "../../component/form/BackgroundAnimatedForm";
-import ButtonForm from "../../component/form/ButtonForm";
+import TextAnimatedForm from "../component/form/TextAnimatedForm";
+import BackgroundAnimatedForm from "../component/form/BackgroundAnimatedForm";
+import ButtonForm from "../component/form/ButtonForm";
 
-import LoginView from "./LoginView";
-import SignUpView from "./SignUpView";
+import LoginView from "../view/form/LoginView";
+import SignUpView from "../view/form/SignUpView";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Login() {
+function FormPage() {
   const [view, changeView] = useState(
     {
       "form": "login",
@@ -54,4 +54,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default FormPage;

@@ -3,7 +3,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import './BackgroundAnimatedForm.css'
 
-function BackgroundAnimatedForm(){
+function BackgroundAnimatedForm(props){
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -570,7 +570,7 @@ function BackgroundAnimatedForm(){
   if (init) {
     return (
       <div className="background-animated-form-div">
-        <Particles id="tsparticles" particlesLoaded={particlesLoaded} options={options}/>
+        <Particles className={props.className} id="tsparticles" particlesLoaded={particlesLoaded} options={options} />
       </div>
     );
   }
