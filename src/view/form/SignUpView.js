@@ -12,7 +12,7 @@ function LoginView() {
       <LogoForm size={128}></LogoForm>
       <form>
         <InputForm type="text" icon="user" placeholder="Usuario" />
-        <InputForm type="email" icon="email" placeholder="Correo Electronico" />
+        <InputForm type="text" icon="email" placeholder="Correo Electronico" />
         <InputForm type="password" icon="password" placeholder="Contraseña" />
         <ButtonForm text="Registrar Usuario" />
       </form>
