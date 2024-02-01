@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import InputForm from "../../component/form/InputForm";
-import ButtonForm from "../../component/form/ButtonForm";
-import LogoForm from "../../component/form/LogoForm";
-import AlertForm from "../../component/form/AlertForm";
+import InputForm from "../component/form/InputForm";
+import ButtonForm from "../component/form/ButtonForm";
+import LogoForm from "../component/form/LogoForm";
+import AlertForm from "../component/form/AlertForm";
 
-import { userLogin } from "../../controller/UserController";
+import { userLogin } from "../controller/UserController";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
