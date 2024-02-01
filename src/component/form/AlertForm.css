@@ -1,8 +1,9 @@
 .alert-form-div{
     position: relative;
-    height: 2rem;
+    height: 2.25rem;
     margin-top: 2%;
     border-radius: 45px;
+    font-size: 0.85rem;
 }
 
 .alert-form-visible{
