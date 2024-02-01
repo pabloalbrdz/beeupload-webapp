@@ -1,0 +1,26 @@
+.alert-form-div{
+    position: relative;
+    height: 2rem;
+    margin-top: 2%;
+    border-radius: 45px;
+}
+
+.alert-form-visible{
+    visibility: visible;
+}
+
+.alert-form-hidden{
+    visibility: hidden;
+}
+
+.alert-form-ok{
+    background-color: #FFF973;
+    box-shadow: 0 0 0.75rem #FFF974;
+    color: black;
+}
+
+.alert-form-error{
+    background-color: #BE1919;
+    box-shadow: 0 0 0.75rem #B70000;
+    color: #5F0C0C;
+}

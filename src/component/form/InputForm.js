@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 
 function InputForm(props){
+
     let icon;
     if (props.icon === "user"){
         icon = <FaUser className="input-form-icon"/>;
@@ -14,9 +15,10 @@ function InputForm(props){
     }else if(props.icon === "password"){
         icon = <RiLockPasswordFill className="input-form-icon"/>;
     }
+    
     return(
         <div className="input-form-div">
-            <input type={props.type} required />
+            <input type={props.type} onChange={props.onChange} required />
             <span>{props.placeholder}</span>
             <button className="input-form-btn" disabled>{icon}</button>
         </div>
