@@ -10,7 +10,7 @@ import { usernameValidation, emailValidation, passwordValidation } from "../vali
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function SignUpView() {
+function SignUpView({signUpSuccess}) {
 
   const [userInput, setUserInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -20,15 +20,15 @@ function SignUpView() {
 
   function onchangeUserInput(e){
     setUserInput(e.target.value);
-  }
+  };
 
   function onchangeEmailInput(e){
     setEmailInput(e.target.value);
-  }
+  };
 
   function onchangePasswordInput(e){
     setPasswordInput(e.target.value);
-  }
+  };
 
   async function onClickButton(e){
     e.preventDefault();
@@ -39,13 +39,16 @@ function SignUpView() {
       let response = await userSignUp(userInput, emailInput, passwordInput);
       if (response.status == 200){
         setSignupState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Registrado con exito"});
+        setTimeout(function(){
+          signUpSuccess(response.status);
+        }, 5000);
       }else{
         setSignupState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
       }
     }catch(error){
       setSignupState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});
     }
-  }
+  };
 
   return (
     <div>
