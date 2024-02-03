@@ -10,7 +10,7 @@ import SignUpView from "../view/SignUpView";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function FormPage() {
+function FormPage({loginSuccess}) {
   const [view, changeView] = useState(
     {
       "form": "login",
@@ -31,7 +31,7 @@ function FormPage() {
     changeView(
       {
         "form": "login",
-        "view": <LoginView></LoginView>
+        "view": <LoginView loginSuccess={loginSuccess}></LoginView>
       }      
     );
   };
