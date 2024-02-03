@@ -2,6 +2,8 @@ import * as EmailValidator from 'email-validator';
 
 import { UsernameMinLengthException } from "../exception/UsernameMinLengthException";
 import { UsernameMaxLengthException } from "../exception/UsernameMaxLengthException";
+import { UsernameOnlyOneSignCharacterException } from '../exception/UsernameOnlyOneSignCharacterException';
+import { UsernameInvalidCharacterException } from "../exception/UsernameInvalidCharacterException";
 import { EmailNoFormatException } from "../exception/EmailNoFormatException";
 import { PasswordMinLengthException } from "../exception/PasswordMinLengthException";
 import { PasswordMaxLengthException } from "../exception/PasswordMaxLengthException";
@@ -9,18 +11,29 @@ import { PasswordNoUpperLetterMinException } from "../exception/PasswordNoUpperL
 import { PasswordNoLowerLetterMinException } from "../exception/PasswordNoLowerLetterMinException";
 import { PasswordNoSignCharacterMinException } from "../exception/PasswordNoSignCharacterMinException";
 import { PasswordNoNumberMinException } from "../exception/PasswordNoNumberMinException";
+import { PasswordInvalidCharacterException } from '../exception/PasswordInvalidCharacterException';
 
-export const usernameValidation = function(password){
+export const usernameValidation = function(username){
     
     let minlength = /^.{4,}$/;
     let maxlength = /^.{0,18}$/;
+    let sign = /^[^._\-]*[._\-]?[^._\-]*$/;
+    let allowedCharacters = /^[a-zA-Z0-9._\-]+$/;
 
-    if (!minlength.test(password)){
+    if (!minlength.test(username)){
         throw new UsernameMinLengthException();
     }
 
-    if (!maxlength.test(password)){
+    if (!maxlength.test(username)){
         throw new UsernameMaxLengthException();
+    }
+
+    if (!sign.test(username)){
+        throw new UsernameOnlyOneSignCharacterException();
+    }
+
+    if (!allowedCharacters.test(username)){
+        throw new UsernameInvalidCharacterException();
     }
 
 }
@@ -39,8 +52,9 @@ export const passwordValidation = function(password){
     let maxlength = /^.{0,18}$/;
     let upperletter = /[A-Z]/;
     let lowerletter = /[a-z]/;
-    let sign = /[.!@#$%&*]/;
+    let sign = /[.!@#$%&_\-]/;
     let num = /\d+/;
+    let allowedCharacters = /^[a-zA-Z0-9.!@#$%&_\-]+$/;
 
     if (!minlength.test(password)){
         throw new PasswordMinLengthException();
@@ -64,6 +78,10 @@ export const passwordValidation = function(password){
 
     if (!sign.test(password)){
         throw new PasswordNoSignCharacterMinException();
+    }
+
+    if (!allowedCharacters.test(password)){
+        throw new PasswordInvalidCharacterException();
     }
 
 }
