@@ -18,11 +18,11 @@ function LoginView() {
 
   function onchangeUserInput(e){
     setUserInput(e.target.value);
-  }
+  };
 
   function onchangePasswordInput(e){
     setPasswordInput(e.target.value);
-  }
+  };
 
   async function onClickButton(e){
     e.preventDefault();
@@ -32,7 +32,7 @@ function LoginView() {
     }else{
       setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
     }
-  }
+  };
 
   return (
     <div>

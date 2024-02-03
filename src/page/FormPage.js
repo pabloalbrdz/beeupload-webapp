@@ -17,14 +17,16 @@ function FormPage() {
       "view": <LoginView></LoginView>
     }
   );
+  
   function goToSignUpView(){
     changeView(
       {
         "form": "signup",
-        "view": <SignUpView></SignUpView>
+        "view": <SignUpView signUpSuccess={signUpSuccess}></SignUpView>
       }
     );
-  }
+  };
+
   function goToLoginView(){
     changeView(
       {
@@ -32,7 +34,14 @@ function FormPage() {
         "view": <LoginView></LoginView>
       }      
     );
-  }
+  };
+  
+  function signUpSuccess(response){
+    if (response == 200){
+      goToLoginView();
+    }
+  };
+  
   return (
     <div>
       <BackgroundAnimatedForm></BackgroundAnimatedForm>
@@ -40,7 +49,7 @@ function FormPage() {
         <div className="container">
           <div className="row min-vh-100 align-items-center justify-content-center align-center">
             <div className="col-7 d-none d-md-flex flex-column">
-            <TextAnimatedForm normalWord="You can * " keyWords={["upload your files", "read your docs", "listen to your music", "see your pics", "watch your videos"]}></TextAnimatedForm>
+            <TextAnimatedForm normalWord="You can * " keyWords={["upload your files", "read your docs", "listen to your music", "see your photos", "watch your videos"]}></TextAnimatedForm>
             <TextDescriptionForm text="*at the same time"></TextDescriptionForm>
             </div>
             <div className="col text-center">
