@@ -9,7 +9,7 @@ import { userLogin } from "../controller/UserController";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function LoginView() {
+function LoginView({loginSuccess}) {
 
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -29,6 +29,9 @@ function LoginView() {
     let response = await userLogin(userInput, passwordInput);
     if (response.status == 200){
       setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
+      setTimeout(function(){
+        loginSuccess(response.status);
+      }, 5000);
     }else{
       setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
     }
