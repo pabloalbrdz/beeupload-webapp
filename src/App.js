@@ -8,19 +8,18 @@ function App() {
   const [page, changePage] = useState(
     {
       "page": "form",
-      "view": <FormPage loginSuccess={loginSucces}></FormPage>
+      "view": <FormPage getLogin={initUserSession}></FormPage>
     }
   );
 
-  function loginSucces(response){
-    if (response == 200){
-      changePage(
-        {
-          "page": "main",
-          "view": <MainPage></MainPage>
-        }
-      );
-    }
+  function initUserSession(user){
+    window.sessionStorage.setItem("session", JSON.stringify(user));
+    changePage(
+      {
+        "page": "main",
+        "view": <MainPage></MainPage>
+      }      
+    );
   }
 
   return (
