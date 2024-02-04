@@ -10,11 +10,11 @@ import SignUpView from "../view/SignUpView";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function FormPage({loginSuccess}) {
+function FormPage({getLogin}) {
   const [view, changeView] = useState(
     {
       "form": "login",
-      "view": <LoginView></LoginView>
+      "view": <LoginView sendLogin={receiveSuccessLogin}></LoginView>
     }
   );
   
@@ -31,10 +31,14 @@ function FormPage({loginSuccess}) {
     changeView(
       {
         "form": "login",
-        "view": <LoginView loginSuccess={loginSuccess}></LoginView>
+        "view": <LoginView sendLogin={receiveSuccessLogin}></LoginView>
       }      
     );
   };
+
+  function receiveSuccessLogin(response){
+    getLogin(response.data);
+  }
   
   function signUpSuccess(response){
     if (response == 200){

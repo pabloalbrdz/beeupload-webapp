@@ -41,7 +41,7 @@ function SignUpView({signUpSuccess}) {
         setSignupState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Registrado con exito"});
         setTimeout(function(){
           signUpSuccess(response.status);
-        }, 5000);
+        }, 2000);
       }else{
         setSignupState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
       }

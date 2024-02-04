@@ -9,7 +9,7 @@ import { userLogin } from "../controller/UserController";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function LoginView({loginSuccess}) {
+function LoginView({sendLogin}) {
 
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -26,14 +26,18 @@ function LoginView({loginSuccess}) {
 
   async function onClickButton(e){
     e.preventDefault();
-    let response = await userLogin(userInput, passwordInput);
-    if (response.status == 200){
-      setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
-      setTimeout(function(){
-        loginSuccess(response.status);
-      }, 5000);
-    }else{
-      setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
+    try{
+      let response = await userLogin(userInput, passwordInput);
+      if (response.status == 200){
+        setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
+        setTimeout(function(){
+          sendLogin(response);
+        }, 2000);
+      }else{
+        setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
+      }
+    }catch(error){
+      setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});   
     }
   };
 
