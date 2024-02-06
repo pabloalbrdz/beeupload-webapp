@@ -22,11 +22,20 @@ function App() {
     );
   }
 
-  return (
-    <div className="App">
-      {page.view}
-    </div>
-  );
+  if (window.sessionStorage.getItem("session") != undefined){ 
+    page.page = "main";
+    return(
+      <div className='App'>
+        <MainPage></MainPage>
+      </div> 
+    );
+  }else{
+    return (
+      <div className="App">
+        {page.view}
+      </div>
+    );
+  }
 }
 
 export default App;

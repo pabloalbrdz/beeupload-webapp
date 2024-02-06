@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function MainPage(){
     return(
-        <div>Logeado</div>
+        <h1>hola</h1>
     );
 }
 
