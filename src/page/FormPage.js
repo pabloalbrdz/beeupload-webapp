@@ -5,8 +5,8 @@ import BackgroundAnimatedForm from "../component/form/BackgroundAnimatedForm";
 import ButtonForm from "../component/form/ButtonForm";
 import TextDescriptionForm from "../component/form/TextDescriptionForm";
 
-import LoginView from "../view/LoginView";
-import SignUpView from "../view/SignUpView";
+import LoginView from "../view/form/LoginView";
+import SignUpView from "../view/form/SignUpView";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -67,6 +67,7 @@ function FormPage({getLogin}) {
       </div>
     </div>
   );
+  
 }
 
 export default FormPage;
