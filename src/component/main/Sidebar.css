@@ -1,0 +1,43 @@
+.sidebar-main-aside{
+    width: 85px;
+    min-width: 85px;
+    height: 100%;
+    min-height: 100vh;
+    z-index: 1000;
+    background-color: black;
+    border-radius: 0px 15px 15px 0px;
+    box-shadow: 1px 1px 1px 1px #FFF86A;
+}
+
+.sidebar-main-nav-main{
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+.sidebar-main-div-logo{
+    text-align: center;
+    padding-top: 30%;
+    padding-bottom: 30%;
+    color: #FFF85A;
+    filter: drop-shadow(0 0 0.75rem #FFF974);
+}
+
+.sidebar-main-logo{
+    color: blue;
+}
+
+a.sidebar-main-nav-link{
+    padding: 0.65rem 1.5rem;
+    display: block;
+    white-space: nowrap;
+    color: #FFF86A;
+}
+
+.sidebar-main-nav-link:hover{
+    color: #FFF85A;
+    filter: drop-shadow(0 0 0.75rem #FFF974);
+}
+
+.sidebar-main-nav-item{
+    position: relative;
+}
