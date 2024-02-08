@@ -1,17 +1,22 @@
 .sidebar-main-aside{
-    width: 85px;
-    min-width: 85px;
+    width: 80px;
+    min-width: 80px;
     height: 100%;
     min-height: 100vh;
     z-index: 1000;
     background-color: black;
     border-radius: 0px 15px 15px 0px;
     box-shadow: 1px 1px 1px 1px #FFF86A;
+    position: relative;
 }
 
 .sidebar-main-nav-main{
     padding: 2rem 0;
     flex: 1 1 auto;
+}
+
+.accordion{
+    --bs-accordion-border-color: none;
 }
 
 .sidebar-main-div-logo{
@@ -26,18 +31,28 @@
     color: blue;
 }
 
+.sidebar-main-nav-item{
+    position: relative;
+    background: transparent;
+}
+
 a.sidebar-main-nav-link{
     padding: 0.65rem 1.5rem;
     display: block;
     white-space: nowrap;
     color: #FFF86A;
+    background: transparent;
+}
+
+.accordion-button, .collapsed, .accordion-button:not(.collapsed){
+    background: transparent;
+}
+
+.accordion-button:not(.collapsed){
+    color: #FFF85A;
 }
 
 .sidebar-main-nav-link:hover{
     color: #FFF85A;
     filter: drop-shadow(0 0 0.75rem #FFF974);
-}
-
-.sidebar-main-nav-item{
-    position: relative;
 }
