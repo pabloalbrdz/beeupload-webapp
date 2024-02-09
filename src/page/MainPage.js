@@ -5,10 +5,15 @@ import Sidebar from "../component/main/Sidebar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function MainPage(){
+function MainPage({closeSession}){
+
+    function closeSessionResponse(){
+        closeSession();
+    }
+
     return(
         <div className="main-page d-flex">
-            <Sidebar></Sidebar>
+            <Sidebar closeSessionAction={closeSessionResponse}></Sidebar>
             <div className="main p-3">
                 <div className="text-center">
                     <h1>Pagina</h1>

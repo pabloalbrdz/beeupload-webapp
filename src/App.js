@@ -22,11 +22,21 @@ function App() {
     );
   }
 
+  function closeUserSession(){
+    window.sessionStorage.removeItem("session");
+    changePage(
+      {
+        "page": "form",
+        "view": <FormPage getLogin={initUserSession}></FormPage>
+      }      
+    );
+  }
+
   if (window.sessionStorage.getItem("session") != undefined){ 
     page.page = "main";
     return(
       <div className='App'>
-        <MainPage></MainPage>
+        <MainPage closeSession={closeUserSession}></MainPage>
       </div> 
     );
   }else{
