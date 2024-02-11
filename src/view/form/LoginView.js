@@ -6,6 +6,7 @@ import LogoForm from "../../component/form/LogoForm";
 import AlertForm from "../../component/form/AlertForm";
 
 import { userLogin } from "../../controller/UserController";
+import { loginValidation } from "../../validation/LoginValidation";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -27,6 +28,7 @@ function LoginView({sendLogin}) {
   async function onClickButton(e){
     e.preventDefault();
     try{
+      loginValidation(userInput, passwordInput);
       let response = await userLogin(userInput, passwordInput);
       if (response.status == 200){
         setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
