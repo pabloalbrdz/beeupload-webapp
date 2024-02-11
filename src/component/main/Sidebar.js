@@ -9,8 +9,7 @@ import { RiLogoutCircleRFill } from "react-icons/ri";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
-function Sidebar(props){
-
+function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer, closeSessionAction}){
     return(
         <aside className="sidebar-main-aside accordion d-flex flex-column justify-content-between" id="sidebar-main">
             <div className="sidebar-main-div-logo">
@@ -21,11 +20,11 @@ function Sidebar(props){
             <div className="d-flex">
                 <ul className="sidebar-main-nav-main list-unstyled">
                     <li className="sidebar-main-nav-item accordion-item">
-                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFile" aria-expanded="false" aria-controls="collapseFile">
+                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseDoc" aria-expanded="false" aria-controls="collapseDoc">
                             <FaFileAlt size={34}/>
                         </a>
-                        <ul id="collapseFile" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
-                            <li className="sidebar-main-nav-item">
+                        <ul id="collapseDoc" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
+                            <li className="sidebar-main-nav-item" onClick={documentExplorer}>
                                 <a className="sidebar-main-nav-link">
                                     <FaSearch size={21}/>
                                 </a>
@@ -42,7 +41,7 @@ function Sidebar(props){
                             <FaMusic size={34}/>
                         </a>
                         <ul id="collapseMusic" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
-                            <li className="sidebar-main-nav-item">
+                            <li className="sidebar-main-nav-item" onClick={musicExplorer}>
                                 <a className="sidebar-main-nav-link">
                                     <FaSearch size={21}/>
                                 </a>
@@ -59,7 +58,7 @@ function Sidebar(props){
                             <FaImage size={34}/>
                         </a>
                         <ul id="collapsePhoto" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
-                            <li className="sidebar-main-nav-item">
+                            <li className="sidebar-main-nav-item" onClick={photoExplorer}>
                                 <a className="sidebar-main-nav-link">
                                     <FaSearch size={21}/>
                                 </a>
@@ -76,7 +75,7 @@ function Sidebar(props){
                             <FaVideo size={34}/>
                         </a>
                         <ul id="collapseVideo" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
-                            <li className="sidebar-main-nav-item">
+                            <li className="sidebar-main-nav-item" onClick={videoExplorer}>
                                 <a className="sidebar-main-nav-link">
                                     <FaSearch size={21}/>
                                 </a>
@@ -101,7 +100,7 @@ function Sidebar(props){
                         </a>
                     </li>
                     <li className="sidebar-main-nav-item">
-                        <a className="sidebar-main-nav-link" onClick={props.closeSessionAction}>
+                        <a className="sidebar-main-nav-link" onClick={closeSessionAction}>
                             <RiLogoutCircleRFill size={28}/>
                         </a>
                     </li>
