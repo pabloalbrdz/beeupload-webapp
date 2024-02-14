@@ -1,4 +1,4 @@
-import {React, useState } from "react";
+import React from "react";
 import "./Sidebar.css";
 
 import { CgBee } from "react-icons/cg";
