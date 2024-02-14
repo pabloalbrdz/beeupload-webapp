@@ -9,7 +9,7 @@ import { RiLogoutCircleRFill } from "react-icons/ri";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
-function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer, userSettings, closeSessionAction}){
+function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer, userSettings, closeSession}){
     return(
         <aside className="sidebar-main-aside accordion d-flex flex-column justify-content-between" id="sidebar-main">
             <div className="sidebar-main-div-logo">
@@ -100,7 +100,7 @@ function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer,
                         </a>
                     </li>
                     <li className="sidebar-main-nav-item">
-                        <a className="sidebar-main-nav-link" onClick={closeSessionAction}>
+                        <a className="sidebar-main-nav-link" onClick={closeSession}>
                             <RiLogoutCircleRFill size={28}/>
                         </a>
                     </li>

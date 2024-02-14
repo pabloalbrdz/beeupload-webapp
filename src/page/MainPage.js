@@ -4,11 +4,12 @@ import "./MainPage.css";
 import Sidebar from "../component/main/Sidebar";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import { MainController } from "../controller/MainController";
 
 function MainPage(){
     return(
         <div className="main-page d-flex">
-            <Sidebar></Sidebar>
+            <Sidebar closeSession={() => MainController.closeSession()}></Sidebar>
             <div className="main p-3">
                 <div className="text-center">
                     
