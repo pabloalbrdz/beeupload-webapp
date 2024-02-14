@@ -1,4 +1,5 @@
 import { UserModel } from "../model/UserModel"
+import { FormUserController } from "./FormUserController";
 
 export const UserController = {
 
@@ -18,13 +19,13 @@ export const UserController = {
         }
     },
 
-    async signUp(userInput, emailInput, passwordInput, setSignUpState){
+    async signUp(userInput, emailInput, passwordInput, setSignUpState, changeView){
         try{
             let response = await UserModel.signUp(userInput, emailInput, passwordInput);
             if (response.status == 200){
                 setSignUpState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Registrado con exito"});
                 setTimeout(function(){
-                    
+                    changeView();
                 }, 5000); 
             }else{
                 setSignUpState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});

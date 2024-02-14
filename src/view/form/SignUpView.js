@@ -9,7 +9,7 @@ import AlertForm from "../../component/form/AlertForm";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function SignUpView() {
+function SignUpView({changeView}) {
 
   const [userInput, setUserInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -31,7 +31,7 @@ function SignUpView() {
 
   async function onClickButton(e){
     e.preventDefault();
-    UserController.signUp(userInput, emailInput, passwordInput, setSignupState);
+    UserController.signUp(userInput, emailInput, passwordInput, setSignupState, changeView);
   };
 
   return (
