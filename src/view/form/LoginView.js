@@ -9,7 +9,7 @@ import AlertForm from "../../component/form/AlertForm";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function LoginView() {
+function LoginView({changePage}) {
 
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -26,7 +26,7 @@ function LoginView() {
 
   async function onClickButton(e){
     e.preventDefault();
-    UserController.login(userInput, passwordInput, setLoginState);
+    UserController.login(userInput, passwordInput, setLoginState, changePage);
   };
 
   return (

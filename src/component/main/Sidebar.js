@@ -9,7 +9,7 @@ import { RiLogoutCircleRFill } from "react-icons/ri";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
-function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer, closeSessionAction}){
+function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer, userSettings, closeSessionAction}){
     return(
         <aside className="sidebar-main-aside accordion d-flex flex-column justify-content-between" id="sidebar-main">
             <div className="sidebar-main-div-logo">
@@ -95,7 +95,7 @@ function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer,
                 </a>
                 <ul id="collapseProfile" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
                     <li className="sidebar-main-nav-item">
-                        <a className="sidebar-main-nav-link">
+                        <a className="sidebar-main-nav-link" onClick={userSettings}>
                             <IoIosSettings size={28}/>
                         </a>
                     </li>

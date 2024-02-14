@@ -1,15 +1,14 @@
 import { UserModel } from "../model/UserModel"
-import { FormUserController } from "./FormUserController";
 
 export const UserController = {
 
-    async login(userInput, passwordInput, setLoginState){
+    async login(userInput, passwordInput, setLoginState, changePage){
         try{
             let response = await UserModel.login(userInput, passwordInput);
             if (response.status == 200){
                 setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
                 setTimeout(function(){
-                    
+                    changePage();
                 }, 5000);
             }else{
                 setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
@@ -19,13 +18,13 @@ export const UserController = {
         }
     },
 
-    async signUp(userInput, emailInput, passwordInput, setSignUpState, changeView){
+    async signUp(userInput, emailInput, passwordInput, setSignUpState){
         try{
             let response = await UserModel.signUp(userInput, emailInput, passwordInput);
             if (response.status == 200){
                 setSignUpState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Registrado con exito"});
                 setTimeout(function(){
-                    changeView();
+                    window.location.href = window.location.href;
                 }, 5000); 
             }else{
                 setSignUpState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { FormUserController } from "../controller/FormUserController";
+import { WindowController } from "../controller/WindowController";
 
 import TextAnimatedForm from "../component/form/TextAnimatedForm";
 import BackgroundAnimatedForm from "../component/form/BackgroundAnimatedForm";
@@ -12,12 +12,12 @@ import SignUpView from "../view/form/SignUpView";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function FormPage() {
+function FormPage({changePage}) {
 
   const [view, changeView] = useState(
     {
       "form": "login",
-      "view": <LoginView></LoginView>,
+      "view": <LoginView changeView={() => WindowController.changeFormView("login", changeView)} changePage={changePage}></LoginView>,
       "buttonChange": "No tengo cuenta"
     }
   );
@@ -35,7 +35,7 @@ function FormPage() {
             <div className="col text-center">
               <div className="mt-5">
                   {view.view}
-                  <ButtonForm text={view.buttonChange} onClick={() => FormUserController.changeFormView("login", changeView)}/>
+                  <ButtonForm text={view.buttonChange} onClick={() => WindowController.changeFormView(view.form, changeView, changePage)}/>
               </div>
             </div>
           </div>
