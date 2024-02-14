@@ -1,39 +1,37 @@
-import axios from "axios";
+import { UserModel } from "../model/UserModel"
 
-export const userLogin = async (inputUsername, inputPassword) => {
-  try {
-    const response = await axios.get(
-      "http://localhost:8090/api/user/login/"+inputUsername+"/"+inputPassword,
-      {
-        headers: {
-          'Content-Type': 'application/json'
+export const UserController = {
+
+    async login(userInput, passwordInput, setLoginState){
+        try{
+            let response = await UserModel.login(userInput, passwordInput);
+            if (response.status == 200){
+                setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
+                setTimeout(function(){
+                    
+                }, 5000);
+            }else{
+                setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
+            }
+        }catch(error){
+            setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});   
         }
-      }
-    );
-    return {"status": response.status, "data": response.data};
-  } catch (error) {
-    return {"status": error.response.status, "data": error.response.data};
-  }
-};
+    },
 
-export const userSignUp = async (inputUsername, inputEmail, inputPassword) => {
-  try {
-    const response = await axios.post(
-      "http://localhost:8090/api/user/signup",
-      {
-        username: inputUsername,
-        email: inputEmail,
-        password: inputPassword
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
+    async signUp(userInput, emailInput, passwordInput, setSignUpState){
+        try{
+            let response = await UserModel.signUp(userInput, emailInput, passwordInput);
+            if (response.status == 200){
+                setSignUpState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Registrado con exito"});
+                setTimeout(function(){
+                    
+                }, 5000); 
+            }else{
+                setSignUpState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
+            }
+        }catch(error){
+            setSignUpState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});   
         }
-      }
-    );
-    return {"status": response.status, "data": response.data};
-  } catch (error) {
-    return {"status": error.response.status, "data": error.response.data};
-  }
-};
+    }
 
+}

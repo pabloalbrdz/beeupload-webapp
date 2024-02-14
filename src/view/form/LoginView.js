@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 
+import { UserController } from "../../controller/UserController";
+
 import InputForm from "../../component/form/InputForm";
 import ButtonForm from "../../component/form/ButtonForm";
 import LogoForm from "../../component/form/LogoForm";
 import AlertForm from "../../component/form/AlertForm";
 
-import { userLogin } from "../../controller/UserController";
-import { loginValidation } from "../../validation/LoginValidation";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function LoginView({sendLogin}) {
+function LoginView() {
 
   const [userInput, setUserInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
@@ -27,20 +26,7 @@ function LoginView({sendLogin}) {
 
   async function onClickButton(e){
     e.preventDefault();
-    try{
-      loginValidation(userInput, passwordInput);
-      let response = await userLogin(userInput, passwordInput);
-      if (response.status == 200){
-        setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
-        setTimeout(function(){
-          sendLogin(response);
-        }, 2000);
-      }else{
-        setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
-      }
-    }catch(error){
-      setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});   
-    }
+    UserController.login(userInput, passwordInput, setLoginState);
   };
 
   return (

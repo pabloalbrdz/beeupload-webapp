@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { FormUserController } from "../controller/FormUserController";
+
 import TextAnimatedForm from "../component/form/TextAnimatedForm";
 import BackgroundAnimatedForm from "../component/form/BackgroundAnimatedForm";
 import ButtonForm from "../component/form/ButtonForm";
@@ -10,42 +12,16 @@ import SignUpView from "../view/form/SignUpView";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function FormPage({getLogin}) {
+function FormPage() {
+
   const [view, changeView] = useState(
     {
       "form": "login",
-      "view": <LoginView sendLogin={receiveSuccessLogin}></LoginView>
+      "view": <LoginView></LoginView>,
+      "buttonChange": "No tengo cuenta"
     }
   );
-  
-  function goToSignUpView(){
-    changeView(
-      {
-        "form": "signup",
-        "view": <SignUpView signUpSuccess={signUpSuccess}></SignUpView>
-      }
-    );
-  };
 
-  function goToLoginView(){
-    changeView(
-      {
-        "form": "login",
-        "view": <LoginView sendLogin={receiveSuccessLogin}></LoginView>
-      }      
-    );
-  };
-
-  function receiveSuccessLogin(response){
-    getLogin(response.data);
-  }
-  
-  function signUpSuccess(response){
-    if (response == 200){
-      goToLoginView();
-    }
-  };
-  
   return (
     <div>
       <BackgroundAnimatedForm></BackgroundAnimatedForm>
@@ -59,7 +35,7 @@ function FormPage({getLogin}) {
             <div className="col text-center">
               <div className="mt-5">
                   {view.view}
-                  <ButtonForm text={view.form == "login" ? "No tengo cuenta" : "Ya tengo cuenta"} onClick={view.form == "login" ? goToSignUpView : goToLoginView}/>
+                  <ButtonForm text={view.buttonChange} onClick={() => FormUserController.changeFormView(view, changeView)}/>
               </div>
             </div>
           </div>

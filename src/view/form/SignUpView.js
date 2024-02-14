@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 
+import { UserController } from "../../controller/UserController";
+
 import InputForm from "../../component/form/InputForm";
 import ButtonForm from "../../component/form/ButtonForm";
 import LogoForm from "../../component/form/LogoForm";
 import AlertForm from "../../component/form/AlertForm";
 
-import { userSignUp } from "../../controller/UserController";
-import { usernameValidation, emailValidation, passwordValidation } from "../../validation/SignUpValidation";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function SignUpView({signUpSuccess}) {
+function SignUpView() {
 
   const [userInput, setUserInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
@@ -32,22 +31,7 @@ function SignUpView({signUpSuccess}) {
 
   async function onClickButton(e){
     e.preventDefault();
-    try{
-      usernameValidation(userInput);
-      emailValidation(emailInput);
-      passwordValidation(passwordInput);
-      let response = await userSignUp(userInput, emailInput, passwordInput);
-      if (response.status == 200){
-        setSignupState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Registrado con exito"});
-        setTimeout(function(){
-          signUpSuccess(response.status);
-        }, 2000);
-      }else{
-        setSignupState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
-      }
-    }catch(error){
-      setSignupState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});
-    }
+    UserController.signUp(userInput, emailInput, passwordInput, setSignupState);
   };
 
   return (
