@@ -13,7 +13,6 @@ import SignUpView from "../view/form/SignUpView";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function FormPage({changePage}) {
-
   const [view, changeView] = useState(
     {
       "form": "login",
@@ -21,7 +20,6 @@ function FormPage({changePage}) {
       "buttonChange": "No tengo cuenta"
     }
   );
-
   return (
     <div>
       <BackgroundAnimatedForm></BackgroundAnimatedForm>
