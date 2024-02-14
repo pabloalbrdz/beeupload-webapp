@@ -20,7 +20,7 @@ export const WindowController = {
             changeView(
                 {
                     "form": "login",
-                    "view": <LoginView changeView={() => WindowController.changeFormView("login", changeView)} changePage={changePage}></LoginView>,
+                    "view": <LoginView changeView={() => WindowController.changeFormView("login", changeView)} changePage={() => changePage}></LoginView>,
                     "buttonChange": "No tengo cuenta"
                 }
             );
