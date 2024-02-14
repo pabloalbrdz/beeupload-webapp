@@ -35,7 +35,7 @@ function FormPage() {
             <div className="col text-center">
               <div className="mt-5">
                   {view.view}
-                  <ButtonForm text={view.buttonChange} onClick={() => FormUserController.changeFormView(view, changeView)}/>
+                  <ButtonForm text={view.buttonChange} onClick={() => FormUserController.changeFormView("login", changeView)}/>
               </div>
             </div>
           </div>

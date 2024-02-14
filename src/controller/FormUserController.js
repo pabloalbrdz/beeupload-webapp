@@ -4,15 +4,15 @@ import SignUpView from "../view/form/SignUpView";
 export const FormUserController = {
 
     changeFormView(view, changeView){
-        if (view.form == "login"){
+        if (view == "login"){
             changeView(
                 {
                     "form": "signup",
-                    "view": <SignUpView></SignUpView>,
+                    "view": <SignUpView changeView={() => FormUserController.changeFormView("signup", changeView)}></SignUpView>,
                     "buttonChange": "Ya tengo cuenta"
                 }
             );
-        }else if(view.form == "signup"){
+        }else if(view == "signup"){
             changeView(
                 {
                     "form": "login",
