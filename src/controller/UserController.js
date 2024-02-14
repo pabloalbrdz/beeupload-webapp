@@ -8,6 +8,7 @@ export const UserController = {
             if (response.status == 200){
                 setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
                 setTimeout(function(){
+                    window.sessionStorage.setItem("session", JSON.stringify(response.data));
                     changePage();
                 }, 5000);
             }else{
