@@ -14,12 +14,7 @@ function App() {
   );
   useEffect(() => {
     if (window.sessionStorage.getItem("session") != undefined){
-      changePage(
-        {
-          "page": "main",
-          "view": <MainPage></MainPage>
-        }
-      );
+      WindowController.changePageView(page.page, changePage);
     }
   }, []);
   return(
