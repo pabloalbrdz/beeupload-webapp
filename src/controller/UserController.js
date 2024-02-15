@@ -2,14 +2,14 @@ import { UserModel } from "../model/UserModel"
 
 export const UserController = {
 
-    async login(userInput, passwordInput, setLoginState, changePage){
+    async login(userInput, passwordInput, setLoginState){
         try{
             let response = await UserModel.login(userInput, passwordInput);
             if (response.status == 200){
                 setLoginState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Logeado con exito"});
                 setTimeout(function(){
                     window.sessionStorage.setItem("session", JSON.stringify(response.data));
-                    changePage();
+                    window.location.href = window.location.href;
                 }, 5000);
             }else{
                 setLoginState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
