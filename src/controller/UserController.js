@@ -1,4 +1,5 @@
 import { UserModel } from "../model/UserModel"
+import { FileServerModel } from "../model/FileServerModel";
 
 export const UserController = {
 
@@ -23,6 +24,7 @@ export const UserController = {
         try{
             let response = await UserModel.signUp(userInput, emailInput, passwordInput);
             if (response.status == 200){
+                await FileServerModel.createUserFolder(response.data.id);
                 setSignUpState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Registrado con exito"});
                 setTimeout(function(){
                     window.location.href = window.location.href;
