@@ -35,6 +35,14 @@ export const UserController = {
         }catch(error){
             setSignUpState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});   
         }
+    },
+
+    async getUserProfilePic(userId, setUserProfilePic){
+        try{
+            await FileServerModel.getUserProfilePic(userId, setUserProfilePic);
+        }catch(error){
+            setUserProfilePic("");
+        }
     }
 
 }

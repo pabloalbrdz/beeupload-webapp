@@ -27,6 +27,7 @@ function MainPage(){
                 musicExplorer={() => MainController.changeExplorer("music", changeView)}
                 photoExplorer={() => MainController.changeExplorer("photo", changeView)}
                 videoExplorer={() => MainController.changeExplorer("video", changeView)}
+                userSettings={() => MainController.changeExplorer("usersettings", changeView)}
                 closeSession={() => MainController.closeSession()}
             />
             <div className="main p-3">

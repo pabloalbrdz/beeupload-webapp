@@ -27,6 +27,7 @@ export const UserModel = {
       }
     }
   },
+  
   async signUp(inputUsername, inputEmail, inputPassword) {
     try {
       usernameValidation(inputUsername);
