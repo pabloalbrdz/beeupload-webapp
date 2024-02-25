@@ -31,9 +31,7 @@ function MainPage(){
                 closeSession={() => MainController.closeSession()}
             />
             <div className="main p-3">
-                <div className="text-center">
-                    {view.view}
-                </div>
+                {view.view}
             </div>
         </div>
     );
