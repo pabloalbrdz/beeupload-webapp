@@ -1,7 +1,22 @@
 .main-usersettings-div-body{
-    background-color: white;
+    background-color: black;
     height: 100%;
     width: 100%;
+    border: 2px solid #FFF86A;
+    border-radius: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+}
+
+.main-usersettings-div-body::-webkit-scrollbar {
+    display: none;
+}
+
+.main-usersettings-div-body > div{
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .main-usersettings-div-userheader{
@@ -12,8 +27,15 @@
 
 .main-usersettings-div-userheader > img{
     margin-top: 5px;
+    margin-bottom: 5px;
     width: 128px;
     border-radius: 50%;
+}
+
+.main-usersettings-div-userheader > h1{
+    font-size: 2rem;
+    color: #FFF86A;
+    filter: drop-shadow(0 0 0.75rem #FFF974);
 }
 
 .main-usersettings-div-userinfo, .main-usersettings-div-usersettings, .main-usersettings-div-filesettings, .main-usersettings-div-userdelete{
@@ -23,11 +45,64 @@
 }
 
 .main-usersettings-div-userinfo > h2, .main-usersettings-div-usersettings > h2, .main-usersettings-div-filesettings > h2, .main-usersettings-div-userdelete > h2{
-    margin-left: 10px;
+    font-size: 1.75rem;
+    margin-left: 25px;
+    width: 100%;
+    margin-bottom: 5px;
+    color: #FFF86A;
+    filter: drop-shadow(0 0 0.75rem #FFF974);
 }
 
 .main-usersettings-div-userinfo-info, .main-usersettings-div-usersettings-settings, .main-usersettings-div-filesettings-settings, .main-usersettings-div-userdelete-settings{
+    display: flex;
     align-self: center;
     text-align: center;
-    gap: 5px;
+    gap: 10px;
+}
+
+.main-usersettings-div-body-hr{
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main-usersettings-div-userinfo-info > h4{
+    font-size: 1.35rem;
+    color: white;
+}
+
+.main-usersettings-div-userinfo-info > h4 > span{
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: whitesmoke;
+}
+
+@media screen and (max-width: 1098px) {
+
+    .main-usersettings-div-userheader{
+        text-align: center;
+    }
+
+    .main-usersettings-div-userinfo > h2, .main-usersettings-div-usersettings > h2, .main-usersettings-div-filesettings > h2, .main-usersettings-div-userdelete > h2{
+        margin-left: 0px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .main-usersettings-div-userinfo-info, .main-usersettings-div-usersettings-settings, .main-usersettings-div-filesettings-settings, .main-usersettings-div-userdelete-settings{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .main-usersettings-div-userinfo-info{
+        flex-direction: column;
+    }
+
+    .main-usersettings-div-usersettings-settings > button, .main-usersettings-div-filesettings-settings > button, .main-usersettings-div-userdelete-settings > button{
+        flex: 50%;
+        margin-bottom: 10px;
+        width: 7.5rem;
+    }
+
 }

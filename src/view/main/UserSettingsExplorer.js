@@ -2,6 +2,8 @@ import {React, useState} from "react";
 
 import "./UserSettingsExplorer.css";
 
+import ButtonMain from "../../component/main/ButtonMain";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function UserSettingsExplorer(){
@@ -11,37 +13,37 @@ function UserSettingsExplorer(){
                 <img src="https://campaigns.uthscsa.edu/social-media-guide/wp-content/uploads/sites/19/2017/11/320x320.png"></img>
                 <h1>Usuario</h1>
             </div>
-            <hr></hr>
+            <hr className="main-usersettings-div-body-hr"></hr>
             <div className="main-usersettings-div-userinfo">
                 <h2>Informacion de Usuario</h2>
-                <div className="main-usersettings-div-userinfo-info d-flex flex-sm-column flex-md-row">
-                    <h4>Usuario: <span className="main-usersettings-div-userinfo-info-span">Usuario 1</span></h4>
-                    <h4>ID: <span className="main-usersettings-div-userinfo-info-span">1</span></h4>
+                <div className="main-usersettings-div-userinfo-info">
+                    <h4>Usuario: <span>Usuario 1</span></h4>
+                    <h4>ID: <span>1</span></h4>
                 </div>
             </div>
             <div className="main-usersettings-div-usersettings">
                 <h2>Ajustes de Usuario</h2>
-                <div className="main-usersettings-div-usersettings-settings d-flex flex-sm-column flex-md-row">
-                    <button>Modificar Nombre Usuario</button>
-                    <button>Modificar Imagen Usuario</button>
-                    <button>Modificar Correo Electronico</button>
-                    <button>Modificar Contraseña</button>
+                <div className="main-usersettings-div-usersettings-settings">
+                    <ButtonMain text="Modificar Nombre Usuario"></ButtonMain>
+                    <ButtonMain text="Modificar Imagen Usuario"></ButtonMain>
+                    <ButtonMain text="Modificar Correo Electronico"></ButtonMain>
+                    <ButtonMain text="Modificar Contraseña"></ButtonMain>
                 </div>
             </div>
             <div className="main-usersettings-div-filesettings">
                 <h2>Ajustes de Ficheros</h2>
-                <div className="main-usersettings-div-filesettings-settings d-flex flex-sm-column flex-md-row">
-                    <button>Eliminar Documentos (todos)</button>
-                    <button>Eliminar Imagenes (todos)</button>
-                    <button>Eliminar Musica (todos)</button>
-                    <button>Eliminar Videos (todos)</button>
+                <div className="main-usersettings-div-filesettings-settings">
+                    <ButtonMain text="Eliminar Documentos (todos)"></ButtonMain>
+                    <ButtonMain text="Eliminar Imagenes (todos)"></ButtonMain>
+                    <ButtonMain text="Eliminar Musica (todos)"></ButtonMain>
+                    <ButtonMain text="Eliminar Videos (todos)"></ButtonMain>
                 </div>
             </div>
             <div className="main-usersettings-div-userdelete">
                 <h2>Acciones de Eliminacion</h2>
-                <div className="main-usersettings-div-userdelete-settings d-flex flex-sm-column flex-md-row">
-                    <button>Eliminar Ficheros (todos)</button>
-                    <button>Eliminar Usuario</button>
+                <div className="main-usersettings-div-userdelete-settings">
+                    <ButtonMain text="Eliminar Ficheros (todos)"></ButtonMain>
+                    <ButtonMain text="Eliminar Usuario"></ButtonMain>
                 </div>
             </div>
         </div>
