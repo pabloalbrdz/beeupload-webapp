@@ -1,0 +1,24 @@
+.button-main-btn{
+    width: 15rem;
+    height: 3.5rem;
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 45px;
+    outline: none;
+    font-size: 0.85rem;
+    background: linear-gradient(to right, #000000, #191919);
+    color: white;
+    margin: 1%;
+    margin-bottom: 8%;
+    position: relative;
+    box-shadow: 0 0 0.75rem white;
+    text-shadow: 0 0 0.75rem white;
+    text-align: center;
+}
+
+.button-main-btn:hover{
+    box-shadow: 0 0 1.75rem #FFF974;
+    background: linear-gradient(to right, #FFF974, #FFF981);
+    color: #000000;
+    text-shadow: 0 0 0.75rem #000000;
+}
