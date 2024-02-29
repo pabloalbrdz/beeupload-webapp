@@ -1,3 +1,15 @@
+.modal-content{
+    background-color: black;
+    border: 3px solid #FFF86A;
+    filter: drop-shadow(0 0 0.75rem #FFF974);
+}
+
+.modal-title{
+    font-size: 2rem;
+    color: #FFF86A;
+    filter: drop-shadow(0 0 0.75rem #FFF974);
+}
+
 .main-usersettings-div-body{
     background-color: black;
     height: 100%;
@@ -8,10 +20,7 @@
     scrollbar-width: none;
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
-}
-
-.main-usersettings-div-body::-webkit-scrollbar {
-    display: none;
+    overflow-x: hidden;
 }
 
 .main-usersettings-div-body > div{

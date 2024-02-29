@@ -7,12 +7,9 @@ import { Modal } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import ButtonModelMain from "../../component/main/ButtonModelMain";
-import InputModelMain from "../../component/main/InputModelMain";
 
 function UserSettingsExplorer(){
     const [showChangeUsername, setShowChangeUsername] = useState(false);
-    const [showChangeEmail, setShowChangeEmail] = useState(false);
-    const [showChangePassword, setShowChangePassword] = useState(false);
     return(
         <div className="main-usersettings-div-body">
             <div className="main-usersettings-div-userheader">
@@ -32,8 +29,8 @@ function UserSettingsExplorer(){
                 <div className="main-usersettings-div-usersettings-settings">
                     <ButtonMain text="Modificar Nombre Usuario" onClick={() => setShowChangeUsername(true)}></ButtonMain>
                     <ButtonMain text="Modificar Imagen Usuario"></ButtonMain>
-                    <ButtonMain text="Modificar Correo Electronico" onClick={() => setShowChangeEmail(true)}></ButtonMain>
-                    <ButtonMain text="Modificar Contraseña" onClick={() => setShowChangePassword(true)}></ButtonMain>
+                    <ButtonMain text="Modificar Correo Electronico"></ButtonMain>
+                    <ButtonMain text="Modificar Contraseña"></ButtonMain>
                 </div>
             </div>
             <div className="main-usersettings-div-filesettings">
@@ -57,37 +54,14 @@ function UserSettingsExplorer(){
                     <Modal.Title>Modificar Nombre Usuario</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <InputModelMain type="text" placeholder="Usuario Actual"></InputModelMain>
-                    <InputModelMain type="text" placeholder="Usuario Nuevo"></InputModelMain>
+                    <label>Usuario Actual</label>
+                    <input type="text"></input>
+                    <br></br>
+                    <label>Usuario Nuevo</label>
+                    <input type="text"></input>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowChangeUsername(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
-                </Modal.Footer>
-            </Modal>
-            <Modal show={showChangeEmail} onHide={() => setShowChangeEmail(false)}>
-                <Modal.Header className="d-flex justify-content-center">
-                    <Modal.Title>Modificar Correo Electronico</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <InputModelMain type="text" placeholder="Correo Electronico Actual"></InputModelMain>
-                    <InputModelMain type="text" placeholder="Correo Electronico Nuevo"></InputModelMain>
-                </Modal.Body>
-                <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowChangeEmail(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
-                </Modal.Footer>
-            </Modal>
-            <Modal show={showChangePassword} onHide={() => setShowChangePassword(false)}>
-                <Modal.Header className="d-flex justify-content-center">
-                    <Modal.Title>Modificar Contraseña</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <InputModelMain type="password" placeholder="Contraseña Actual"></InputModelMain>
-                    <InputModelMain type="password" placeholder="Contraseña Nueva"></InputModelMain>
-                </Modal.Body>
-                <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowChangePassword(false)}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar"></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
