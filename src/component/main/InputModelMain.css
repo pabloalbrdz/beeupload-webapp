@@ -1,0 +1,54 @@
+.input-model-main-div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 625px;
+    max-height: 45px;
+    margin: 6% 1% 6% 1%;
+    border-radius: 45px;
+    background-color: transparent;
+    box-shadow: 0 0 0.75rem white;
+}
+
+.input-model-main-div:focus-within {
+    box-shadow: 0 0 0.75rem #FFF974;
+}
+
+.input-model-main-div:has(input:valid){
+    box-shadow: 0 0 0.75rem #FFF974;
+}
+
+.input-model-main-div input{
+    width: 90%;
+    height: 100%;
+    padding: 10px;
+    border: transparent;
+    border-radius: 45px;
+    outline: none;
+    background: black;
+    color: white;
+    text-indent: 20px;
+}
+
+.input-model-main-div span{
+    position: absolute;
+    left: 10px;
+    padding: 15px;
+    color: white;
+    pointer-events: none;
+    transition: 0.65s;
+}
+
+.input-model-main-div input:valid ~ span,
+.input-model-main-div input:focus ~ span
+{
+    color: #FFF973;
+    transform: translateX(10px) translateY(-20px);
+    font-weight: 600;
+    padding: 0 10px;
+    background: black;
+    letter-spacing: 0.1rem;
+    text-shadow: 0 0 0.75rem #FFF974;
+}
