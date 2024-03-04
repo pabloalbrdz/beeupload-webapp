@@ -5,6 +5,7 @@ import apiSettings from "../settings/apiSettings";
 import { loginValidation } from "../validation/LoginValidation";
 import { emailValidation, passwordValidation, usernameValidation } from "../validation/SignUpValidation";
 import { IncorrectActualUsernameException } from "../exception/IncorrectActualUsernameException";
+import { IncorrectActualEmailException } from "../exception/IncorrectActualEmailException";
 
 export const UserModel = {
 
@@ -97,7 +98,49 @@ export const UserModel = {
         return {"data": error.message};
       }
     }
-  }
+  },
+
+  async getEmail(userId){
+    try{
+      const response = await axios.get(
+        `${apiSettings.USER_API}/getUserEmail/${userId}`,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      return response.data;
+    }catch(error){
+      return "null";
+    }
+  },
+
+  async changeEmail(userId, lastEmailInput, newEmailInput){
+    try{
+      emailValidation(newEmailInput);
+      let lastEmail = await this.getEmail(userId);
+      if (lastEmail != lastEmailInput){
+        throw new IncorrectActualEmailException();
+      }
+      const response = await axios.put(
+        `${apiSettings.USER_API}/updateUserEmail/${userId}/${newEmailInput}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    } catch (error) {
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"data": error.message};
+      }
+    }
+  },
 
 
 };
