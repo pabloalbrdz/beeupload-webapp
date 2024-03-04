@@ -80,4 +80,20 @@ export const UserController = {
         }
     },
 
+    async changePassword(userId, lastPassword, newPassword, setChangePasswordState){
+        try{
+            let response = await UserModel.changePassword(userId, lastPassword, newPassword);
+            if (response.status == 200){
+                setChangePasswordState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Contraseña modificada con exito"});
+                return true;
+            }else{
+                setChangePasswordState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+            }
+        }catch(error){
+            setChangePasswordState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;
+        }
+    }
+
 }
