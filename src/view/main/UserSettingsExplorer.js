@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import {React, useEffect, useState} from "react";
 
 import "./UserSettingsExplorer.css";
 
@@ -8,10 +8,12 @@ import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ButtonModelMain from "../../component/main/ButtonModelMain";
 import InputModelMain from "../../component/main/InputModelMain";
+import { UserController } from "../../controller/UserController";
+import AlertForm from "../../component/form/AlertForm";
 
 function UserSettingsExplorer(){
     const [showChangeUsername, setShowChangeUsername] = useState(false);
-    const [showChangeUserProfile, setShowChangeUserProfile] = useState(false);
+    const [showChangeUserProfilePic, setShowChangeUserProfilePic] = useState(false);
     const [showChangeEmail, setShowChangeEmail] = useState(false);
     const [showChangePassword, setShowChangePassword] = useState(false);
     const [showDeleteDocs, setShowDeleteDocs] = useState(false);
@@ -20,6 +22,61 @@ function UserSettingsExplorer(){
     const [showDeleteVideo, setShowDeleteVideo] = useState(false);
     const [showDeleteFiles, setShowDeleteFiles] = useState(false);
     const [showDeleteUser, setShowDeleteUser] = useState(false);
+
+    const [username, setUsername] = useState("null");
+    const getUsername = async () => {
+        let responseUsername = await UserController.getUsername(1);
+        setUsername(responseUsername);
+    };
+    const [userImage, setUserImage] = useState(null);
+    //
+    const [id, setId] = useState("null");
+    const getId = async () => {
+        let responseId = JSON.parse(sessionStorage.getItem("session")).id;
+        setId(responseId);
+    }
+
+    const [changeUsernameInput1, setChangeUsernameInput1] = useState('');
+    const [changeUsernameInput2, setChangeUsernameInput2] = useState('');
+    const [changeUsernameState, setChangeUsernameState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    function onchangeUsernameInput1(e){
+        setChangeUsernameInput1(e.target.value);
+    }
+    function onchangeUsernameInput2(e){
+        setChangeUsernameInput2(e.target.value);
+    }
+    async function changeUsername(e){
+        e.preventDefault();
+        let changedUsername = await UserController.changeUsername(JSON.parse(sessionStorage.getItem("session")).id, changeUsernameInput1, changeUsernameInput2, setChangeUsernameState);
+        if (changedUsername){
+            setTimeout(function(){
+                setShowChangeUsername(false);
+            }, 2000);
+            getUsername();
+        }
+    }
+    const [changeEmailInput1, setChangeEmailInput1] = useState('');
+    const [changeEmailInput2, setChangeEmailInput2] = useState('');
+    function onchangeEmailInput1(e){
+        setChangeEmailInput1(e.target.value);
+    }
+    function onchangeEmailInput2(e){
+        setChangeEmailInput2(e.target.value);
+    }
+    const [changePasswordInput1, setChangePasswordInput1] = useState('');
+    const [changePasswordInput2, setChangePasswordInput2] = useState('');
+    function onchangePasswordInput1(e){
+        setChangePasswordInput1(e.target.value);
+    }
+    function onchangePasswordInput2(e){
+        setChangePasswordInput2(e.target.value);
+    }
+
+    useEffect(() => {
+      getUsername();
+      getId();
+    }, []);
+
     return(
         <div className="main-usersettings-div-body">
             <div className="main-usersettings-div-userheader">
@@ -30,8 +87,8 @@ function UserSettingsExplorer(){
             <div className="main-usersettings-div-userinfo">
                 <h2>Informacion de Usuario</h2>
                 <div className="main-usersettings-div-userinfo-info">
-                    <h4>Usuario: <span>Usuario 1</span></h4>
-                    <h4>ID: <span>1</span></h4>
+                    <h4>Usuario: <span>{username}</span></h4>
+                    <h4>ID: <span>{id}</span></h4>
                 </div>
             </div>
             <div className="main-usersettings-div-usersettings">
@@ -64,12 +121,13 @@ function UserSettingsExplorer(){
                     <Modal.Title>Modificar Nombre Usuario</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <InputModelMain type="text" placeholder="Usuario Actual"></InputModelMain>
-                    <InputModelMain type="text" placeholder="Usuario Nuevo"></InputModelMain>
+                    <AlertForm visible={changeUsernameState.visible} state={changeUsernameState.state} message={changeUsernameState.message}></AlertForm>
+                    <InputModelMain type="text" placeholder="Usuario Actual" onChange={onchangeUsernameInput1}></InputModelMain>
+                    <InputModelMain type="text" placeholder="Usuario Nuevo" onChange={onchangeUsernameInput2}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowChangeUsername(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={changeUsername}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showChangeEmail} onHide={() => setShowChangeEmail(false)}>
@@ -77,8 +135,8 @@ function UserSettingsExplorer(){
                     <Modal.Title>Modificar Correo Electronico</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <InputModelMain type="text" placeholder="Correo Electronico Actual"></InputModelMain>
-                    <InputModelMain type="text" placeholder="Correo Electronico Nuevo"></InputModelMain>
+                    <InputModelMain type="text" placeholder="Correo Electronico Actual" onChange={onchangeEmailInput1}></InputModelMain>
+                    <InputModelMain type="text" placeholder="Correo Electronico Nuevo" onChange={onchangeEmailInput2}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowChangeEmail(false)}></ButtonModelMain>
@@ -90,8 +148,8 @@ function UserSettingsExplorer(){
                     <Modal.Title>Modificar Contraseña</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <InputModelMain type="password" placeholder="Contraseña Actual"></InputModelMain>
-                    <InputModelMain type="password" placeholder="Contraseña Nueva"></InputModelMain>
+                    <InputModelMain type="password" placeholder="Contraseña Actual" onChange={onchangePasswordInput1}></InputModelMain>
+                    <InputModelMain type="password" placeholder="Contraseña Nueva" onChange={onchangePasswordInput2}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowChangePassword(false)}></ButtonModelMain>
