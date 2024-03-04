@@ -37,6 +37,31 @@ export const UserController = {
         }catch(error){
             setSignUpState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});   
         }
+    },
+
+    async getUsername(userId){
+        try{
+            let response = await UserModel.getUsername(userId);
+            return response;
+        }catch(error){
+            return "null";
+        }
+    },
+    
+    async changeUsername(userId, lastUsername, newUsername, setChangeUsernameState){
+        try{
+            let response = await UserModel.changeUsername(userId, lastUsername, newUsername);
+            if (response.status == 200){
+                setChangeUsernameState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Nombre de usuario modificado con exito"});
+                return true;
+            }else{
+                setChangeUsernameState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+            }
+        }catch(error){
+            setChangeUsernameState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;
+        }
     }
 
 }
