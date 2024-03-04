@@ -62,6 +62,22 @@ export const UserController = {
             setChangeUsernameState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false;
         }
-    }
+    },
+
+    async changeEmail(userId, lastEmail, newEmail, setChangeEmailState){
+        try{
+            let response = await UserModel.changeEmail(userId, lastEmail, newEmail);
+            if (response.status == 200){
+                setChangeEmailState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Correo electronico modificado con exito"});
+                return true;
+            }else{
+                setChangeEmailState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+            }
+        }catch(error){
+            setChangeEmailState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;
+        }
+    },
 
 }

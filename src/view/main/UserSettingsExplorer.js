@@ -51,17 +51,29 @@ function UserSettingsExplorer(){
         if (changedUsername){
             setTimeout(function(){
                 setShowChangeUsername(false);
+                setChangeUsernameState({"visible": "alert-form-hidden", "state": "", "message": ""});
             }, 2000);
             getUsername();
         }
     }
     const [changeEmailInput1, setChangeEmailInput1] = useState('');
     const [changeEmailInput2, setChangeEmailInput2] = useState('');
+    const [changeEmailState, setChangeEmailState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     function onchangeEmailInput1(e){
         setChangeEmailInput1(e.target.value);
     }
     function onchangeEmailInput2(e){
         setChangeEmailInput2(e.target.value);
+    }
+    async function changeEmail(e){
+        e.preventDefault();
+        let changedEmail = await UserController.changeEmail(JSON.parse(sessionStorage.getItem("session")).id, changeEmailInput1, changeEmailInput2, setChangeEmailState);
+        if (changedEmail){
+            setTimeout(function(){
+                setShowChangeEmail(false);
+                setChangeEmailState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
     }
     const [changePasswordInput1, setChangePasswordInput1] = useState('');
     const [changePasswordInput2, setChangePasswordInput2] = useState('');
@@ -135,12 +147,13 @@ function UserSettingsExplorer(){
                     <Modal.Title>Modificar Correo Electronico</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <AlertForm visible={changeEmailState.visible} state={changeEmailState.state} message={changeEmailState.message}></AlertForm>
                     <InputModelMain type="text" placeholder="Correo Electronico Actual" onChange={onchangeEmailInput1}></InputModelMain>
                     <InputModelMain type="text" placeholder="Correo Electronico Nuevo" onChange={onchangeEmailInput2}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowChangeEmail(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={changeEmail}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showChangePassword} onHide={() => setShowChangePassword(false)}>
