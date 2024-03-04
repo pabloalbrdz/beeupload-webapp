@@ -6,6 +6,7 @@ import { loginValidation } from "../validation/LoginValidation";
 import { emailValidation, passwordValidation, usernameValidation } from "../validation/SignUpValidation";
 import { IncorrectActualUsernameException } from "../exception/IncorrectActualUsernameException";
 import { IncorrectActualEmailException } from "../exception/IncorrectActualEmailException";
+import { IncorrectActualPasswordException } from "../exception/IncorrectActualPasswordException";
 
 export const UserModel = {
 
@@ -141,6 +142,57 @@ export const UserModel = {
       }
     }
   },
+
+  async checkUserPassword(userId, passwordInput){
+    try{
+      const response = await axios.get(
+        `${apiSettings.USER_API}/checkUserPassword/${userId}/${passwordInput}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      if (!response.data){
+        throw new IncorrectActualPasswordException();
+      }
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"data": error.message};
+      }
+    }
+  },
+
+  async changePassword(userId, lastPasswordInput, newPasswordInput){
+    try{
+      passwordValidation(newPasswordInput);
+      let lastPassword = await this.checkUserPassword(userId, lastPasswordInput);
+      if (lastPassword.data == true){
+        const response = await axios.put(
+          `${apiSettings.USER_API}/updateUserPassword/${userId}/${newPasswordInput}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin' : '*'
+            }
+          }
+        );
+        return {"status": response.status, "data": response.data};
+      }else{
+        throw new IncorrectActualPasswordException();
+      }
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"data": error.message};
+      }
+    }
+  }
 
 
 };

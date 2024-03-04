@@ -77,6 +77,17 @@ function UserSettingsExplorer(){
     }
     const [changePasswordInput1, setChangePasswordInput1] = useState('');
     const [changePasswordInput2, setChangePasswordInput2] = useState('');
+    const [changePasswordState, setChangePasswordState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function changePassword(e){
+        e.preventDefault();
+        let changedPassword = await UserController.changePassword(JSON.parse(sessionStorage.getItem("session")).id, changePasswordInput1, changePasswordInput2, setChangePasswordState);
+        if (changedPassword){
+            setTimeout(function(){
+                setShowChangePassword(false);
+                setChangePasswordState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
+    }
     function onchangePasswordInput1(e){
         setChangePasswordInput1(e.target.value);
     }
@@ -161,12 +172,13 @@ function UserSettingsExplorer(){
                     <Modal.Title>Modificar Contraseña</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <AlertForm visible={changePasswordState.visible} state={changePasswordState.state} message={changePasswordState.message}></AlertForm>
                     <InputModelMain type="password" placeholder="Contraseña Actual" onChange={onchangePasswordInput1}></InputModelMain>
                     <InputModelMain type="password" placeholder="Contraseña Nueva" onChange={onchangePasswordInput2}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowChangePassword(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={changePassword}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showDeleteDocs} onHide={() => setShowDeleteDocs(false)}>
