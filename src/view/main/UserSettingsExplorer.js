@@ -104,7 +104,7 @@ function UserSettingsExplorer(){
         <div className="main-usersettings-div-body">
             <div className="main-usersettings-div-userheader">
                 <img src="https://campaigns.uthscsa.edu/social-media-guide/wp-content/uploads/sites/19/2017/11/320x320.png"></img>
-                <h1>Usuario</h1>
+                <h1>{username}</h1>
             </div>
             <hr className="main-usersettings-div-body-hr"></hr>
             <div className="main-usersettings-div-userinfo">
