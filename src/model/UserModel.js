@@ -13,8 +13,12 @@ export const UserModel = {
   async login(inputUsername, inputPassword) {
     try {
       loginValidation(inputUsername, inputPassword);
-      const response = await axios.get(
-        `${apiSettings.USER_API}/login/${inputUsername}/${inputPassword}`,
+      const response = await axios.post(
+        `${apiSettings.USER_API}/login`,
+        {
+          username: inputUsername,
+          password: inputPassword
+        },
         {
           headers: {
             'Content-Type': 'application/json'
