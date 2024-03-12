@@ -205,6 +205,18 @@ export const UserModel = {
     }catch(error){
       return "";
     }
+  },
+
+  async changeProfilePic(userId, newImgPic){
+    try{
+
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
   }
 
 
