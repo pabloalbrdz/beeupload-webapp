@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import apiSettings from "../settings/apiSettings";
+import fileserverSettings from "../settings/fileserverSettings";
 
 import { loginValidation } from "../validation/LoginValidation";
 import { emailValidation, passwordValidation, usernameValidation } from "../validation/SignUpValidation";
@@ -195,6 +196,14 @@ export const UserModel = {
       }else{
         return {"data": error.message};
       }
+    }
+  },
+
+  getProfilePic(userId){
+    try{
+      return `${fileserverSettings.USER_FOLDER_ROUTE}/${userId}/profilepic.jpg`;
+    }catch(error){
+      return "";
     }
   }
 
