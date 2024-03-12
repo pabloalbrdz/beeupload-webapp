@@ -69,7 +69,11 @@ function UserSettingsExplorer(){
         formdata.append("imgfile", changeImageInput1);
         let changedImg = await UserController.changeProfilePic(JSON.parse(sessionStorage.getItem("session")).id, formdata, setChangeImageState);
         if (changedImg){
-            alert("si");
+            setTimeout(function(){
+                setShowChangeUserProfilePic(false);
+                setChangeImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
+            }, 2000);
+            getUserImage();
         }
     }
     const [changeEmailInput1, setChangeEmailInput1] = useState('');
