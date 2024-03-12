@@ -64,7 +64,13 @@ function UserSettingsExplorer(){
         setChangeImageInput1(e.target.files[0]);
     }
     async function changeImage(e){
-        
+        e.preventDefault();
+        let formdata = new FormData();
+        formdata.append("imgfile", changeImageInput1);
+        let changedImg = await UserController.changeProfilePic(JSON.parse(sessionStorage.getItem("session")).id, formdata, setChangeImageState);
+        if (changedImg){
+            alert("si");
+        }
     }
     const [changeEmailInput1, setChangeEmailInput1] = useState('');
     const [changeEmailInput2, setChangeEmailInput2] = useState('');

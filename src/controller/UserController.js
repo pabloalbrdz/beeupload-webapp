@@ -108,7 +108,7 @@ export const UserController = {
         try{
             let response = await UserModel.changeProfilePic(userId, newImgPic);
             if (response.status == 200){
-                setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Contraseña modificada con exito"});
+                setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Imagen modificada con exito"});
                 return true;
             }else{
                 setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
