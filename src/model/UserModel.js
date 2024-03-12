@@ -209,7 +209,17 @@ export const UserModel = {
 
   async changeProfilePic(userId, newImgPic){
     try{
-
+      const response = await axios.put(
+        `${fileserverSettings.USER_PROFILE}/changeUserProfilePic?userid=${userId}`,
+        newImgPic,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Access-Control-Allow-Origin': '*'
+          },
+        }
+      );
+      return {"status": response.status, "data": response.data};
     }catch(error){
       if (error.response){
         return {"status": error.response.status, "data": error.response.data};
