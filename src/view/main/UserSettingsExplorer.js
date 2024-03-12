@@ -61,7 +61,7 @@ function UserSettingsExplorer(){
     const [changeImageInput1, setChangeImageInput1] = useState(null);
     const [changeImageState, setChangeImageState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     function onchangeImageInput1(e){
-
+        setChangeImageInput1(e.target.files[0]);
     }
     async function changeImage(e){
         
@@ -162,21 +162,19 @@ function UserSettingsExplorer(){
                     <ButtonModelMain text="Aceptar" onClick={changeUsername}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-
             <Modal show={showChangeUserProfilePic} onHide={() => setShowChangeUserProfilePic(false)}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Modificar Imagen Usuario</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <AlertForm visible={changeImageState.visible} state={changeImageState.state} message={changeImageState.message}></AlertForm>
-                    <InputModelMain type="file" placeholder="Imagen Nueva"></InputModelMain>
+                    <InputModelMain type="file" placeholder="Imagen Nueva" onChange={onchangeImageInput1}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowChangeUserProfilePic(false)}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={changeImage}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-
             <Modal show={showChangeEmail} onHide={() => setShowChangeEmail(false)}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Modificar Correo Electronico</Modal.Title>

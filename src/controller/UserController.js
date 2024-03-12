@@ -102,6 +102,22 @@ export const UserController = {
         }catch(error){
             return "";
         }
+    },
+
+    async changeProfilePic(userId, newImgPic, setChangeImageState){
+        try{
+            let response = await UserModel.changeProfilePic(userId, newImgPic);
+            if (response.status == 200){
+                setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Contraseña modificada con exito"});
+                return true;
+            }else{
+                setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+            }
+        }catch(error){
+            setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;
+        }
     }
 
 }
