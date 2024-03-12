@@ -59,6 +59,7 @@ function UserSettingsExplorer(){
         }
     }
     const [changeImageInput1, setChangeImageInput1] = useState(null);
+    const [changeImageState, setChangeImageState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     function onchangeImageInput1(e){
 
     }
@@ -167,9 +168,8 @@ function UserSettingsExplorer(){
                     <Modal.Title>Modificar Imagen Usuario</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <AlertForm visible={changeUsernameState.visible} state={changeUsernameState.state} message={changeUsernameState.message}></AlertForm>
-                    <InputModelMain type="text" placeholder="Usuario Actual" onChange={onchangeUsernameInput1}></InputModelMain>
-                    <InputModelMain type="text" placeholder="Usuario Nuevo" onChange={onchangeUsernameInput2}></InputModelMain> */}
+                    <AlertForm visible={changeImageState.visible} state={changeImageState.state} message={changeImageState.message}></AlertForm>
+                    <InputModelMain type="file" placeholder="Imagen Nueva"></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowChangeUserProfilePic(false)}></ButtonModelMain>
