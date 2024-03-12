@@ -29,13 +29,15 @@ function UserSettingsExplorer(){
         setUsername(responseUsername);
     };
     const [userImage, setUserImage] = useState(null);
-    //
+    const getUserImage  = async () => {
+        let responseImageSrc = UserController.getProfilePic(JSON.parse(sessionStorage.getItem("session")).id);
+        setUserImage(responseImageSrc);
+    }
     const [id, setId] = useState("null");
     const getId = async () => {
         let responseId = JSON.parse(sessionStorage.getItem("session")).id;
         setId(responseId);
     }
-
     const [changeUsernameInput1, setChangeUsernameInput1] = useState('');
     const [changeUsernameInput2, setChangeUsernameInput2] = useState('');
     const [changeUsernameState, setChangeUsernameState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
@@ -55,6 +57,13 @@ function UserSettingsExplorer(){
             }, 2000);
             getUsername();
         }
+    }
+    const [changeImageInput1, setChangeImageInput1] = useState(null);
+    function onchangeImageInput1(e){
+
+    }
+    async function changeImage(e){
+        
     }
     const [changeEmailInput1, setChangeEmailInput1] = useState('');
     const [changeEmailInput2, setChangeEmailInput2] = useState('');
@@ -94,16 +103,15 @@ function UserSettingsExplorer(){
     function onchangePasswordInput2(e){
         setChangePasswordInput2(e.target.value);
     }
-
     useEffect(() => {
       getUsername();
       getId();
+      getUserImage();
     }, []);
-
     return(
         <div className="main-usersettings-div-body">
             <div className="main-usersettings-div-userheader">
-                <img src="https://campaigns.uthscsa.edu/social-media-guide/wp-content/uploads/sites/19/2017/11/320x320.png"></img>
+                <img src={userImage}></img>
                 <h1>{username}</h1>
             </div>
             <hr className="main-usersettings-div-body-hr"></hr>
@@ -118,7 +126,7 @@ function UserSettingsExplorer(){
                 <h2>Ajustes de Usuario</h2>
                 <div className="main-usersettings-div-usersettings-settings">
                     <ButtonMain text="Modificar Nombre Usuario" onClick={() => setShowChangeUsername(true)}></ButtonMain>
-                    <ButtonMain text="Modificar Imagen Usuario"></ButtonMain>
+                    <ButtonMain text="Modificar Imagen Usuario" onClick={() => setShowChangeUserProfilePic(true)}></ButtonMain>
                     <ButtonMain text="Modificar Correo Electronico" onClick={() => setShowChangeEmail(true)}></ButtonMain>
                     <ButtonMain text="Modificar Contraseña" onClick={() => setShowChangePassword(true)}></ButtonMain>
                 </div>
@@ -153,6 +161,22 @@ function UserSettingsExplorer(){
                     <ButtonModelMain text="Aceptar" onClick={changeUsername}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
+
+            <Modal show={showChangeUserProfilePic} onHide={() => setShowChangeUserProfilePic(false)}>
+                <Modal.Header className="d-flex justify-content-center">
+                    <Modal.Title>Modificar Imagen Usuario</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {/* <AlertForm visible={changeUsernameState.visible} state={changeUsernameState.state} message={changeUsernameState.message}></AlertForm>
+                    <InputModelMain type="text" placeholder="Usuario Actual" onChange={onchangeUsernameInput1}></InputModelMain>
+                    <InputModelMain type="text" placeholder="Usuario Nuevo" onChange={onchangeUsernameInput2}></InputModelMain> */}
+                </Modal.Body>
+                <Modal.Footer className="d-flex justify-content-center">
+                    <ButtonModelMain text="Salir" onClick={() => setShowChangeUserProfilePic(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={changeImage}></ButtonModelMain>
+                </Modal.Footer>
+            </Modal>
+
             <Modal show={showChangeEmail} onHide={() => setShowChangeEmail(false)}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Modificar Correo Electronico</Modal.Title>

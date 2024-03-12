@@ -94,6 +94,14 @@ export const UserController = {
             setChangePasswordState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false;
         }
+    },
+
+    getProfilePic(userId){
+        try{
+            return UserModel.getProfilePic(userId);
+        }catch(error){
+            return "";
+        }
     }
 
 }
