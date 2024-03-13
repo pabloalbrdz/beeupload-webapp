@@ -18,7 +18,7 @@ export const FileServerModel = {
                     }
                 }
             );
-            return response.status;
+            return {"status": response.status, "data": response.data};
         }catch(error){
             if (error.response){
                 return {"status": error.response.status, "data": error.response.data};

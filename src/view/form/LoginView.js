@@ -26,7 +26,7 @@ function LoginView({changePage}) {
 
   async function onClickButton(e){
     e.preventDefault();
-    UserController.login(userInput, passwordInput, setLoginState);
+    await UserController.login(userInput, passwordInput, setLoginState);
   };
 
   return (

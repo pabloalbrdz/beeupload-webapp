@@ -25,11 +25,13 @@ export const UserController = {
             let response = await UserModel.signUp(userInput, emailInput, passwordInput);
             if (response.status == 200){
                 let response2 = await FileServerModel.createUserFolder(response.data.id);
-                if (response2 == 200){
+                if (response2.status == 200){
                     setSignUpState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Registrado con exito"});
                     setTimeout(function(){
                         window.location.href = window.location.href;
                     }, 5000); 
+                }else{
+                    setSignUpState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response2.data});
                 }
             }else{
                 setSignUpState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});
