@@ -31,7 +31,7 @@ function SignUpView({changeView}) {
 
   async function onClickButton(e){
     e.preventDefault();
-    UserController.signUp(userInput, emailInput, passwordInput, setSignupState);
+    await UserController.signUp(userInput, emailInput, passwordInput, setSignupState);
   };
 
   return (
