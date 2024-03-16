@@ -120,6 +120,28 @@ export const UserController = {
             setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false;
         }
+    },
+
+    async deleteAllUserDocs(userId, setDocDeleteState){
+        try{
+            let response = await FileServerModel.deleteAllUserDocuments(userId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteAllUserDocuments(userId);
+                if (response2.status == 200){
+                    setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminados todos los documentos"}); 
+                    return true;
+                }else{
+                    setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+        }
+        }catch(error){
+            setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }
     }
 
 }
