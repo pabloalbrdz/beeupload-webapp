@@ -269,7 +269,7 @@ export const UserModel = {
     }
   },
 
-  async deleteAllUserImage(userId){
+  async deleteAllUserImages(userId){
     try{
       const response = await axios.delete(
         `${apiSettings.IMAGE_API}/deleteAllUserImages/${userId}`,
@@ -289,7 +289,7 @@ export const UserModel = {
     }
   },
 
-  async deleteAllUserVideo(userId){
+  async deleteAllUserVideos(userId){
     try{
       const response = await axios.delete(
         `${apiSettings.VIDEO_API}/deleteAllUserVideos/${userId}`,

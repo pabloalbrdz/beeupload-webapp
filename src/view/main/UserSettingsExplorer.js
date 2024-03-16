@@ -133,22 +133,11 @@ function UserSettingsExplorer(){
         }
     };
 
-    const [deletePhotosState, setDeletePhotosState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
-    async function deletePhotos(e){
-        e.preventDefault();
-        let deletedPhotos;
-        if (deletedPhotos){
-            setTimeout(function(){
-                setShowDeletePhotos(false);
-                setDeletePhotosState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
-            }, 2000);  
-        }
-    };
-
+    
     const [deleteMusicState, setDeleteMusicState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function deleteMusic(e){
         e.preventDefault();
-        let deletedMusic;
+        let deletedMusic = await UserController.deleteAllUserMusic(JSON.parse(sessionStorage.getItem("session")).id, setDeleteMusicState);
         if (deletedMusic){
             setTimeout(function(){
                 setShowDeleteMusic(false);
@@ -157,10 +146,22 @@ function UserSettingsExplorer(){
         }
     };
 
+    const [deletePhotosState, setDeletePhotosState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function deletePhotos(e){
+        e.preventDefault();
+        let deletedPhotos = await UserController.deleteAllUserPhotos(JSON.parse(sessionStorage.getItem("session")).id, setDeletePhotosState);
+        if (deletedPhotos){
+            setTimeout(function(){
+                setShowDeletePhotos(false);
+                setDeletePhotosState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
+    };
+
     const [deleteVideoState, setDeleteVideoState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function deleteVideos(e){
         e.preventDefault();
-        let deletedVideo;
+        let deletedVideo = await UserController.deleteAllUserVideos(JSON.parse(sessionStorage.getItem("session")).id, setDeleteVideoState);
         if (deletedVideo){
             setTimeout(function(){
                 setShowDeleteVideo(false);

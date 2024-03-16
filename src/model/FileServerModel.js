@@ -77,7 +77,7 @@ export const FileServerModel = {
     },
 
 
-    async deleteAllUserImage(userId){
+    async deleteAllUserImages(userId){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_IMAGE}/deleteAllUserImages?userid=${userId}`,
@@ -101,7 +101,7 @@ export const FileServerModel = {
         }
     },
 
-    async deleteAllUserVideo(userId){
+    async deleteAllUserVideos(userId){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_VIDEO}/deleteAllUserVideos?userid=${userId}`,
