@@ -28,25 +28,28 @@ function UserSettingsExplorer(){
         let responseUsername = await UserController.getUsername(1);
         setUsername(responseUsername);
     };
+
     const [userImage, setUserImage] = useState(null);
     const getUserImage  = async () => {
         let responseImageSrc = UserController.getProfilePic(JSON.parse(sessionStorage.getItem("session")).id);
         setUserImage(responseImageSrc);
-    }
+    };
+
     const [id, setId] = useState("null");
     const getId = async () => {
         let responseId = JSON.parse(sessionStorage.getItem("session")).id;
         setId(responseId);
-    }
+    };
+
     const [changeUsernameInput1, setChangeUsernameInput1] = useState('');
     const [changeUsernameInput2, setChangeUsernameInput2] = useState('');
     const [changeUsernameState, setChangeUsernameState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     function onchangeUsernameInput1(e){
         setChangeUsernameInput1(e.target.value);
-    }
+    };
     function onchangeUsernameInput2(e){
         setChangeUsernameInput2(e.target.value);
-    }
+    };
     async function changeUsername(e){
         e.preventDefault();
         let changedUsername = await UserController.changeUsername(JSON.parse(sessionStorage.getItem("session")).id, changeUsernameInput1, changeUsernameInput2, setChangeUsernameState);
@@ -57,12 +60,13 @@ function UserSettingsExplorer(){
             }, 2000);
             getUsername();
         }
-    }
+    };
+
     const [changeImageInput1, setChangeImageInput1] = useState(null);
     const [changeImageState, setChangeImageState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     function onchangeImageInput1(e){
         setChangeImageInput1(e.target.files[0]);
-    }
+    };
     async function changeImage(e){
         e.preventDefault();
         let formdata = new FormData();
@@ -75,16 +79,17 @@ function UserSettingsExplorer(){
             }, 2000);
             getUserImage();
         }
-    }
+    };
+
     const [changeEmailInput1, setChangeEmailInput1] = useState('');
     const [changeEmailInput2, setChangeEmailInput2] = useState('');
     const [changeEmailState, setChangeEmailState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     function onchangeEmailInput1(e){
         setChangeEmailInput1(e.target.value);
-    }
+    };
     function onchangeEmailInput2(e){
         setChangeEmailInput2(e.target.value);
-    }
+    };
     async function changeEmail(e){
         e.preventDefault();
         let changedEmail = await UserController.changeEmail(JSON.parse(sessionStorage.getItem("session")).id, changeEmailInput1, changeEmailInput2, setChangeEmailState);
@@ -94,7 +99,8 @@ function UserSettingsExplorer(){
                 setChangeEmailState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
             }, 2000);  
         }
-    }
+    };
+
     const [changePasswordInput1, setChangePasswordInput1] = useState('');
     const [changePasswordInput2, setChangePasswordInput2] = useState('');
     const [changePasswordState, setChangePasswordState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
@@ -107,18 +113,69 @@ function UserSettingsExplorer(){
                 setChangePasswordState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
             }, 2000);  
         }
-    }
+    };
     function onchangePasswordInput1(e){
         setChangePasswordInput1(e.target.value);
-    }
+    };
     function onchangePasswordInput2(e){
         setChangePasswordInput2(e.target.value);
-    }
+    };
+    
+    const [deleteDocsState, setDeleteDocsState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function deleteDocs(e){
+        e.preventDefault();
+        let deletedDocs = await UserController.deleteAllUserDocs(JSON.parse(sessionStorage.getItem("session")).id, setDeleteDocsState);
+        if (deletedDocs){
+            setTimeout(function(){
+                setShowDeleteDocs(false);
+                setDeleteDocsState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
+    };
+
+    
+    const [deleteMusicState, setDeleteMusicState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function deleteMusic(e){
+        e.preventDefault();
+        let deletedMusic = await UserController.deleteAllUserMusic(JSON.parse(sessionStorage.getItem("session")).id, setDeleteMusicState);
+        if (deletedMusic){
+            setTimeout(function(){
+                setShowDeleteMusic(false);
+                setDeleteMusicState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
+    };
+
+    const [deletePhotosState, setDeletePhotosState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function deletePhotos(e){
+        e.preventDefault();
+        let deletedPhotos = await UserController.deleteAllUserPhotos(JSON.parse(sessionStorage.getItem("session")).id, setDeletePhotosState);
+        if (deletedPhotos){
+            setTimeout(function(){
+                setShowDeletePhotos(false);
+                setDeletePhotosState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
+    };
+
+    const [deleteVideoState, setDeleteVideoState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function deleteVideos(e){
+        e.preventDefault();
+        let deletedVideo = await UserController.deleteAllUserVideos(JSON.parse(sessionStorage.getItem("session")).id, setDeleteVideoState);
+        if (deletedVideo){
+            setTimeout(function(){
+                setShowDeleteVideo(false);
+                setDeleteVideoState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
+    };
+
     useEffect(() => {
       getUsername();
       getId();
       getUserImage();
     }, []);
+
     return(
         <div className="main-usersettings-div-body">
             <div className="main-usersettings-div-userheader">
@@ -218,11 +275,12 @@ function UserSettingsExplorer(){
                     <Modal.Title>Eliminar Documentos</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <AlertForm visible={deleteDocsState.visible} state={deleteDocsState.state} message={deleteDocsState.message}></AlertForm>
                     <p className="modal-body-p">¿Desea eliminar todos los documentos?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowDeleteDocs(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={deleteDocs}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showDeletePhotos} onHide={() => setShowDeletePhotos(false)}>
@@ -230,11 +288,12 @@ function UserSettingsExplorer(){
                     <Modal.Title>Eliminar Fotos</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <AlertForm visible={deletePhotosState.visible} state={deletePhotosState.state} message={deletePhotosState.message}></AlertForm>
                     <p className="modal-body-p">¿Desea eliminar todas las fotos?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowDeletePhotos(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={deletePhotos}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showDeleteMusic} onHide={() => setShowDeleteMusic(false)}>
@@ -242,11 +301,12 @@ function UserSettingsExplorer(){
                     <Modal.Title>Eliminar Musica</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <AlertForm visible={deleteMusicState.visible} state={deleteMusicState.state} message={deleteMusicState.message}></AlertForm>
                     <p className="modal-body-p">¿Desea eliminar todas las canciones?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowDeleteMusic(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={deleteMusic}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showDeleteVideo} onHide={() => setShowDeleteVideo(false)}>
@@ -254,11 +314,12 @@ function UserSettingsExplorer(){
                     <Modal.Title>Eliminar Videos</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <AlertForm visible={deleteVideoState.visible} state={deleteVideoState.state} message={deleteVideoState.message}></AlertForm>
                     <p className="modal-body-p">¿Desea eliminar todos los videos?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowDeleteVideo(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={deleteVideos}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showDeleteFiles} onHide={() => setShowDeleteFiles(false)}>

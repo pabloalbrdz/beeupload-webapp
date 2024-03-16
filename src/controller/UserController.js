@@ -120,6 +120,95 @@ export const UserController = {
             setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false;
         }
+    },
+
+    async deleteAllUserDocs(userId, setDocDeleteState){
+        try{
+            let response = await FileServerModel.deleteAllUserDocuments(userId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteAllUserDocuments(userId);
+                if (response2.status == 200){
+                    setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminados todos los documentos"}); 
+                    return true;
+                }else{
+                    setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+        }
+        }catch(error){
+            setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }
+    },
+
+    async deleteAllUserMusic(userId, setMusicDeleteState){
+        try{
+            let response = await FileServerModel.deleteAllUserMusic(userId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteAllUserMusic(userId);
+                if (response2.status == 200){
+                    setMusicDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminadas todas las canciones"}); 
+                    return true;
+                }else{
+                    setMusicDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setMusicDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+        }
+        }catch(error){
+            setMusicDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }
+    },
+
+    async deleteAllUserPhotos(userId, setImageDeleteState){
+        try{
+            let response = await FileServerModel.deleteAllUserImages(userId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteAllUserImages(userId);
+                if (response2.status == 200){
+                    setImageDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminadas todas las imagenes"}); 
+                    return true;
+                }else{
+                    setImageDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setImageDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+        }
+        }catch(error){
+            setImageDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }
+    },
+
+    async deleteAllUserVideos(userId, setVideoDeleteState){
+        try{
+            let response = await FileServerModel.deleteAllUserVideos(userId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteAllUserVideos(userId);
+                if (response2.status == 200){
+                    setVideoDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminados todos los videos"}); 
+                    return true;
+                }else{
+                    setVideoDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setVideoDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+        }
+        }catch(error){
+            setVideoDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }
     }
+    
 
 }
