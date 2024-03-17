@@ -122,6 +122,34 @@ export const UserController = {
         }
     },
 
+    async uploadDocument(userId, docName, docFile, setUploadDocumentState){
+        try{
+            let response = await UserModel.uploadDocument(userId, docName);
+            if (response.status == 200){
+                let response2 = await FileServerModel.uploadDocument(userId, response.data.id, docFile);
+                if (response2.status == 200){
+                    let response3 = await UserModel.updateDocumentPath(response.data.id, "prueba");
+                    if (response3.status == 200){
+                        setUploadDocumentState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Documento subido con exito"});
+                        return true;
+                    }else{
+                        setUploadDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response3.data});  
+                        return false;
+                    }
+                }else{
+                    setUploadDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response2.data});  
+                    return false;
+                }
+            }else{
+                setUploadDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});  
+                return false;
+            }
+        }catch(error){
+            setUploadDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false; 
+        }
+    },
+
     async deleteAllUserDocs(userId, setDocDeleteState){
         try{
             let response = await FileServerModel.deleteAllUserDocuments(userId);

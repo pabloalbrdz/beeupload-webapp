@@ -15,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import InputModelMain from "../component/main/InputModelMain";
 import ButtonModelMain from "../component/main/ButtonModelMain";
 import AlertForm from "../component/form/AlertForm";
+import { UserController } from "../controller/UserController";
 
 
 function MainPage(){
@@ -42,6 +43,9 @@ function MainPage(){
     const [uploadDocumentState, setUploadDocumentState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function uploadDocument(e){
         e.preventDefault();
+        let formdata = new FormData();
+        formdata.append("docfile", changeDocumentFileInput);
+        let uploadedDocument = await UserController.uploadDocument(JSON.parse(sessionStorage.getItem("session")).id, changeDocumentNameInput, formdata, setUploadDocumentState);
     }
 
     const [changeMusicNameInput, setChangeMusicNameInput] = useState(null);

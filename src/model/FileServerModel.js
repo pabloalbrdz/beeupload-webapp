@@ -30,9 +30,8 @@ export const FileServerModel = {
 
     async uploadDocument(userId, docId, docUpload){
         try{
-            fileValidation(docUpload);
             const response = await axios.post(
-                `${fileserverSettings.USER_DOCUMENT}/changeUserDocument?userid=${userId}&docid=${docId}`,
+                `${fileserverSettings.USER_DOCUMENT}/uploadUserDocument?userid=${userId}&docid=${docId}`,
                 docUpload,
                 {
                     headers: {
@@ -53,9 +52,8 @@ export const FileServerModel = {
 
     async uploadMusic(userId, musicId, musicUpload){
         try{
-            fileValidation(musicUpload);
             const response = await axios.post(
-                `${fileserverSettings.USER_MUSIC}/changeUserMusic?userid=${userId}&musicid=${musicId}`,
+                `${fileserverSettings.USER_MUSIC}/uploadUserMusic?userid=${userId}&musicid=${musicId}`,
                 musicUpload,
                 {
                     headers: {
@@ -76,9 +74,8 @@ export const FileServerModel = {
 
     async uploadImage(userId, imgId, imgUpload){
         try{
-          fileValidation(imgUpload);
           const response = await axios.post(
-            `${fileserverSettings.USER_IMAGE}/changeUserProfilePic?userid=${userId}&imgid=${imgId}`,
+            `${fileserverSettings.USER_IMAGE}/uploadUserImage?userid=${userId}&imgid=${imgId}`,
             imgUpload,
             {
               headers: {
@@ -99,9 +96,8 @@ export const FileServerModel = {
 
     async uploadVideo(userId, videoId, videoUpload){
         try{
-            fileValidation(videoUpload);
             const response = await axios.post(
-                `${fileserverSettings.USER_VIDEO}/changeUserVideo?userid=${userId}&videoid=${videoId}`,
+                `${fileserverSettings.USER_VIDEO}/uploadUserVideo?userid=${userId}&videoid=${videoId}`,
                 videoUpload,
                 {
                     headers: {

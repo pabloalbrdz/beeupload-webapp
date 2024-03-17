@@ -212,7 +212,6 @@ export const UserModel = {
 
   async changeProfilePic(userId, newImgPic){
     try{
-      fileValidation(newImgPic);
       const response = await axios.put(
         `${fileserverSettings.USER_PROFILE}/changeUserProfilePic?userid=${userId}`,
         newImgPic,
@@ -262,7 +261,7 @@ export const UserModel = {
 
   async updateDocumentPath(documentId, docPath){
     try{
-      const response = await axios.post(
+      const response = await axios.put(
         `${apiSettings.DOCUMENT_API}/updateDocumentPath`,
         {
           id: documentId,
@@ -315,7 +314,7 @@ export const UserModel = {
 
   async updateMusicPath(musicId, musicPath){
     try{
-      const response = await axios.post(
+      const response = await axios.put(
         `${apiSettings.MUSIC_API}/updateMusicPath`,
         {
           id: musicId,
@@ -365,7 +364,7 @@ export const UserModel = {
 
   async updateImagePath(imageId, imagePath){
     try{
-      const response = await axios.post(
+      const response = await axios.put(
         `${apiSettings.IMAGE_API}/updateImagePath`,
         {
           id: imageId,
