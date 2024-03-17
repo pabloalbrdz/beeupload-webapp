@@ -28,6 +28,98 @@ export const FileServerModel = {
         }
     },
 
+    async uploadDocument(userId, docId, docUpload){
+        try{
+            fileValidation(docUpload);
+            const response = await axios.post(
+                `${fileserverSettings.USER_DOCUMENT}/changeUserDocument?userid=${userId}&docid=${docId}`,
+                docUpload,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                }
+            );
+            return {"status": response.status, "data": response.data};
+        } catch(error) {
+            if (error.response) {
+                return {"status": error.response.status, "data": error.response.data};
+            } else {
+                return {"status": 400, "data": error.message};
+            }
+        }
+    },
+
+    async uploadMusic(userId, musicId, musicUpload){
+        try{
+            fileValidation(musicUpload);
+            const response = await axios.post(
+                `${fileserverSettings.USER_MUSIC}/changeUserMusic?userid=${userId}&musicid=${musicId}`,
+                musicUpload,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                }
+            );
+            return {"status": response.status, "data": response.data};
+        } catch(error) {
+            if (error.response) {
+                return {"status": error.response.status, "data": error.response.data};
+            } else {
+                return {"status": 400, "data": error.message};
+            }
+        }
+    },
+
+    async uploadImage(userId, imgId, imgUpload){
+        try{
+          fileValidation(imgUpload);
+          const response = await axios.post(
+            `${fileserverSettings.USER_IMAGE}/changeUserProfilePic?userid=${userId}&imgid=${imgId}`,
+            imgUpload,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+                'Access-Control-Allow-Origin': '*'
+              },
+            }
+          );
+          return {"status": response.status, "data": response.data};
+        }catch(error){
+          if (error.response){
+            return {"status": error.response.status, "data": error.response.data};
+          }else{
+            return {"status": 400, "data": error.message};
+          }
+        }
+    },
+
+    async uploadVideo(userId, videoId, videoUpload){
+        try{
+            fileValidation(videoUpload);
+            const response = await axios.post(
+                `${fileserverSettings.USER_VIDEO}/changeUserVideo?userid=${userId}&videoid=${videoId}`,
+                videoUpload,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                }
+            );
+            return {"status": response.status, "data": response.data};
+        } catch(error) {
+            if (error.response) {
+                return {"status": error.response.status, "data": error.response.data};
+            } else {
+                return {"status": 400, "data": error.message};
+            }
+        }
+    },
+
     async deleteAllUserDocuments(userId){
         try{
             const response = await axios.delete(
