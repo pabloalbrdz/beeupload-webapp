@@ -5,6 +5,7 @@ import fileserverSettings from "../settings/fileserverSettings";
 
 import { loginValidation } from "../validation/LoginValidation";
 import { emailValidation, passwordValidation, usernameValidation } from "../validation/SignUpValidation";
+import { fileValidation } from "../validation/FileValidation";
 import { IncorrectActualUsernameException } from "../exception/IncorrectActualUsernameException";
 import { IncorrectActualEmailException } from "../exception/IncorrectActualEmailException";
 import { IncorrectActualPasswordException } from "../exception/IncorrectActualPasswordException";
@@ -209,6 +210,7 @@ export const UserModel = {
 
   async changeProfilePic(userId, newImgPic){
     try{
+      fileValidation(newImgPic);
       const response = await axios.put(
         `${fileserverSettings.USER_PROFILE}/changeUserProfilePic?userid=${userId}`,
         newImgPic,

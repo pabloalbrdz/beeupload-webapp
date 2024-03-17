@@ -9,7 +9,7 @@ import { RiLogoutCircleRFill } from "react-icons/ri";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
-function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer, userSettings, closeSession}){
+function Sidebar({documentExplorer, popUpUploadDocument, musicExplorer, popUpUploadMusic,  photoExplorer, popUpUploadPhoto, videoExplorer, popUpUploadVideo, userSettings, closeSession}){
     return(
         <aside className="sidebar-main-aside accordion d-flex flex-column justify-content-between" id="sidebar-main">
             <div className="sidebar-main-div-logo">
@@ -20,16 +20,11 @@ function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer,
             <div className="d-flex">
                 <ul className="sidebar-main-nav-main list-unstyled">
                     <li className="sidebar-main-nav-item accordion-item">
-                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseDoc" aria-expanded="false" aria-controls="collapseDoc">
+                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseDoc" aria-expanded="false" aria-controls="collapseDoc" onClick={documentExplorer}>
                             <FaFileAlt size={34}/>
                         </a>
                         <ul id="collapseDoc" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
-                            <li className="sidebar-main-nav-item" onClick={documentExplorer}>
-                                <a className="sidebar-main-nav-link">
-                                    <FaSearch size={21}/>
-                                </a>
-                            </li>
-                            <li className="sidebar-main-nav-item">
+                            <li className="sidebar-main-nav-item" onClick={popUpUploadDocument}>
                                 <a className="sidebar-main-nav-link">
                                     <FaRegArrowAltCircleUp size={21}/>
                                 </a>
@@ -37,16 +32,11 @@ function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer,
                         </ul>
                     </li>
                     <li className="sidebar-main-nav-item accordion-item">
-                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseMusic" aria-expanded="false" aria-controls="collapseMusic">
+                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseMusic" aria-expanded="false" aria-controls="collapseMusic" onClick={musicExplorer}>
                             <FaMusic size={34}/>
                         </a>
                         <ul id="collapseMusic" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
-                            <li className="sidebar-main-nav-item" onClick={musicExplorer}>
-                                <a className="sidebar-main-nav-link">
-                                    <FaSearch size={21}/>
-                                </a>
-                            </li>
-                            <li className="sidebar-main-nav-item">
+                            <li className="sidebar-main-nav-item" onClick={popUpUploadMusic}>
                                 <a className="sidebar-main-nav-link">
                                     <FaRegArrowAltCircleUp size={21}/>
                                 </a>
@@ -54,16 +44,11 @@ function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer,
                         </ul>
                     </li>
                     <li className="sidebar-main-nav-item accordion-item">
-                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePhoto" aria-expanded="false" aria-controls="collapsePhoto">
+                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapsePhoto" aria-expanded="false" aria-controls="collapsePhoto" onClick={photoExplorer}>
                             <FaImage size={34}/>
                         </a>
                         <ul id="collapsePhoto" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
-                            <li className="sidebar-main-nav-item" onClick={photoExplorer}>
-                                <a className="sidebar-main-nav-link">
-                                    <FaSearch size={21}/>
-                                </a>
-                            </li>
-                            <li className="sidebar-main-nav-item">
+                            <li className="sidebar-main-nav-item" onClick={popUpUploadPhoto}>
                                 <a className="sidebar-main-nav-link">
                                     <FaRegArrowAltCircleUp size={21}/>
                                 </a>
@@ -71,16 +56,11 @@ function Sidebar({documentExplorer, musicExplorer, photoExplorer, videoExplorer,
                         </ul>
                     </li>
                     <li className="sidebar-main-nav-item accordion-item">
-                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo">
+                        <a className="sidebar-main-nav-link accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseVideo" aria-expanded="false" aria-controls="collapseVideo" onClick={videoExplorer}>
                             <FaVideo size={34}/>
                         </a>
                         <ul id="collapseVideo" className="sidebar-main-nav-dropdown list-unstyled accordion-collapse collapse" data-bs-parent="#sidebar-main">
-                            <li className="sidebar-main-nav-item" onClick={videoExplorer}>
-                                <a className="sidebar-main-nav-link">
-                                    <FaSearch size={21}/>
-                                </a>
-                            </li>
-                            <li className="sidebar-main-nav-item">
+                            <li className="sidebar-main-nav-item" onClick={popUpUploadVideo}>
                                 <a className="sidebar-main-nav-link">
                                     <FaRegArrowAltCircleUp size={21}/>
                                 </a>
