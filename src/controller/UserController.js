@@ -208,6 +208,47 @@ export const UserController = {
             setVideoDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false;  
         }
+    },
+
+    async deleteAllUserFiles(userId, setFileDeleteState){
+        try{
+            let response = await FileServerModel.deleteAllUserFiles(userId);
+            if (response.status == 200){
+                let response2 = await UserController.deleteAllUserDocs(userId, setFileDeleteState);
+                let response3 = await UserController.deleteAllUserMusic(userId, setFileDeleteState);
+                let response4 = await UserController.deleteAllUserPhotos(userId, setFileDeleteState);
+                let response5 = await UserController.deleteAllUserVideos(userId, setFileDeleteState);
+                setFileDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminados todos los ficheros"}); 
+                return true;
+            }else{
+                setFileDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+            }
+        }catch(error){
+            setFileDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }
+    },
+
+    async deleteUser(userId, setUserDeleteState){
+        try{
+            let response = await UserModel.deleteUser(userId);
+            if (response.status == 200){
+                let response2 = await FileServerModel.deleteUserFolder(userId);
+                if (response2.status == 200){
+                    setUserDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Usuario eliminado"}); 
+                    sessionStorage.removeItem("session");
+                    window.location.href = window.location.href;
+                    return true;
+                }
+            }else{
+                setUserDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+            }
+        }catch(error){
+            setUserDeleteState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message}); 
+            return false;
+        }
     }
     
 

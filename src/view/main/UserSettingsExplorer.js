@@ -170,6 +170,30 @@ function UserSettingsExplorer(){
         }
     };
 
+    const [deleteFilesState, setDeleteFileState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function deleteFiles(e){
+        e.preventDefault();
+        let deletedFiles = await UserController.deleteAllUserFiles(JSON.parse(sessionStorage.getItem("session")).id, setDeleteFileState);
+        if (deletedFiles){
+            setTimeout(function(){
+                setShowDeleteFiles(false);
+                setDeleteFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
+    }
+
+    const [deleteAccountState, setDeleteAccountState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function deleteAccount(e){
+        e.preventDefault();
+        let deletedUser = await UserController.deleteUser(JSON.parse(sessionStorage.getItem("session")).id, setDeleteAccountState);
+        if (deletedUser){
+            setTimeout(function(){
+                setShowDeleteUser(false);
+                setDeleteAccountState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+            }, 2000);  
+        }
+    }
+
     useEffect(() => {
       getUsername();
       getId();
@@ -327,11 +351,12 @@ function UserSettingsExplorer(){
                     <Modal.Title>Eliminar Ficheros</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <AlertForm visible={deleteFilesState.visible} state={deleteFilesState.state} message={deleteFilesState.message}></AlertForm>
                     <p className="modal-body-p">¿Desea eliminar todos los ficheros?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowDeleteFiles(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={deleteFiles}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showDeleteUser} onHide={() => setShowDeleteUser(false)}>
@@ -339,11 +364,12 @@ function UserSettingsExplorer(){
                     <Modal.Title>Eliminar Usuario</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    <AlertForm visible={deleteAccountState.visible} state={deleteAccountState.state} message={deleteAccountState.message}></AlertForm>
                     <p className="modal-body-p">¿Desea eliminar el usuario?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowDeleteUser(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar"></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={deleteAccount}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
         </div>

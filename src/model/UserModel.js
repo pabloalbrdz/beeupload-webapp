@@ -307,6 +307,26 @@ export const UserModel = {
         return {"status": 400, "data": error.message};
       }
     }
+  },
+
+  async deleteUser(userId){
+    try{
+      const response = await axios.delete(
+        `${apiSettings.USER_API}/deleteUser/${userId}`,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
   }
 
 
