@@ -39,15 +39,10 @@ function MainPage(){
     function onChangeDocumentFileInput(e){
         setChangeDocumentFileInput(e.target.files[0]);
     };
-
-    const [changeVideoNameInput, setChangeVideoNameInput] = useState(null);
-    const [changeVideoFileInput, setChangeVideoFileInput] = useState(null);
-    function onChangeVideoNameInput(e){
-        setChangeVideoNameInput(e.target.value);
-    };
-    function onChangeVideoFileInput(e){
-        setChangeVideoFileInput(e.target.files[0]);
-    };
+    const [uploadDocumentState, setUploadDocumentState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function uploadDocument(e){
+        e.preventDefault();
+    }
 
     const [changeMusicNameInput, setChangeMusicNameInput] = useState(null);
     const [changeMusicArtistInput, setChangeMusicArtistInput] = useState(null);
@@ -61,10 +56,31 @@ function MainPage(){
     function onChangeMusicFileInput(e){
         setChangeMusicFileInput(e.target.files[0]);
     };
+    const [uploadMusicState, setUploadMusicState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function uploadMusic(e){
+        e.preventDefault();
+    }
 
     const [changeImageFile, setChangeImageFile] = useState(null);
     function onChangeImageFileInput(e) {
         setChangeImageFile(e.target.files[0]);
+    }
+    const [uploadImageState, setUploadImageState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function uploadImage(e){
+        e.preventDefault();
+    }
+
+    const [changeVideoNameInput, setChangeVideoNameInput] = useState(null);
+    const [changeVideoFileInput, setChangeVideoFileInput] = useState(null);
+    function onChangeVideoNameInput(e){
+        setChangeVideoNameInput(e.target.value);
+    };
+    function onChangeVideoFileInput(e){
+        setChangeVideoFileInput(e.target.files[0]);
+    };
+    const [uploadVideoState, setUploadVideoState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    async function uploadVideo(e){
+        e.preventDefault();
     }
 
     return(
@@ -90,13 +106,13 @@ function MainPage(){
                     <Modal.Title>Subir Documento</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <AlertForm visible={changeImageState.visible} state={changeImageState.state} message={changeImageState.message}></AlertForm> */}
+                    <AlertForm visible={uploadDocumentState.visible} state={uploadDocumentState.state} message={uploadDocumentState.message}></AlertForm>
                     <InputModelMain type="text" placeholder="Nombre Documento" onChange={onChangeDocumentNameInput}></InputModelMain>
                     <InputModelMain type="file" placeholder="Documento" onChange={onChangeDocumentFileInput}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowPopUpUploadDocument(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar" onClick={null}></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={uploadDocument}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showPopUpUploadMusic} onHide={() => setShowPopUpUploadMusic(false)}>
@@ -104,14 +120,14 @@ function MainPage(){
                     <Modal.Title>Subir Cancion</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <AlertForm visible={changeImageState.visible} state={changeImageState.state} message={changeImageState.message}></AlertForm> */}
+                    <AlertForm visible={uploadMusicState.visible} state={uploadMusicState.state} message={uploadMusicState.message}></AlertForm>
                     <InputModelMain type="text" placeholder="Nombre Cancion" onChange={onChangeMusicNameInput}></InputModelMain>
                     <InputModelMain type="text" placeholder="Artista" onChange={onChangeMusicArtistInput}></InputModelMain>
                     <InputModelMain type="file" placeholder="Cancion" onChange={onChangeMusicFileInput}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowPopUpUploadMusic(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar" onClick={null}></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={uploadMusic}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showPopUpUploadImage} onHide={() => setShowPopUpUploadImage(false)}>
@@ -119,12 +135,12 @@ function MainPage(){
                     <Modal.Title>Subir Imagen</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <AlertForm visible={changeImageState.visible} state={changeImageState.state} message={changeImageState.message}></AlertForm> */}
+                    <AlertForm visible={uploadImageState.visible} state={uploadImageState.state} message={uploadImageState.message}></AlertForm>
                     <InputModelMain type="file" placeholder="Imagen" onChange={onChangeImageFileInput}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowPopUpUploadImage(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar" onClick={null}></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={uploadImage}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
             <Modal show={showPopUpUploadVideo} onHide={() => setShowPopUpUploadVideo(false)}>
@@ -132,13 +148,13 @@ function MainPage(){
                     <Modal.Title>Subir Video</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <AlertForm visible={changeImageState.visible} state={changeImageState.state} message={changeImageState.message}></AlertForm> */}
+                    <AlertForm visible={uploadVideoState.visible} state={uploadVideoState.state} message={uploadVideoState.message}></AlertForm>
                     <InputModelMain type="text" placeholder="Nombre Video" onChange={onChangeVideoNameInput}></InputModelMain>
                     <InputModelMain type="file" placeholder="Video" onChange={onChangeVideoFileInput}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
                     <ButtonModelMain text="Salir" onClick={() => setShowPopUpUploadVideo(false)}></ButtonModelMain>
-                    <ButtonModelMain text="Aceptar" onClick={null}></ButtonModelMain>
+                    <ButtonModelMain text="Aceptar" onClick={uploadVideo}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
         </div>
