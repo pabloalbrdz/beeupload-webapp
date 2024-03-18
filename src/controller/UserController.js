@@ -150,6 +150,90 @@ export const UserController = {
         }
     },
 
+    async uploadMusic(userId, musicName, musicArtist, musicFile, setUploadMusicState){
+        try{
+            let response = await UserModel.uploadMusic(userId, musicName, musicArtist);
+            if (response.status == 200){
+                let response2 = await FileServerModel.uploadMusic(userId, response.data.id, musicFile);
+                if (response2.status == 200){
+                    let response3 = await UserModel.updateMusicPath(response.data.id, "prueba");
+                    if (response3.status == 200){
+                        setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Música subida con éxito"});
+                        return true;
+                    }else{
+                        setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response3.data});  
+                        return false;
+                    }
+                }else{
+                    setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response2.data});  
+                    return false;
+                }
+            }else{
+                setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});  
+                return false;
+            }
+        }catch(error){
+            setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false; 
+        }
+    },
+
+    async uploadPhoto(userId, photoFile, setUploadPhotoState){
+        try{
+            let response = await UserModel.uploadImage(userId);
+            if (response.status == 200){
+                let response2 = await FileServerModel.uploadImage(userId, response.data.id, photoFile);
+                if (response2.status == 200){
+                    let response3 = await UserModel.updateImagePath(response.data.id, "prueba");
+                    if (response3.status == 200){
+                        setUploadPhotoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Foto subida con éxito"});
+                        return true;
+                    }else{
+                        setUploadPhotoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response3.data});  
+                        return false;
+                    }
+                }else{
+                    setUploadPhotoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response2.data});  
+                    return false;
+                }
+            }else{
+                setUploadPhotoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});  
+                return false;
+            }
+        }catch(error){
+            setUploadPhotoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false; 
+        }
+    },
+
+    async uploadVideo(userId, videoName, videoFile, setUploadVideoState){
+        try{
+            let response = await UserModel.uploadVideo(userId, videoName);
+            if (response.status == 200){
+                let response2 = await FileServerModel.uploadVideo(userId, response.data.id, videoFile);
+                if (response2.status == 200){
+                    let response3 = await UserModel.updateVideoPath(response.data.id, "prueba");
+                    if (response3.status == 200){
+                        setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Video subido con éxito"});
+                        return true;
+                    }else{
+                        setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response3.data});  
+                        return false;
+                    }
+                }else{
+                    setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response2.data});  
+                    return false;
+                }
+            }else{
+                setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});  
+                return false;
+            }
+        }catch(error){
+            setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false; 
+        }
+    },
+
     async deleteAllUserDocs(userId, setDocDeleteState){
         try{
             let response = await FileServerModel.deleteAllUserDocuments(userId);

@@ -46,6 +46,12 @@ function MainPage(){
         let formdata = new FormData();
         formdata.append("docfile", changeDocumentFileInput);
         let uploadedDocument = await UserController.uploadDocument(JSON.parse(sessionStorage.getItem("session")).id, changeDocumentNameInput, formdata, setUploadDocumentState);
+        if (uploadedDocument){
+            setTimeout(function(){
+                setShowPopUpUploadDocument(false);
+                setUploadDocumentState({"visible": "alert-form-hidden", "state": "", "message": ""});
+            }, 2000);
+        }
     }
 
     const [changeMusicNameInput, setChangeMusicNameInput] = useState(null);
@@ -63,15 +69,33 @@ function MainPage(){
     const [uploadMusicState, setUploadMusicState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function uploadMusic(e){
         e.preventDefault();
+        let formdata = new FormData();
+        formdata.append("musicfile", changeMusicFileInput);
+        let uploadedMusic = await UserController.uploadMusic(JSON.parse(sessionStorage.getItem("session")).id, changeMusicNameInput, changeMusicArtistInput, formdata, setUploadMusicState);
+        if (uploadedMusic){
+            setTimeout(function(){
+                setShowPopUpUploadMusic(false);
+                setUploadMusicState({"visible": "alert-form-hidden", "state": "", "message": ""});
+            }, 2000);
+        }
     }
 
-    const [changeImageFile, setChangeImageFile] = useState(null);
+    const [changeImageFileInput, setChangeImageFileInput] = useState(null);
     function onChangeImageFileInput(e) {
-        setChangeImageFile(e.target.files[0]);
+        setChangeImageFileInput(e.target.files[0]);
     }
     const [uploadImageState, setUploadImageState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function uploadImage(e){
         e.preventDefault();
+        let formdata = new FormData();
+        formdata.append("imgfile", changeImageFileInput);
+        let uploadedImage = await UserController.uploadPhoto(JSON.parse(sessionStorage.getItem("session")).id, formdata, setUploadImageState);
+        if (uploadedImage){
+            setTimeout(function(){
+                setShowPopUpUploadImage(false);
+                setUploadImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
+            }, 2000);
+        }
     }
 
     const [changeVideoNameInput, setChangeVideoNameInput] = useState(null);
@@ -85,6 +109,15 @@ function MainPage(){
     const [uploadVideoState, setUploadVideoState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function uploadVideo(e){
         e.preventDefault();
+        let formdata = new FormData();
+        formdata.append("videofile", changeVideoFileInput);
+        let uploadedVideo = await UserController.uploadVideo(JSON.parse(sessionStorage.getItem("session")).id, changeVideoNameInput, formdata, setUploadVideoState);
+        if (uploadedVideo){
+            setTimeout(function(){
+                setShowPopUpUploadVideo(false);
+                setUploadVideoState({"visible": "alert-form-hidden", "state": "", "message": ""});
+            }, 2000);   
+        }
     }
 
     return(

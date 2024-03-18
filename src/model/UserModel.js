@@ -5,7 +5,6 @@ import fileserverSettings from "../settings/fileserverSettings";
 
 import { loginValidation } from "../validation/LoginValidation";
 import { emailValidation, passwordValidation, usernameValidation } from "../validation/SignUpValidation";
-import { fileValidation } from "../validation/FileValidation";
 import { filenameValidation } from "../validation/FileNameValidation";
 import { musicnameValidation } from "../validation/MusicNameValidation";
 import { IncorrectActualUsernameException } from "../exception/IncorrectActualUsernameException";
@@ -416,7 +415,7 @@ export const UserModel = {
 
   async updateVideoPath(videoId, videoPath){
     try{
-      const response = await axios.post(
+      const response = await axios.put(
         `${apiSettings.VIDEO_API}/updateVideoPath`,
         {
           id: videoId,
