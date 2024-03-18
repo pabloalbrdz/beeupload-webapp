@@ -128,7 +128,7 @@ export const UserController = {
             if (response.status == 200){
                 let response2 = await FileServerModel.uploadDocument(userId, response.data.id, docFile);
                 if (response2.status == 200){
-                    let response3 = await UserModel.updateDocumentPath(response.data.id, "prueba");
+                    let response3 = await UserModel.updateDocumentPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\document\\${response.data.id}.pdf`);
                     if (response3.status == 200){
                         setUploadDocumentState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Documento subido con exito"});
                         return true;
@@ -156,7 +156,7 @@ export const UserController = {
             if (response.status == 200){
                 let response2 = await FileServerModel.uploadMusic(userId, response.data.id, musicFile);
                 if (response2.status == 200){
-                    let response3 = await UserModel.updateMusicPath(response.data.id, "prueba");
+                    let response3 = await UserModel.updateMusicPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\music\\${response.data.id}.mp3`);
                     if (response3.status == 200){
                         setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Música subida con éxito"});
                         return true;
@@ -178,13 +178,13 @@ export const UserController = {
         }
     },
 
-    async uploadPhoto(userId, photoFile, setUploadPhotoState){
+    async uploadPhoto(userId, photoFile, photoExtension ,setUploadPhotoState){
         try{
             let response = await UserModel.uploadImage(userId);
             if (response.status == 200){
                 let response2 = await FileServerModel.uploadImage(userId, response.data.id, photoFile);
                 if (response2.status == 200){
-                    let response3 = await UserModel.updateImagePath(response.data.id, "prueba");
+                    let response3 = await UserModel.updateImagePath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\image\\${response.data.id}.${photoExtension}`);
                     if (response3.status == 200){
                         setUploadPhotoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Foto subida con éxito"});
                         return true;
@@ -212,7 +212,7 @@ export const UserController = {
             if (response.status == 200){
                 let response2 = await FileServerModel.uploadVideo(userId, response.data.id, videoFile);
                 if (response2.status == 200){
-                    let response3 = await UserModel.updateVideoPath(response.data.id, "prueba");
+                    let response3 = await UserModel.updateVideoPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\video\\${response.data.id}.mp4`);
                     if (response3.status == 200){
                         setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Video subido con éxito"});
                         return true;

@@ -89,7 +89,7 @@ function MainPage(){
         e.preventDefault();
         let formdata = new FormData();
         formdata.append("imgfile", changeImageFileInput);
-        let uploadedImage = await UserController.uploadPhoto(JSON.parse(sessionStorage.getItem("session")).id, formdata, setUploadImageState);
+        let uploadedImage = await UserController.uploadPhoto(JSON.parse(sessionStorage.getItem("session")).id, formdata, (changeImageFileInput.name).split('.')[(changeImageFileInput.name).split('.').length - 1], setUploadImageState);
         if (uploadedImage){
             setTimeout(function(){
                 setShowPopUpUploadImage(false);
