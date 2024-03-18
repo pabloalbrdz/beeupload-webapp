@@ -438,6 +438,90 @@ export const UserModel = {
     }
   },
 
+  async getAllUserDocument(userId){
+    try{
+        const response = await axios.get(
+            `${apiSettings.DOCUMENT_API}/getAllDocumentsById/${userId}`,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*'
+              }
+            }
+        );
+        return {"status": response.status, "data": response.data};
+    } catch(error) {
+        if (error.response) {
+            return {"status": error.response.status, "data": error.response.data};
+        } else {
+            return {"status": 400, "data": error.message};
+        }
+    }
+  },
+
+  async getAllUserMusic(userId){
+    try{
+        const response = await axios.get(
+            `${apiSettings.MUSIC_API}/getAllMusicById/${userId}`,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*'
+              }
+            }
+        );
+        return {"status": response.status, "data": response.data};
+    } catch(error) {
+        if (error.response) {
+            return {"status": error.response.status, "data": error.response.data};
+        } else {
+            return {"status": 400, "data": error.message};
+        }
+    }
+  },
+
+  async getAllUserImage(userId){
+    try{
+        const response = await axios.get(
+            `${apiSettings.IMAGE_API}/getAllImagesById/${userId}`,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*'
+              }
+            }
+        );
+        return {"status": response.status, "data": response.data};
+    } catch(error) {
+        if (error.response) {
+            return {"status": error.response.status, "data": error.response.data};
+        } else {
+            return {"status": 400, "data": error.message};
+        }
+    }
+  },
+
+  async getAllUserVideo(userId){
+    try{
+        const response = await axios.get(
+            `${apiSettings.VIDEO_API}/getAllVideosById/${userId}`,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*'
+              }
+            }
+        );
+        return {"status": response.status, "data": response.data};
+    } catch(error) {
+        if (error.response) {
+            return {"status": error.response.status, "data": error.response.data};
+        } else {
+            return {"status": 400, "data": error.message};
+        }
+    }
+  },
+
   async deleteAllUserDocuments(userId){
     try{
       const response = await axios.delete(

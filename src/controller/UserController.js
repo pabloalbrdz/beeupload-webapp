@@ -150,6 +150,23 @@ export const UserController = {
         }
     },
 
+    async getAllUserDocuments(userId){
+        try{
+            let response = await UserModel.getAllUserDocument(userId);
+            if (response.status == 200){
+                let files = new Array();
+                for (let file of response.data){
+                    if (file.path.length > 0){
+                        files.push(file);
+                    }
+                }
+                return files;
+            }
+        }catch(error){
+            return [];
+        }
+    },
+
     async uploadMusic(userId, musicName, musicArtist, musicFile, setUploadMusicState){
         try{
             let response = await UserModel.uploadMusic(userId, musicName, musicArtist);
@@ -175,6 +192,23 @@ export const UserController = {
         }catch(error){
             setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false; 
+        }
+    },
+
+    async getAllUserMusic(userId){
+        try{
+            let response = await UserModel.getAllUserMusic(userId);
+            if (response.status == 200){
+                let files = new Array();
+                for (let file of response.data){
+                    if (file.path.length > 0){
+                        files.push(file);
+                    }
+                }
+                return files;
+            }
+        }catch(error){
+            return [];
         }
     },
 
@@ -206,6 +240,23 @@ export const UserController = {
         }
     },
 
+    async getAllUserPhotos(userId){
+        try{
+            let response = await UserModel.getAllUserImage(userId);
+            if (response.status == 200){
+                let files = new Array();
+                for (let file of response.data){
+                    if (file.path.length > 0){
+                        files.push(file);
+                    }
+                }
+                return files;
+            }
+        }catch(error){
+            return [];
+        }
+    },
+
     async uploadVideo(userId, videoName, videoFile, setUploadVideoState){
         try{
             let response = await UserModel.uploadVideo(userId, videoName);
@@ -231,6 +282,23 @@ export const UserController = {
         }catch(error){
             setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false; 
+        }
+    },
+
+    async getAllUserVideos(userId){
+        try{
+            let response = await UserModel.getAllUserVideo(userId);
+            if (response.status == 200){
+                let files = new Array();
+                for (let file of response.data){
+                    if (file.path.length > 0){
+                        files.push(file);
+                    }
+                }
+                return files;
+            }
+        }catch(error){
+            return [];
         }
     },
 
