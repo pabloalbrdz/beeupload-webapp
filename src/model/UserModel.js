@@ -5,6 +5,8 @@ import fileserverSettings from "../settings/fileserverSettings";
 
 import { loginValidation } from "../validation/LoginValidation";
 import { emailValidation, passwordValidation, usernameValidation } from "../validation/SignUpValidation";
+import { filenameValidation } from "../validation/FileNameValidation";
+import { musicnameValidation } from "../validation/MusicNameValidation";
 import { IncorrectActualUsernameException } from "../exception/IncorrectActualUsernameException";
 import { IncorrectActualEmailException } from "../exception/IncorrectActualEmailException";
 import { IncorrectActualPasswordException } from "../exception/IncorrectActualPasswordException";
@@ -217,6 +219,213 @@ export const UserModel = {
             'Content-Type': 'multipart/form-data',
             'Access-Control-Allow-Origin': '*'
           },
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async uploadDocument(userId, docName){
+    try{
+      filenameValidation(docName);
+      const response = await axios.post(
+        `${apiSettings.DOCUMENT_API}/saveDocument`,
+        {
+          name: docName,
+          path: "",
+          userid: userId
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async updateDocumentPath(documentId, docPath){
+    try{
+      const response = await axios.put(
+        `${apiSettings.DOCUMENT_API}/updateDocumentPath`,
+        {
+          id: documentId,
+          path: docPath
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async uploadMusic(userId, musicName, musicArtist){
+    try{
+      musicnameValidation(musicName, musicArtist);
+      const response = await axios.post(
+        `${apiSettings.MUSIC_API}/saveMusic`,
+        {
+          name: musicName,
+          artist: musicArtist,
+          path: "",
+          userid: userId
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async updateMusicPath(musicId, musicPath){
+    try{
+      const response = await axios.put(
+        `${apiSettings.MUSIC_API}/updateMusicPath`,
+        {
+          id: musicId,
+          path: musicPath
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async uploadImage(userId){
+    try{
+      const response = await axios.post(
+        `${apiSettings.IMAGE_API}/saveImage`,
+        {
+          path: "",
+          userid: userId
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async updateImagePath(imageId, imagePath){
+    try{
+      const response = await axios.put(
+        `${apiSettings.IMAGE_API}/updateImagePath`,
+        {
+          id: imageId,
+          path: imagePath
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async uploadVideo(userId, videoName){
+    try{
+      filenameValidation(videoName);
+      const response = await axios.post(
+        `${apiSettings.VIDEO_API}/saveVideo`,
+        {
+          name: videoName,
+          path: "",
+          userid: userId
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async updateVideoPath(videoId, videoPath){
+    try{
+      const response = await axios.put(
+        `${apiSettings.VIDEO_API}/updateVideoPath`,
+        {
+          id: videoId,
+          path: videoPath
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
         }
       );
       return {"status": response.status, "data": response.data};
