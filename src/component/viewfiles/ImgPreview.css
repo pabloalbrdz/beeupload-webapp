@@ -1,0 +1,16 @@
+.img-preview-div{
+    width: 12rem;
+    height: 12rem;
+    align-content: center;
+    justify-content: center;
+}
+
+.img-preview-div-modal{
+    align-content: center;
+    justify-content: center;
+}
+
+.img-preview-div-modal > img{
+    width: 20rem;
+    height: 300px;
+}
