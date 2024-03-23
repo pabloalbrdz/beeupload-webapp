@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./ImgPreview.css";
 import { Modal } from "react-bootstrap";
+import "./ImgPreview.css";
+
 
 function ImgPreview({src}){
     const [showImageModal, setShowImageModal] = useState(false);

@@ -8,6 +8,8 @@
 .img-preview-div-modal{
     align-content: center;
     justify-content: center;
+    width: 100rem;
+    height: 100rem;
 }
 
 .img-preview-div-modal > img{
