@@ -1,0 +1,24 @@
+.filevideo-preview-div{
+    background-color: black;
+    height: 2.5rem;
+    width: 100%;
+    border: 2px solid #FFF86A;
+    border-radius: 20px;
+    text-align: start;
+}
+
+.filevideo-preview-div > h2{
+    color: white;
+    font-size: 1.15rem;
+    margin-left: 1rem;
+}
+
+.filevideo-preview-div-modal{
+    align-content: center;
+    justify-content: center;
+}
+
+.filevideo-preview-div-modal > video{
+    width: 25rem;
+    height: 300px;
+}
