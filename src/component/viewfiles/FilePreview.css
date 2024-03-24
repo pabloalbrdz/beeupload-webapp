@@ -13,12 +13,48 @@
     margin-left: 1rem;
 }
 
-.filevideo-preview-div-modal{
+.filevideo-preview-div-modal > .modal-dialog > .modal-content{
+    height: 25rem;
+    width: 50rem;
+}
+
+.filevideo-preview-div-modal-body{
     align-content: center;
     justify-content: center;
 }
 
-.filevideo-preview-div-modal > video{
-    width: 25rem;
-    height: 300px;
+.filevideo-preview-div-modal-body > video{
+    width: 50rem;
+    height: 20rem;
+}
+
+.filedocument-preview-div{
+    background-color: black;
+    height: 2.5rem;
+    width: 100%;
+    border: 2px solid #FFF86A;
+    border-radius: 20px;
+    text-align: start;
+}
+
+.filedocument-preview-div > h2{
+    color: white;
+    font-size: 1.15rem;
+    margin-left: 1rem;
+}
+
+.filedocument-preview-div-modal > .modal-dialog > .modal-content{
+    height: 50rem;
+    width: 50rem;
+}
+
+.filedocument-preview-div-modal-body{
+    align-content: center;
+    justify-content: center;
+}
+
+.filedocument-preview-div-modal-body > embed{
+    margin-top: 25px;
+    height: 45rem;
+    width: 50rem;
 }

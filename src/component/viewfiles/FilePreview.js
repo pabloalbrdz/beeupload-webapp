@@ -10,8 +10,8 @@ function FilePreview({type, src, title}){
                 <div className="filevideo-preview-div col-12 d-flex flex-column" onClick={() => setShowFileModal(true)}>
                     <h2>{title}</h2>
                 </div>
-                <Modal show={showFileModal} onHide={() => setShowFileModal(false)}>
-                    <Modal.Body className="filevideo-preview-div-modal d-flex">
+                <Modal className="filevideo-preview-div-modal" show={showFileModal} onHide={() => setShowFileModal(false)}>
+                    <Modal.Body className="filevideo-preview-div-modal-body d-flex">
                         <video src={src} controls autoPlay></video>
                     </Modal.Body>
                 </Modal>
@@ -20,9 +20,14 @@ function FilePreview({type, src, title}){
     }else if (type == "document"){
         return(
             <>
-                <div>
-                    
+                <div className="filedocument-preview-div col-12 d-flex flex-column" onClick={() => setShowFileModal(true)}>
+                    <h2>{title}</h2>
                 </div>
+                <Modal className="filedocument-preview-div-modal" show={showFileModal} onHide={() => setShowFileModal(false)}>
+                    <Modal.Body className="filedocument-preview-div-modal-body d-flex">
+                        <embed src={src} type="application/pdf"></embed>
+                    </Modal.Body>
+                </Modal>
             </>
         );
     }
