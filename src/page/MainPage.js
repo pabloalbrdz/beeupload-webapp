@@ -50,6 +50,8 @@ function MainPage(){
             setTimeout(function(){
                 setShowPopUpUploadDocument(false);
                 setUploadDocumentState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeDocumentNameInput(null);
+                setChangeDocumentFileInput(null);
             }, 2000);
         }
     }
@@ -76,6 +78,9 @@ function MainPage(){
             setTimeout(function(){
                 setShowPopUpUploadMusic(false);
                 setUploadMusicState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeMusicNameInput(null);
+                setChangeMusicArtistInput(null);
+                setChangeMusicFileInput(null);
             }, 2000);
         }
     }
@@ -94,6 +99,7 @@ function MainPage(){
             setTimeout(function(){
                 setShowPopUpUploadImage(false);
                 setUploadImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeImageFileInput(null);
             }, 2000);
         }
     }
@@ -116,6 +122,8 @@ function MainPage(){
             setTimeout(function(){
                 setShowPopUpUploadVideo(false);
                 setUploadVideoState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeVideoNameInput(null);
+                setChangeVideoFileInput(null);
             }, 2000);   
         }
     }
