@@ -20,7 +20,7 @@ function DocumentExplorer(){
     return(
         <div className="main-documentexplorer-div-body d-flex flex-column text-center gap-5">
             <h2 className="mt-4">Documentos</h2>
-            <div className="row d-flex flex-row gap-5 m-5">
+            <div className="row d-flex flex-row gap-1 m-5">
                 {getAllDocuments}
             </div>
         </div>
