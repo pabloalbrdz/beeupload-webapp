@@ -4,6 +4,7 @@ import "./MusicExplorer.css";
 import fileserverSettings from "../../settings/fileserverSettings";
 import Player from "@madzadev/audio-player";
 import "@madzadev/audio-player/dist/index.css";
+import $ from 'jquery';
 
 function MusicExplorer(){
     const [getAllMusic, setGetAllMusic] = useState([]);
@@ -23,6 +24,7 @@ function MusicExplorer(){
     }
     useEffect(() => {
         getMusicFiles();
+        $("._search_47p46_1").attr("placeholder", "Buscar cancion");
     }, []);
     if (getAllMusic.length == 0){
         return(
@@ -62,9 +64,7 @@ function MusicExplorer(){
                 <div className="row d-flex flex-row gap-1 m-5">
                     <Player
                       trackList={getAllMusic}
-                      includeSearch={true}
                       showPlaylist={true}
-                      sortTracks={true}
                       autoPlayNextTrack={true}
                       customColorScheme={colors}>
                     </Player>

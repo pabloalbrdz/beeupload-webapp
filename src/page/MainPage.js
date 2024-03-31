@@ -116,15 +116,19 @@ function MainPage(){
     const [uploadImageState, setUploadImageState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function uploadImage(e){
         e.preventDefault();
-        let formdata = new FormData();
-        formdata.append("imgfile", changeImageFileInput);
-        let uploadedImage = await UserController.uploadPhoto(JSON.parse(sessionStorage.getItem("session")).id, formdata, (changeImageFileInput.name).split('.')[(changeImageFileInput.name).split('.').length - 1], setUploadImageState);
-        if (uploadedImage){
-            setTimeout(function(){
-                setShowPopUpUploadImage(false);
-                setUploadImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
-                setChangeImageFileInput(null);
-            }, 2000);
+        if (changeImageFileInput == null){
+            setUploadImageState({"visible": "alert-form-visible", "state": "alert-form-error", "message": "Error: Se debe subir un fichero."});
+        }else{
+            let formdata = new FormData();
+            formdata.append("imgfile", changeImageFileInput);
+            let uploadedImage = await UserController.uploadPhoto(JSON.parse(sessionStorage.getItem("session")).id, formdata, (changeImageFileInput.name).split('.')[(changeImageFileInput.name).split('.').length - 1], setUploadImageState);
+            if (uploadedImage){
+                setTimeout(function(){
+                    setShowPopUpUploadImage(false);
+                    setUploadImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                    setChangeImageFileInput(null);
+                }, 2000);
+            }
         }
     }
 

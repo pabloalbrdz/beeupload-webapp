@@ -16,3 +16,22 @@
     color: #FFF86A;
     filter: drop-shadow(0 0 0.75rem #FFF974);
 }
+
+.image-gallery {
+    width: 30rem;
+    align-self: center;
+    justify-self: center;
+}
+
+.image-gallery-slide > img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
+    overflow: hidden;
+    object-position: center center;
+}
+
+.fullscreen .image-gallery-slide > img {
+    max-height: 100vh;
+}
