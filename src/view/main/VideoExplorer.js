@@ -20,7 +20,7 @@ function VideoExplorer(){
     return(
         <div className="main-videoexplorer-div-body d-flex flex-column text-center gap-5">
             <h2 className="mt-4">Videos</h2>
-            <div className="row d-flex flex-row gap-2 m-5">
+            <div className="row d-flex flex-row gap-1 m-5">
                 {getAllVideos}
             </div>
         </div>

@@ -36,8 +36,9 @@
 }
 
 .filevideo-preview-div-modal-body > video{
-    width: 50rem;
-    height: 20rem;
+    width: 100%;
+    height: 75%;
+    margin-top: 1rem;
 }
 
 .filedocument-preview-div{
@@ -78,7 +79,5 @@
 }
 
 .filedocument-preview-div-modal-body > embed{
-    margin-top: 25px;
-    height: 45rem;
-    width: 50rem;
+    width: 100%;
 }
