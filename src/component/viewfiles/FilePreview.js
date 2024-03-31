@@ -8,7 +8,7 @@ function FilePreview({type, src, title}){
         return(
             <>
                 <div className="filevideo-preview-div col-12 d-flex flex-column" onClick={() => setShowFileModal(true)}>
-                    <h2>{title}</h2>
+                    <p>{title}</p>
                 </div>
                 <Modal className="filevideo-preview-div-modal" show={showFileModal} onHide={() => setShowFileModal(false)}>
                     <Modal.Body className="filevideo-preview-div-modal-body d-flex">
@@ -21,7 +21,7 @@ function FilePreview({type, src, title}){
         return(
             <>
                 <div className="filedocument-preview-div col-12 d-flex flex-column" onClick={() => setShowFileModal(true)}>
-                    <h2>{title}</h2>
+                    <p>{title}</p>
                 </div>
                 <Modal className="filedocument-preview-div-modal" show={showFileModal} onHide={() => setShowFileModal(false)}>
                     <Modal.Body className="filedocument-preview-div-modal-body d-flex">
