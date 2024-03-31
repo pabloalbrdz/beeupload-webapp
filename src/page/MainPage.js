@@ -28,9 +28,33 @@ function MainPage(){
     );
 
     const [showPopUpUploadDocument, setShowPopUpUploadDocument] = useState(false);
+    function onClosePopUpLoadDocument(){
+        setShowPopUpUploadDocument(false);
+        setUploadDocumentState({"visible": "alert-form-hidden", "state": "", "message": ""});
+        setChangeDocumentNameInput(null);
+        setChangeDocumentFileInput(null);
+    }
     const [showPopUpUploadMusic, setShowPopUpUploadMusic] = useState(false);
+    function onClosePopUpLoadMusic(){
+        setShowPopUpUploadMusic(false);
+        setUploadMusicState({"visible": "alert-form-hidden", "state": "", "message": ""});
+        setChangeMusicNameInput(null);
+        setChangeMusicArtistInput(null);
+        setChangeMusicFileInput(null);
+    }
     const [showPopUpUploadImage, setShowPopUpUploadImage] = useState(false);
+    function onClosePopUpUploadImage(){
+        setShowPopUpUploadImage(false);
+        setUploadImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
+        setChangeImageFileInput(null);
+    }
     const [showPopUpUploadVideo, setShowPopUpUploadVideo] = useState(false);
+    function onClosePopUpLoadVideo(){
+        setShowPopUpUploadVideo(false);
+        setUploadVideoState({"visible": "alert-form-hidden", "state": "", "message": ""});
+        setChangeVideoNameInput(null);
+        setChangeVideoFileInput(null);
+    }
 
     const [changeDocumentNameInput, setChangeDocumentNameInput] = useState(null);
     const [changeDocumentFileInput, setChangeDocumentFileInput] = useState(null);
@@ -50,6 +74,8 @@ function MainPage(){
             setTimeout(function(){
                 setShowPopUpUploadDocument(false);
                 setUploadDocumentState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeDocumentNameInput(null);
+                setChangeDocumentFileInput(null);
             }, 2000);
         }
     }
@@ -76,6 +102,9 @@ function MainPage(){
             setTimeout(function(){
                 setShowPopUpUploadMusic(false);
                 setUploadMusicState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeMusicNameInput(null);
+                setChangeMusicArtistInput(null);
+                setChangeMusicFileInput(null);
             }, 2000);
         }
     }
@@ -94,6 +123,7 @@ function MainPage(){
             setTimeout(function(){
                 setShowPopUpUploadImage(false);
                 setUploadImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeImageFileInput(null);
             }, 2000);
         }
     }
@@ -116,6 +146,8 @@ function MainPage(){
             setTimeout(function(){
                 setShowPopUpUploadVideo(false);
                 setUploadVideoState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeVideoNameInput(null);
+                setChangeVideoFileInput(null);
             }, 2000);   
         }
     }
@@ -138,7 +170,7 @@ function MainPage(){
                 {view.view}
             </div>
 
-            <Modal show={showPopUpUploadDocument} onHide={() => setShowPopUpUploadDocument(false)}>
+            <Modal show={showPopUpUploadDocument} onHide={() => onClosePopUpLoadDocument()}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Subir Documento</Modal.Title>
                 </Modal.Header>
@@ -152,7 +184,7 @@ function MainPage(){
                     <ButtonModelMain text="Aceptar" onClick={uploadDocument}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showPopUpUploadMusic} onHide={() => setShowPopUpUploadMusic(false)}>
+            <Modal show={showPopUpUploadMusic} onHide={() => onClosePopUpLoadMusic()}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Subir Cancion</Modal.Title>
                 </Modal.Header>
@@ -167,7 +199,7 @@ function MainPage(){
                     <ButtonModelMain text="Aceptar" onClick={uploadMusic}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showPopUpUploadImage} onHide={() => setShowPopUpUploadImage(false)}>
+            <Modal show={showPopUpUploadImage} onHide={() => onClosePopUpUploadImage()}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Subir Imagen</Modal.Title>
                 </Modal.Header>
@@ -180,7 +212,7 @@ function MainPage(){
                     <ButtonModelMain text="Aceptar" onClick={uploadImage}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showPopUpUploadVideo} onHide={() => setShowPopUpUploadVideo(false)}>
+            <Modal show={showPopUpUploadVideo} onHide={() => onClosePopUpLoadVideo()}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Subir Video</Modal.Title>
                 </Modal.Header>

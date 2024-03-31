@@ -25,7 +25,7 @@ function UserSettingsExplorer(){
 
     const [username, setUsername] = useState("null");
     const getUsername = async () => {
-        let responseUsername = await UserController.getUsername(1);
+        let responseUsername = await UserController.getUsername(JSON.parse(sessionStorage.getItem("session")).id);
         setUsername(responseUsername);
     };
 
@@ -76,6 +76,7 @@ function UserSettingsExplorer(){
             setTimeout(function(){
                 setShowChangeUserProfilePic(false);
                 setChangeImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
+                setChangeImageInput1(null);
             }, 2000);
             getUserImage();
         }
@@ -97,6 +98,8 @@ function UserSettingsExplorer(){
             setTimeout(function(){
                 setShowChangeEmail(false);
                 setChangeEmailState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+                setChangeEmailInput1('');
+                setChangeEmailInput2('');
             }, 2000);  
         }
     };
@@ -111,6 +114,8 @@ function UserSettingsExplorer(){
             setTimeout(function(){
                 setShowChangePassword(false);
                 setChangePasswordState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+                setChangePasswordInput1('');
+                setChangePasswordInput2('');
             }, 2000);  
         }
     };

@@ -6,7 +6,7 @@ export const filenameValidation = function(filename){
         throw new InvalidFileNameException();
     }
 
-    if (filename.length == 0 || filename.length > 64){
+    if (filename.length == 0 || filename.length > 255){
         throw new InvalidFileNameException();
     }
 
