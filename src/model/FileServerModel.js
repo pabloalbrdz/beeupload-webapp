@@ -43,7 +43,11 @@ export const FileServerModel = {
             return {"status": response.status, "data": response.data};
         } catch(error) {
             if (error.response) {
-                return {"status": error.response.status, "data": error.response.data};
+                if (error.response.data.errors){
+                    return {"status": error.response.status, "data": "Error: Se debe subir un fichero."};
+                }else{
+                    return {"status": error.response.status, "data": error.response.data};
+                }
             } else {
                 return {"status": 400, "data": error.message};
             }
@@ -65,7 +69,11 @@ export const FileServerModel = {
             return {"status": response.status, "data": response.data};
         } catch(error) {
             if (error.response) {
-                return {"status": error.response.status, "data": error.response.data};
+                if (error.response.data.errors){
+                    return {"status": error.response.status, "data": "Error: Se debe subir un fichero."};
+                }else{
+                    return {"status": error.response.status, "data": error.response.data};
+                }
             } else {
                 return {"status": 400, "data": error.message};
             }
@@ -87,7 +95,11 @@ export const FileServerModel = {
           return {"status": response.status, "data": response.data};
         }catch(error){
           if (error.response){
-            return {"status": error.response.status, "data": error.response.data};
+            if (error.response.data.errors){
+                return {"status": error.response.status, "data": "Error: Se debe subir un fichero."};
+            }else{
+                return {"status": error.response.status, "data": error.response.data};
+            }
           }else{
             return {"status": 400, "data": error.message};
           }
@@ -109,7 +121,11 @@ export const FileServerModel = {
             return {"status": response.status, "data": response.data};
         } catch(error) {
             if (error.response) {
-                return {"status": error.response.status, "data": error.response.data};
+                if (error.response.data.errors){
+                    return {"status": error.response.status, "data": "Error: Se debe subir un fichero."};
+                }else{
+                    return {"status": error.response.status, "data": error.response.data};
+                }
             } else {
                 return {"status": 400, "data": error.message};
             }
