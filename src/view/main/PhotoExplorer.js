@@ -5,9 +5,16 @@ import "./PhotoExplorer.css";
 import ReactImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-function PhotoExplorer(){
-    const [getAllPhotos, setGetAllPhotos] = useState([]);
-    async function getPhotoFiles(){
+class PhotoExplorer extends React.Component{
+
+    constructor(){
+        super();
+        this.state = {
+            getAllPhotos: []
+        }
+    }
+
+    async getPhotoFiles(){
         let data = await UserController.getAllUserPhotos(JSON.parse(sessionStorage.getItem("session")).id);
         let arrayImg = new Array();
         for (let image of data){
@@ -18,27 +25,32 @@ function PhotoExplorer(){
                 }
             );
         }
-        setGetAllPhotos(arrayImg);
+        this.setState({getAllPhotos: arrayImg});
     }
-    useEffect(() => {
-        getPhotoFiles();
-    }, []);
-    if (getAllPhotos.length == 0){
-        return(
-            <div className="main-photoexplorer-div-body d-flex flex-column text-center gap-5">
-                <h2 className="mt-4">Fotos</h2>
-                <div className="row d-flex flex-row m-5">
+
+    async componentDidMount(){
+        await this.getPhotoFiles();
+    }
+
+    render(){
+        if (this.state.getAllPhotos.length == 0){
+            return(
+                <div className="main-photoexplorer-div-body d-flex flex-column text-center gap-5">
+                    <h2 className="mt-4">Fotos</h2>
+                    <div className="row d-flex flex-row m-5">
+                    </div>
                 </div>
-            </div>
-        );
-    }else{
-        return(
-            <div className="main-photoexplorer-div-body d-flex flex-column text-center gap-5">
-                <h2 className="mt-4">Fotos</h2>
-                <ReactImageGallery items={getAllPhotos}></ReactImageGallery>
-            </div>
-        );
+            );
+        }else{
+            return(
+                <div className="main-photoexplorer-div-body d-flex flex-column text-center gap-5">
+                    <h2 className="mt-4">Fotos</h2>
+                    <ReactImageGallery items={this.state.getAllPhotos}></ReactImageGallery>
+                </div>
+            );
+        }
     }
+
 }
 
 export default PhotoExplorer;
