@@ -10,7 +10,7 @@ function FilePreview({type, src, title}){
                 <div className="filevideo-preview-div col-12 d-flex flex-column" onClick={() => setShowFileModal(true)}>
                     <p>{title}</p>
                 </div>
-                <Modal className="filevideo-preview-div-modal" show={showFileModal} onHide={() => setShowFileModal(false)}>
+                <Modal className="filevideo-preview-div-modal" show={showFileModal} onHide={() => setShowFileModal(false)} dialogClassName="filevideo-preview-div-modal-dialog">
                     <Modal.Body className="filevideo-preview-div-modal-body d-flex">
                         <video src={src} controls autoPlay></video>
                     </Modal.Body>
