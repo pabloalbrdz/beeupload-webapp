@@ -25,20 +25,21 @@
     white-space:pre;
 }
 
-.filevideo-preview-div-modal > .modal-dialog > .modal-content{
-    height: 25rem;
-    width: 50rem;
+.filevideo-preview-div-modal-dialog{
+    max-width: 90vw;
+    max-height: 90vw;
 }
 
 .filevideo-preview-div-modal-body{
     align-content: center;
     justify-content: center;
+    height: 90vh;
 }
 
 .filevideo-preview-div-modal-body > video{
     width: 100%;
-    height: 75%;
-    margin-top: 1rem;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .filedocument-preview-div{
