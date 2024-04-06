@@ -4,27 +4,39 @@ import "./VideoExplorer.css";
 import fileserverSettings from "../../settings/fileserverSettings";
 import FilePreview from "../../component/viewfiles/FilePreview";
 
-function VideoExplorer(){
-    const [getAllVideos, setGetAllVideos] = useState([]);
-    async function getVideoFiles(){
+class VideoExplorer extends React.Component{
+
+    constructor(){
+        super();
+        this.state = {
+            getAllVideos: []
+        }
+    }
+
+    async getVideoFiles(){
         let data = await UserController.getAllUserVideos(JSON.parse(sessionStorage.getItem("session")).id);
         let arrayVideo = new Array();
         for (let video of data){
             arrayVideo.push(<FilePreview type="video" src={`${fileserverSettings.USER_FOLDER_ROUTE}/${video.path}`} title={video.name}></FilePreview>)
         }
-        setGetAllVideos(arrayVideo);
+        this.setState({getAllVideos: arrayVideo});
     }
-    useEffect(() => {
-        getVideoFiles();
-    }, []);
-    return(
-        <div className="main-videoexplorer-div-body d-flex flex-column text-center gap-5">
-            <h2 className="mt-4">Videos</h2>
-            <div className="row d-flex flex-row gap-1 m-5">
-                {getAllVideos}
+
+    async componentDidMount(){
+        await this.getVideoFiles();
+    }
+
+    render(){
+        return(
+            <div className="main-videoexplorer-div-body d-flex flex-column text-center gap-5">
+                <h2 className="mt-4">Videos</h2>
+                <div className="row d-flex flex-row gap-1 m-5">
+                    {this.state.getAllVideos}
+                </div>
             </div>
-        </div>
-    );
+        );        
+    }
+
 }
 
 export default VideoExplorer;
