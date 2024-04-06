@@ -23,7 +23,7 @@ function FilePreview({type, src, title}){
                 <div className="filedocument-preview-div col-12 d-flex flex-column" onClick={() => setShowFileModal(true)}>
                     <p>{title}</p>
                 </div>
-                <Modal className="filedocument-preview-div-modal" show={showFileModal} onHide={() => setShowFileModal(false)}>
+                <Modal className="filedocument-preview-div-modal justify-content-center align-items-center" show={showFileModal} onHide={() => setShowFileModal(false)} dialogClassName="filedocument-preview-div-modal-dialog">
                     <Modal.Body className="filedocument-preview-div-modal-body d-flex">
                         <embed src={src} type="application/pdf"></embed>
                     </Modal.Body>
