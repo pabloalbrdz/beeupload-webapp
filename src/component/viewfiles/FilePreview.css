@@ -41,8 +41,6 @@
     margin-top: 1rem;
 }
 
-
-
 .filedocument-preview-div{
     background-color: black;
     height: 2.5rem;
@@ -70,16 +68,19 @@
     white-space:pre;
 }
 
-.filedocument-preview-div-modal > .modal-dialog > .modal-content{
-    height: 50rem;
-    width: 50rem;
+.filedocument-preview-div-modal-dialog{
+    max-width: 90vw;
+    max-height: 90vw;
 }
 
 .filedocument-preview-div-modal-body{
     align-content: center;
     justify-content: center;
+    height: 90vh;
 }
 
 .filedocument-preview-div-modal-body > embed{
     width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
