@@ -13,7 +13,7 @@ import AlertForm from "../../component/form/AlertForm";
 
 function UserSettingsExplorer(){
     const [showChangeUsername, setShowChangeUsername] = useState(false);
-    const [showChangeUserProfilePic, setShowChangeUserProfilePic] = useState(false);
+    // const [showChangeUserProfilePic, setShowChangeUserProfilePic] = useState(false);
     const [showChangeEmail, setShowChangeEmail] = useState(false);
     const [showChangePassword, setShowChangePassword] = useState(false);
     const [showDeleteDocs, setShowDeleteDocs] = useState(false);
@@ -29,11 +29,11 @@ function UserSettingsExplorer(){
         setUsername(responseUsername);
     };
 
-    const [userImage, setUserImage] = useState(null);
-    const getUserImage  = async () => {
-        let responseImageSrc = UserController.getProfilePic(JSON.parse(sessionStorage.getItem("session")).id);
-        setUserImage(responseImageSrc);
-    };
+    // const [userImage, setUserImage] = useState(null);
+    // const getUserImage  = async () => {
+    //     let responseImageSrc = UserController.getProfilePic(JSON.parse(sessionStorage.getItem("session")).id);
+    //     setUserImage(responseImageSrc);
+    // };
 
     const [id, setId] = useState("null");
     const getId = async () => {
@@ -62,25 +62,25 @@ function UserSettingsExplorer(){
         }
     };
 
-    const [changeImageInput1, setChangeImageInput1] = useState(null);
-    const [changeImageState, setChangeImageState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
-    function onchangeImageInput1(e){
-        setChangeImageInput1(e.target.files[0]);
-    };
-    async function changeImage(e){
-        e.preventDefault();
-        let formdata = new FormData();
-        formdata.append("imgfile", changeImageInput1);
-        let changedImg = await UserController.changeProfilePic(JSON.parse(sessionStorage.getItem("session")).id, formdata, setChangeImageState);
-        if (changedImg){
-            setTimeout(function(){
-                setShowChangeUserProfilePic(false);
-                setChangeImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
-                setChangeImageInput1(null);
-            }, 2000);
-            getUserImage();
-        }
-    };
+    // const [changeImageInput1, setChangeImageInput1] = useState(null);
+    // const [changeImageState, setChangeImageState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    // function onchangeImageInput1(e){
+    //     setChangeImageInput1(e.target.files[0]);
+    // };
+    // async function changeImage(e){
+    //     e.preventDefault();
+    //     let formdata = new FormData();
+    //     formdata.append("imgfile", changeImageInput1);
+    //     let changedImg = await UserController.changeProfilePic(JSON.parse(sessionStorage.getItem("session")).id, formdata, setChangeImageState);
+    //     if (changedImg){
+    //         setTimeout(function(){
+    //             setShowChangeUserProfilePic(false);
+    //             setChangeImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
+    //             setChangeImageInput1(null);
+    //         }, 2000);
+    //         getUserImage();
+    //     }
+    // };
 
     const [changeEmailInput1, setChangeEmailInput1] = useState('');
     const [changeEmailInput2, setChangeEmailInput2] = useState('');
@@ -202,13 +202,16 @@ function UserSettingsExplorer(){
     useEffect(() => {
       getUsername();
       getId();
-      getUserImage();
+    //   getUserImage();
     }, []);
 
     return(
         <div className="main-usersettings-div-body">
-            <div className="main-usersettings-div-userheader">
-                <img src={userImage}></img>
+            <div className="main-usersettings-div-userheader mt-3">
+                {/*
+                    <img src={userImage}></img>
+                */
+                }
                 <h1>{username}</h1>
             </div>
             <hr className="main-usersettings-div-body-hr"></hr>
@@ -223,7 +226,7 @@ function UserSettingsExplorer(){
                 <h2>Ajustes de Usuario</h2>
                 <div className="main-usersettings-div-usersettings-settings">
                     <ButtonMain text="Modificar Nombre Usuario" onClick={() => setShowChangeUsername(true)}></ButtonMain>
-                    <ButtonMain text="Modificar Imagen Usuario" onClick={() => setShowChangeUserProfilePic(true)}></ButtonMain>
+                    {/* <ButtonMain text="Modificar Imagen Usuario" onClick={() => setShowChangeUserProfilePic(true)}></ButtonMain> */}
                     <ButtonMain text="Modificar Correo Electronico" onClick={() => setShowChangeEmail(true)}></ButtonMain>
                     <ButtonMain text="Modificar Contraseña" onClick={() => setShowChangePassword(true)}></ButtonMain>
                 </div>
@@ -258,7 +261,7 @@ function UserSettingsExplorer(){
                     <ButtonModelMain text="Aceptar" onClick={changeUsername}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showChangeUserProfilePic} onHide={() => setShowChangeUserProfilePic(false)}>
+            {/* <Modal show={showChangeUserProfilePic} onHide={() => setShowChangeUserProfilePic(false)}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Modificar Imagen Usuario</Modal.Title>
                 </Modal.Header>
@@ -270,7 +273,7 @@ function UserSettingsExplorer(){
                     <ButtonModelMain text="Salir" onClick={() => setShowChangeUserProfilePic(false)}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={changeImage}></ButtonModelMain>
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
             <Modal show={showChangeEmail} onHide={() => setShowChangeEmail(false)}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Modificar Correo Electronico</Modal.Title>
