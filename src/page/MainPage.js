@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./MainPage.css";
 
 import { MainController } from "../controller/MainController";
@@ -17,8 +17,12 @@ import ButtonModelMain from "../component/main/ButtonModelMain";
 import AlertForm from "../component/form/AlertForm";
 import { UserController } from "../controller/UserController";
 
+import { AppContext } from "../context/AppContext";
+
 
 function MainPage(){
+
+    const context = useContext(AppContext);
 
     const [view, changeView] = useState(
         {
@@ -76,6 +80,7 @@ function MainPage(){
                 setUploadDocumentState({"visible": "alert-form-hidden", "state": "", "message": ""});
                 setChangeDocumentNameInput(null);
                 setChangeDocumentFileInput(null);
+                context.getDocument();
             }, 2000);
         }
     }
@@ -105,6 +110,7 @@ function MainPage(){
                 setChangeMusicNameInput(null);
                 setChangeMusicArtistInput(null);
                 setChangeMusicFileInput(null);
+                context.getMusic();
             }, 2000);
         }
     }
@@ -127,6 +133,7 @@ function MainPage(){
                     setShowPopUpUploadImage(false);
                     setUploadImageState({"visible": "alert-form-hidden", "state": "", "message": ""});
                     setChangeImageFileInput(null);
+                    context.getPhotos();
                 }, 2000);
             }
         }
@@ -152,6 +159,7 @@ function MainPage(){
                 setUploadVideoState({"visible": "alert-form-hidden", "state": "", "message": ""});
                 setChangeVideoNameInput(null);
                 setChangeVideoFileInput(null);
+                context.getVideos();
             }, 2000);   
         }
     }
