@@ -1,42 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { UserController } from "../../controller/UserController";
+import React, { useContext, useEffect } from "react";
 import "./DocumentExplorer.css";
-import FilePreview from "../../component/viewfiles/FilePreview";
-import fileserverSettings from "../../settings/fileserverSettings";
+import { AppContext } from "../../context/AppContext";
 
-class DocumentExplorer extends React.Component {
+function DocumentExplorer(){
 
-    constructor(){
-        super();
-        this.state = {
-            getAllDocuments: []
+    const context = useContext(AppContext);
+
+    useEffect(() => {
+        if (sessionStorage.getItem("session") != undefined){
+            context.getDocument();
         }
-    }
+    }, []);
 
-    async getDocumentFiles(){
-        let data = await UserController.getAllUserDocuments(JSON.parse(sessionStorage.getItem("session")).id);
-        let arrayDocument = new Array();
-        for (let document of data){
-            arrayDocument.push(<FilePreview type="document" src={`${fileserverSettings.USER_FOLDER_ROUTE}/${document.path}`} title={document.name}></FilePreview>)
-        }
-        this.setState({getAllDocuments: arrayDocument});        
-    }
-
-    async componentDidMount(){
-        await this.getDocumentFiles();
-    }
-
-    render(){
-        return(
-            <div className="main-documentexplorer-div-body d-flex flex-column text-center gap-5">
-                <h2 className="mt-4">Documentos</h2>
-                    <div className="row d-flex flex-row gap-1 m-5">
-                        {this.state.getAllDocuments}
-                    </div>
+    return(
+        <div className="main-documentexplorer-div-body d-flex flex-column text-center gap-5">
+            <h2 className="mt-4">Documentos</h2>
+            <div className="row d-flex flex-row gap-1 m-5">
+                {context.documents}
             </div>
-        );        
-    }
-
+        </div>
+    ); 
+      
 }
 
 export default DocumentExplorer;
