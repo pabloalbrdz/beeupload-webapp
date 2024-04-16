@@ -8,17 +8,19 @@ import MusicExplorer from "../view/main/MusicExplorer";
 import PhotoExplorer from "../view/main/PhotoExplorer";
 import VideoExplorer from "../view/main/VideoExplorer";
 
-import Sidebar from "../component/main/Sidebar";
 import { Modal } from "react-bootstrap";
 
-import "bootstrap/dist/css/bootstrap.min.css";
+import Sidebar from "../component/main/Sidebar";
+
 import InputModelMain from "../component/main/InputModelMain";
 import ButtonModelMain from "../component/main/ButtonModelMain";
 import AlertForm from "../component/form/AlertForm";
+
 import { UserController } from "../controller/UserController";
 
 import { AppContext } from "../context/AppContext";
 
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function MainPage(){
 
@@ -239,9 +241,8 @@ function MainPage(){
                 </Modal.Footer>
             </Modal>
         </div>
-
-        
     );
+    
 }
 
 export default MainPage;

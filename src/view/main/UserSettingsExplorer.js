@@ -1,15 +1,16 @@
 import {React, useEffect, useState} from "react";
 
-import "./UserSettingsExplorer.css";
-
 import ButtonMain from "../../component/main/ButtonMain";
-import { Modal } from "react-bootstrap";
-
-import "bootstrap/dist/css/bootstrap.min.css";
 import ButtonModelMain from "../../component/main/ButtonModelMain";
 import InputModelMain from "../../component/main/InputModelMain";
-import { UserController } from "../../controller/UserController";
 import AlertForm from "../../component/form/AlertForm";
+
+import { Modal } from "react-bootstrap";
+
+import { UserController } from "../../controller/UserController";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./UserSettingsExplorer.css";
 
 function UserSettingsExplorer(){
     const [showChangeUsername, setShowChangeUsername] = useState(false);
@@ -382,6 +383,7 @@ function UserSettingsExplorer(){
             </Modal>
         </div>
     );
+
 }
 
 export default UserSettingsExplorer;

@@ -1,7 +1,8 @@
 import React from "react";
-import './TextAnimatedForm.css';
 
 import { useTypewriter, Cursor } from "react-simple-typewriter";
+
+import './TextAnimatedForm.css';
 
 function TextAnimatedForm(props){
     const [typeEffect] = useTypewriter({

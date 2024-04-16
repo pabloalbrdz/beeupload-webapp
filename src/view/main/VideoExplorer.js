@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import "./VideoExplorer.css";
+
 import { AppContext } from "../../context/AppContext";
+
+import "./VideoExplorer.css";
 
 function VideoExplorer(){
 

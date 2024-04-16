@@ -1,9 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import "./MusicExplorer.css";
-import Player from "@madzadev/audio-player";
-import "@madzadev/audio-player/dist/index.css";
 import $ from 'jquery';
+import Player from "@madzadev/audio-player";
+
 import { AppContext } from "../../context/AppContext";
+
+import "@madzadev/audio-player/dist/index.css";
+import "./MusicExplorer.css";
 
 function MusicExplorer(){
     
