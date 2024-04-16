@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import "./PhotoExplorer.css";
 import ReactImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
+
 import { AppContext } from "../../context/AppContext";
+
+import "react-image-gallery/styles/css/image-gallery.css";
+import "./PhotoExplorer.css";
 
 function PhotoExplorer(){
 

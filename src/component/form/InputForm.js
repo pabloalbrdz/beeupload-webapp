@@ -1,9 +1,10 @@
 import React from "react";
-import './InputForm.css'
 
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
+
+import './InputForm.css'
 
 function InputForm(props){
 

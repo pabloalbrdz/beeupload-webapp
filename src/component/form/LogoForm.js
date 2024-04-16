@@ -1,6 +1,8 @@
 import React from "react";
-import './LogoForm.css';
+
 import { CgBee } from "react-icons/cg";
+
+import './LogoForm.css';
 
 function LogoForm(props){
     return(

@@ -1,7 +1,10 @@
 import { createContext, useState, useEffect } from "react";
-import { UserController } from "../controller/UserController";
-import fileserverSettings from "../settings/fileserverSettings";
+
 import FilePreview from "../component/viewfiles/FilePreview";
+
+import { UserController } from "../controller/UserController";
+
+import fileserverSettings from "../settings/fileserverSettings";
 
 export const AppContext = createContext();
 

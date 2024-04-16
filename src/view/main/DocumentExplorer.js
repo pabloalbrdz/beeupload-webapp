@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import "./DocumentExplorer.css";
+
 import { AppContext } from "../../context/AppContext";
+
+import "./DocumentExplorer.css";
 
 function DocumentExplorer(){
 

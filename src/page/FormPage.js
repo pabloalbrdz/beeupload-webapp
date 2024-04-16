@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import { WindowController } from "../controller/WindowController";
-
 import TextAnimatedForm from "../component/form/TextAnimatedForm";
 import BackgroundAnimatedForm from "../component/form/BackgroundAnimatedForm";
 import ButtonForm from "../component/form/ButtonForm";
@@ -9,6 +7,8 @@ import TextDescriptionForm from "../component/form/TextDescriptionForm";
 
 import LoginView from "../view/form/LoginView";
 import SignUpView from "../view/form/SignUpView";
+
+import { WindowController } from "../controller/WindowController";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 

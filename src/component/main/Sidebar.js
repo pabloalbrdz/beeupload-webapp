@@ -1,5 +1,6 @@
 import React from "react";
-import "./Sidebar.css";
+
+import "bootstrap/dist/js/bootstrap";
 
 import { CgBee } from "react-icons/cg";
 import { FaFileAlt, FaMusic, FaImage, FaVideo, FaSearch, FaRegArrowAltCircleUp, FaUserCircle } from "react-icons/fa";
@@ -7,7 +8,7 @@ import { IoIosSettings } from "react-icons/io";
 import { RiLogoutCircleRFill } from "react-icons/ri";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap";
+import "./Sidebar.css";
 
 function Sidebar({documentExplorer, popUpUploadDocument, musicExplorer, popUpUploadMusic,  photoExplorer, popUpUploadPhoto, videoExplorer, popUpUploadVideo, userSettings, closeSession}){
     return(

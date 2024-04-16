@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import "./FilePreview.css";
+
 import { Modal } from "react-bootstrap";
+
+import "./FilePreview.css";
 
 function FilePreview({type, src, title}){
     const [showFileModal, setShowFileModal] = useState(false);
