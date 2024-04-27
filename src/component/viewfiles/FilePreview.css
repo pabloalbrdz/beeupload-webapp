@@ -14,10 +14,29 @@
 }
 
 .filevideo-preview-div > p{
+    width: 80%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: white;
-    font-size: 1.15rem;
+    font-size: 1rem;
     margin-left: 1rem;
-    display: contents;
+    margin-top: 0.25rem;
+    display: inline;
+}
+
+.filevideo-preview-div > button{
+    width: 20%;
+    height: 100%;
+    right: 0%;
+    background-color: transparent;
+    border: none;
+    color: #FFF86A;
+}
+
+.filevideo-preview-div > button > svg{
+    margin-bottom: 0.25rem;
 }
 
 .filevideo-preview-div > p::after{
@@ -58,15 +77,34 @@
 }
 
 .filedocument-preview-div > p{
+    width: 80%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: white;
-    font-size: 1.15rem;
+    font-size: 1rem;
     margin-left: 1rem;
-    display: contents;
+    margin-top: 0.25rem;
+    display: inline;
 }
 
 .filedocument-preview-div > p::after{
     content: "\A";
     white-space:pre;
+}
+
+.filedocument-preview-div > button{
+    width: 20%;
+    height: 100%;
+    right: 0%;
+    background-color: transparent;
+    border: none;
+    color: #FFF86A;
+}
+
+.filedocument-preview-div > button > svg{
+    margin-bottom: 0.25rem;
 }
 
 .filedocument-preview-div-modal-dialog{
