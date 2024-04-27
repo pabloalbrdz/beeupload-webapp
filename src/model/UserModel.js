@@ -201,36 +201,6 @@ export const UserModel = {
     }
   },
 
-  getProfilePic(userId){
-    try{
-      return `${fileserverSettings.USER_FOLDER_ROUTE}/${userId}/profilepic.jpg`;
-    }catch(error){
-      return "";
-    }
-  },
-
-  async changeProfilePic(userId, newImgPic){
-    try{
-      const response = await axios.put(
-        `${fileserverSettings.USER_PROFILE}/changeUserProfilePic?userid=${userId}`,
-        newImgPic,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'Access-Control-Allow-Origin': '*'
-          },
-        }
-      );
-      return {"status": response.status, "data": response.data};
-    }catch(error){
-      if (error.response){
-        return {"status": error.response.status, "data": error.response.data};
-      }else{
-        return {"status": 400, "data": error.message};
-      }
-    }
-  },
-
   async uploadDocument(userId, docName){
     try{
       filenameValidation(docName);
@@ -519,6 +489,54 @@ export const UserModel = {
         } else {
             return {"status": 400, "data": error.message};
         }
+    }
+  },
+
+  async deleteUserDocument(docId){
+    try{
+      const response = await axios.delete(
+        `${apiSettings.DOCUMENT_API}/deleteDocument/${docId}`,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async deleteUserMusic(userId, musicId){
+    
+  },
+
+  async deleteUserImage(userId, imgId){
+    
+  },
+
+  async deleteUserVideo(videoId){
+    try{
+      const response = await axios.delete(
+        `${apiSettings.VIDEO_API}/deleteVideo/${videoId}`,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
     }
   },
 

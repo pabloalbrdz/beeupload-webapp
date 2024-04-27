@@ -5,6 +5,9 @@ import { AppContext } from "../../context/AppContext";
 import { Modal } from "react-bootstrap";
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import ButtonModelMain from "../../component/main/ButtonModelMain";
+import AlertForm from "../../component/form/AlertForm";
+
+import { UserController } from "../../controller/UserController";
 
 import "./FilePreview.css";
 
@@ -13,15 +16,29 @@ function FilePreview({type, id, src, title}){
     const context = useContext(AppContext);
 
     const [showFileModal, setShowFileModal] = useState(false);
-
     const [showDeleteFileModel, setShowDeleteFileModel] = useState(false);
+    const [deleteFileState, setDeleteFileState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
 
-    function deleteFile(e){
+    async function deleteFile(e){
         e.preventDefault();
         if (type == "video"){
-            alert("Eliminar video");
+            let deletedVideo = await UserController.deleteUserVideo(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState);
+            if (deletedVideo){
+                setTimeout(function(){
+                    setShowDeleteFileModel(false);
+                    setDeleteFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+                    context.getVideos();
+                }, 2000); 
+            }
         }else if (type == "document"){
-            alert("Eliminar documento");
+            let deletedDoc = await UserController.deleteUserDocument(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState);
+            if (deletedDoc){
+                setTimeout(function(){
+                    setShowDeleteFileModel(false);
+                    setDeleteFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+                    context.getDocument();
+                }, 2000); 
+            }
         }
     }
 
@@ -37,11 +54,12 @@ function FilePreview({type, id, src, title}){
                         <video src={src} controls autoPlay></video>
                     </Modal.Body>
                 </Modal>
-                <Modal className="filevideo-delete-div-modal justify-content-center align-items-center" show={showDeleteFileModel} onHide={() => setShowDeleteFileModel(false)} dialogClassName="filevideo-delete-div-modal-dialog">
+                <Modal className="filevideo-delete-div-modal justify-content-center align-items-center" show={showDeleteFileModel} onHide={() => { setShowDeleteFileModel(false); setDeleteFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); }} dialogClassName="filevideo-delete-div-modal-dialog">
                     <Modal.Header className="d-flex justify-content-center">
                         <Modal.Title>Eliminar Video</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="d-flex justify-content-center">
+                    <Modal.Body className="d-flex flex-column justify-content-center">
+                        <AlertForm visible={deleteFileState.visible} state={deleteFileState.state} message={deleteFileState.message}></AlertForm>
                         <p className="modal-body-p">¿Desea eliminar este video?</p>
                     </Modal.Body>
                     <Modal.Footer className="d-flex justify-content-center">
@@ -63,11 +81,12 @@ function FilePreview({type, id, src, title}){
                         <embed src={src} type="application/pdf"></embed>
                     </Modal.Body>
                 </Modal>
-                <Modal className="filedocument-delete-div-modal justify-content-center align-items-center" show={showDeleteFileModel} onHide={() => setShowDeleteFileModel(false)} dialogClassName="filedocument-delete-div-modal-dialog">
+                <Modal className="filedocument-delete-div-modal justify-content-center align-items-center" show={showDeleteFileModel} onHide={() => { setShowDeleteFileModel(false); setDeleteFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); }} dialogClassName="filedocument-delete-div-modal-dialog">
                     <Modal.Header className="d-flex justify-content-center">
                         <Modal.Title>Eliminar Documento</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="d-flex justify-content-center">
+                    <Modal.Body className="d-flex flex-column justify-content-center">
+                        <AlertForm visible={deleteFileState.visible} state={deleteFileState.state} message={deleteFileState.message}></AlertForm>
                         <p className="modal-body-p">¿Desea eliminar este documento?</p>
                     </Modal.Body>
                     <Modal.Footer className="d-flex justify-content-center">
