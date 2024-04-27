@@ -132,6 +132,62 @@ export const FileServerModel = {
         }
     },
 
+    async deleteUserDocument(userId, docId){
+        try{
+            const response = await axios.delete(
+                `${fileserverSettings.USER_DOCUMENT}/deleteUserDocument?userid=${userId}&docid=${docId}`,
+                {
+                    userid: `${userId}`
+                },
+                {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Access-Control-Allow-Origin' : '*'
+                    }
+                }
+            );
+            return {"status": response.status, "data": response.data};
+        }catch(error){
+            if (error.response){
+                return {"status": error.response.status, "data": error.response.data};
+            }else{
+                return {"status": 400, "data": error.message};
+            }
+        }
+    },
+  
+    async deleteUserMusic(userId, musicId){
+      
+    },
+  
+    async deleteUserImage(userId, imgId){
+      
+    },
+  
+    async deleteUserVideo(userId, videoId){
+        try{
+            const response = await axios.delete(
+                `${fileserverSettings.USER_VIDEO}/deleteUserVideo?userid=${userId}&videoid=${videoId}`,
+                {
+                    userid: `${userId}`
+                },
+                {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Access-Control-Allow-Origin' : '*'
+                    }
+                }
+            );
+            return {"status": response.status, "data": response.data};
+        }catch(error){
+            if (error.response){
+                return {"status": error.response.status, "data": error.response.data};
+            }else{
+                return {"status": 400, "data": error.message};
+            }
+        }
+    },
+
     async deleteAllUserDocuments(userId){
         try{
             const response = await axios.delete(

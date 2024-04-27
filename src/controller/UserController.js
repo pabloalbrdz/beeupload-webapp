@@ -98,30 +98,6 @@ export const UserController = {
         }
     },
 
-    getProfilePic(userId){
-        try{
-            return UserModel.getProfilePic(userId);
-        }catch(error){
-            return "";
-        }
-    },
-
-    async changeProfilePic(userId, newImgPic, setChangeImageState){
-        try{
-            let response = await UserModel.changeProfilePic(userId, newImgPic);
-            if (response.status == 200){
-                setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Imagen modificada con exito"});
-                return true;
-            }else{
-                setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
-                return false;
-            }
-        }catch(error){
-            setChangeImageState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
-            return false;
-        }
-    },
-
     async uploadDocument(userId, docName, docFile, setUploadDocumentState){
         try{
             let response = await UserModel.uploadDocument(userId, docName);
@@ -299,6 +275,58 @@ export const UserController = {
             }
         }catch(error){
             return [];
+        }
+    },
+
+    async deleteUserDocument(userId, docId, setDeleteDocumentState){
+        try{
+            let response = await FileServerModel.deleteUserDocument(userId, docId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteUserDocument(docId);
+                if (response2.status == 200){
+                    setDeleteDocumentState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Documento eliminado"}); 
+                    return true;
+                }else{
+                    setDeleteDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setDeleteDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+        }
+        }catch(error){
+            setDeleteDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }
+    },
+  
+    async deleteUserMusic(userId, musicId){
+      
+    },
+  
+    async deleteUserImage(userId, imgId){
+      
+    },
+  
+    async deleteUserVideo(userId, videoId, setDeleteVideoState){
+        try{
+            let response = await FileServerModel.deleteUserVideo(userId, videoId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteUserVideo(videoId);
+                if (response2.status == 200){
+                    setDeleteVideoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Video eliminado"}); 
+                    return true;
+                }else{
+                    setDeleteVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setDeleteVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+        }
+        }catch(error){
+            setDeleteVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
         }
     },
 

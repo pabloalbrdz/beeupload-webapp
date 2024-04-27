@@ -17,7 +17,7 @@ export function AppContextProvider(props){
             let data = await UserController.getAllUserDocuments(JSON.parse(sessionStorage.getItem("session")).id);
             let arrayDocument = new Array();
             for (let document of data){
-                arrayDocument.push(<FilePreview type="document" src={`${fileserverSettings.USER_FOLDER_ROUTE}/${document.path}`} title={document.name}></FilePreview>)
+                arrayDocument.push(<FilePreview type="document" id={document.id} src={`${fileserverSettings.USER_FOLDER_ROUTE}/${document.path}`} title={document.name}></FilePreview>)
             }
             setGetDocuments(arrayDocument);     
         }   
@@ -67,7 +67,7 @@ export function AppContextProvider(props){
             let data = await UserController.getAllUserVideos(JSON.parse(sessionStorage.getItem("session")).id);
             let arrayVideo = new Array();
             for (let video of data){
-                arrayVideo.push(<FilePreview type="video" src={`${fileserverSettings.USER_FOLDER_ROUTE}/${video.path}`} title={video.name}></FilePreview>)
+                arrayVideo.push(<FilePreview type="video" id={video.id} src={`${fileserverSettings.USER_FOLDER_ROUTE}/${video.path}`} title={video.name}></FilePreview>)
             }
             setGetVideos(arrayVideo);
         }
