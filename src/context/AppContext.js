@@ -32,6 +32,7 @@ export function AppContextProvider(props){
             for (let music of data){
                 arrayMusic.push(
                     {
+                        id: music.id,
                         url: `${fileserverSettings.USER_FOLDER_ROUTE}/${music.path}`,
                         title: `${music.name} - ${music.artist}`,
                         tags: []

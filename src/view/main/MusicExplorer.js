@@ -1,8 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import $ from 'jquery';
+
 import Player from "@madzadev/audio-player";
+import AlertForm from "../../component/form/AlertForm";
+import ButtonMain from "../../component/main/ButtonMain";
+import ButtonModelMain from "../../component/main/ButtonModelMain";
 
 import { AppContext } from "../../context/AppContext";
+
 
 import "@madzadev/audio-player/dist/index.css";
 import "./MusicExplorer.css";
@@ -36,22 +41,23 @@ function MusicExplorer(){
             playerBackground: "#18191f",
             titleColor: "#ffffff",
             timeColor: "#ffffff",
-            progressSlider: "#3e32e4",
+            progressSlider: "#fff86A",
             progressUsed: "#ffffff",
             progressLeft: "#151616",
             bufferLoaded: "#1f212b",
-            volumeSlider: "#3e32e4",
+            volumeSlider: "#fff86A",
             volumeUsed: "#ffffff",
             volumeLeft: "#151616",
             playlistBackground: "#18191f",
-            playlistText: "#575a77",
+            playlistText: "#ffffff",
             playlistBackgroundHoverActive: "#18191f",
-            playlistTextHoverActive: "#ffffff",
+            playlistTextHoverActive: "#fff86A",
         };
         return(
-            <div className="main-musicexplorer-div-body d-flex flex-column text-center gap-5">
+            <div className="main-musicexplorer-div-body d-flex flex-column text-center">
                 <h2 className="mt-4">Musica</h2>
-                <div className="row d-flex flex-row gap-1 m-5">
+                <ButtonMain text="Gestionar Musica" onClick={() => alert("Musica")}></ButtonMain>
+                <div className="main-musicexplorer-div-player row d-flex flex-row m-5">
                     <Player
                     trackList={context.music}
                     showPlaylist={true}
