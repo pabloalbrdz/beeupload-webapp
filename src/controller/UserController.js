@@ -293,15 +293,33 @@ export const UserController = {
             }else{
                 setDeleteDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
                 return false;
-        }
+            }
         }catch(error){
             setDeleteDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false;  
         }
     },
   
-    async deleteUserMusic(userId, musicId){
-      
+    async deleteUserMusic(userId, musicId, setDeleteMusicState){
+        try{
+            let response = await FileServerModel.deleteUserMusic(userId, musicId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteUserMusic(musicId);
+                if (response2.status == 200){
+                    setDeleteMusicState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Musica eliminada"}); 
+                    return true;
+                }else{
+                    setDeleteMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setDeleteMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+            }
+        }catch(error){
+            setDeleteMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }      
     },
   
     async deleteUserImage(userId, imgId){
@@ -323,7 +341,7 @@ export const UserController = {
             }else{
                 setDeleteVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
                 return false;
-        }
+            }
         }catch(error){
             setDeleteVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false;  

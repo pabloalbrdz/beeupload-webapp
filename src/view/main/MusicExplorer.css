@@ -20,3 +20,18 @@
 .main-musicexplorer-div-player > div > input{
     visibility: hidden;
 }
+
+.filemusic-preview-div-modal-dialog{
+    max-width: 90vw;
+    max-height: 90vw;
+}
+
+.filemusic-preview-div-modal-body{
+    align-content: center;
+    justify-content: center;
+    height: 90vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import $ from 'jquery';
 
 import Player from "@madzadev/audio-player";
 import AlertForm from "../../component/form/AlertForm";
 import ButtonMain from "../../component/main/ButtonMain";
 import ButtonModelMain from "../../component/main/ButtonModelMain";
+import { Modal } from "react-bootstrap";
 
 import { AppContext } from "../../context/AppContext";
 
@@ -15,6 +16,8 @@ import "./MusicExplorer.css";
 function MusicExplorer(){
     
     const context = useContext(AppContext);
+
+    const [showMusicListModal, setShowMusicListModal] = useState(false);
 
     useEffect(() => {
         if (sessionStorage.getItem("session") != undefined){
@@ -54,18 +57,27 @@ function MusicExplorer(){
             playlistTextHoverActive: "#fff86A",
         };
         return(
-            <div className="main-musicexplorer-div-body d-flex flex-column text-center">
-                <h2 className="mt-4">Musica</h2>
-                <ButtonMain text="Gestionar Musica" onClick={() => alert("Musica")}></ButtonMain>
-                <div className="main-musicexplorer-div-player row d-flex flex-row m-5">
-                    <Player
-                    trackList={context.music}
-                    showPlaylist={true}
-                    autoPlayNextTrack={true}
-                    customColorScheme={colors}>
-                    </Player>
+            <>
+                <div className="main-musicexplorer-div-body d-flex flex-column text-center">
+                    <h2 className="mt-4">Musica</h2>
+                    <ButtonMain text="Gestionar Musica" onClick={() => setShowMusicListModal(true)}></ButtonMain>
+                    <div className="main-musicexplorer-div-player row d-flex flex-row m-5">
+                        <Player
+                        trackList={context.music}
+                        showPlaylist={true}
+                        autoPlayNextTrack={true}
+                        customColorScheme={colors}>
+                        </Player>
+                    </div>
                 </div>
-            </div>
+                <Modal className="filemusic-preview-div-modal justify-content-center align-items-center" show={showMusicListModal} onHide={() => setShowMusicListModal(false)} dialogClassName="filedocument-preview-div-modal-dialog">
+                    <Modal.Body className="filemusic-preview-div-modal-body">
+                        <div className="d-flex flex-column gap-1">
+                            {context.musicList}
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            </>
         );
     } 
     

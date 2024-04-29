@@ -40,6 +40,20 @@ export function AppContextProvider(props){
                 );
             }
             setGetMusic(arrayMusic);
+            await getMusicFilesList();
+        }
+    }
+
+    const [getMusicList, setGetMusicList] = useState([]);
+
+    async function getMusicFilesList(){
+        if (sessionStorage.getItem("session") != undefined){
+            let data = await UserController.getAllUserMusic(JSON.parse(sessionStorage.getItem("session")).id);
+            let arrayMusic = new Array();
+            for (let music of data){
+                arrayMusic.push(<FilePreview type="music" id={music.id} src={`${fileserverSettings.USER_FOLDER_ROUTE}/${music.path}`} title={`${music.name} - ${music.artist}`}></FilePreview>);
+            }
+            setGetMusicList(arrayMusic);
         }
     }
 
@@ -82,7 +96,7 @@ export function AppContextProvider(props){
     }, [])
 
     return(
-        <AppContext.Provider value={{documents: getDocuments, getDocument: getDocumentFiles, music: getMusic, getMusic: getMusicFiles, photos: getPhotos, getPhotos: getPhotoFiles, videos: getVideos, getVideos: getVideoFiles}}>
+        <AppContext.Provider value={{documents: getDocuments, getDocument: getDocumentFiles, music: getMusic, getMusic: getMusicFiles, musicList: getMusicList, photos: getPhotos, getPhotos: getPhotoFiles, videos: getVideos, getVideos: getVideoFiles}}>
             {props.children}
         </AppContext.Provider>
     );
