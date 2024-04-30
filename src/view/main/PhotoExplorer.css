@@ -35,3 +35,18 @@
 .fullscreen .image-gallery-slide > img {
     max-height: 100vh;
 }
+
+.filephoto-preview-div-modal-dialog{
+    max-width: 90vw;
+    max-height: 90vw;
+}
+
+.filephoto-preview-div-modal-body{
+    align-content: center;
+    justify-content: center;
+    height: 90vh;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

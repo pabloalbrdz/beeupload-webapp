@@ -123,3 +123,107 @@
     max-width: 100%;
     max-height: 100%;
 }
+
+
+.filemusic-preview-div{
+    background-color: black;
+    height: 2.5rem;
+    width: 100%;
+    border: 2px solid #FFF86A;
+    border-radius: 20px;
+    text-align: start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.filemusic-preview-div > p{
+    width: 80%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-top: 0.25rem;
+    display: inline;
+}
+
+.filemusic-preview-div > button{
+    width: 20%;
+    height: 100%;
+    right: 0%;
+    background-color: transparent;
+    border: none;
+    color: #FFF86A;
+}
+
+.filemusic-preview-div-modal-dialog{
+    max-width: 90vw;
+    max-height: 90vw;
+}
+
+.fileimage-preview-div{
+    background-color: black;
+    height: 2.5rem;
+    width: 100%;
+    border: 2px solid #FFF86A;
+    border-radius: 20px;
+    text-align: start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.fileimage-preview-div > div{
+    width: 80%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-top: 0.25rem;
+    display: inline;
+}
+
+.fileimage-preview-div > div > img{
+    width: 50%;
+}
+
+.fileimage-preview-div > button{
+    width: 20%;
+    height: 100%;
+    right: 0%;
+    background-color: transparent;
+    border: none;
+    color: #FFF86A;
+}
+
+.fileimage-preview-div-modal-dialog{
+    max-width: 90vw;
+    max-height: 90vw;
+}
+
+.fileimage-preview-div-modal-body{
+    align-content: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.fileimage-preview-div-modal-body > div > img{
+    width: 100%;
+    max-width: 25vw;
+    max-height: 25vh;
+}
+
+
+
+

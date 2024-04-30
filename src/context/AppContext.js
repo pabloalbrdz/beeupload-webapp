@@ -32,6 +32,7 @@ export function AppContextProvider(props){
             for (let music of data){
                 arrayMusic.push(
                     {
+                        id: music.id,
                         url: `${fileserverSettings.USER_FOLDER_ROUTE}/${music.path}`,
                         title: `${music.name} - ${music.artist}`,
                         tags: []
@@ -39,6 +40,20 @@ export function AppContextProvider(props){
                 );
             }
             setGetMusic(arrayMusic);
+            await getMusicFilesList();
+        }
+    }
+
+    const [getMusicList, setGetMusicList] = useState([]);
+
+    async function getMusicFilesList(){
+        if (sessionStorage.getItem("session") != undefined){
+            let data = await UserController.getAllUserMusic(JSON.parse(sessionStorage.getItem("session")).id);
+            let arrayMusic = new Array();
+            for (let music of data){
+                arrayMusic.push(<FilePreview type="music" id={music.id} src={`${fileserverSettings.USER_FOLDER_ROUTE}/${music.path}`} title={`${music.name} - ${music.artist}`}></FilePreview>);
+            }
+            setGetMusicList(arrayMusic);
         }
     }
 
@@ -57,7 +72,19 @@ export function AppContextProvider(props){
                 );
             }
             setGetPhotos(arrayImg);
+            await getPhotoFilesList();
         }
+    }
+
+    const [getPhotosList, setGetPhotosList] = useState([]);
+
+    async function getPhotoFilesList(){
+        let data = await UserController.getAllUserPhotos(JSON.parse(sessionStorage.getItem("session")).id);
+        let arrayImg = new Array();
+        for (let image of data){
+            arrayImg.push(<FilePreview type="photo" id={image.id} src={`${fileserverSettings.USER_FOLDER_ROUTE}/${image.path}`}></FilePreview>);
+        }
+        setGetPhotosList(arrayImg);
     }
 
     const [getVideos, setGetVideos] = useState([]);
@@ -81,7 +108,7 @@ export function AppContextProvider(props){
     }, [])
 
     return(
-        <AppContext.Provider value={{documents: getDocuments, getDocument: getDocumentFiles, music: getMusic, getMusic: getMusicFiles, photos: getPhotos, getPhotos: getPhotoFiles, videos: getVideos, getVideos: getVideoFiles}}>
+        <AppContext.Provider value={{documents: getDocuments, getDocument: getDocumentFiles, music: getMusic, getMusic: getMusicFiles, musicList: getMusicList, photos: getPhotos, getPhotos: getPhotoFiles, photoList: getPhotosList,  videos: getVideos, getVideos: getVideoFiles}}>
             {props.children}
         </AppContext.Provider>
     );
