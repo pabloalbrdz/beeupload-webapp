@@ -72,7 +72,19 @@ export function AppContextProvider(props){
                 );
             }
             setGetPhotos(arrayImg);
+            await getPhotoFilesList();
         }
+    }
+
+    const [getPhotosList, setGetPhotosList] = useState([]);
+
+    async function getPhotoFilesList(){
+        let data = await UserController.getAllUserPhotos(JSON.parse(sessionStorage.getItem("session")).id);
+        let arrayImg = new Array();
+        for (let image of data){
+            arrayImg.push(<FilePreview type="photo" id={image.id} src={`${fileserverSettings.USER_FOLDER_ROUTE}/${image.path}`}></FilePreview>);
+        }
+        setGetPhotosList(arrayImg);
     }
 
     const [getVideos, setGetVideos] = useState([]);
@@ -96,7 +108,7 @@ export function AppContextProvider(props){
     }, [])
 
     return(
-        <AppContext.Provider value={{documents: getDocuments, getDocument: getDocumentFiles, music: getMusic, getMusic: getMusicFiles, musicList: getMusicList, photos: getPhotos, getPhotos: getPhotoFiles, videos: getVideos, getVideos: getVideoFiles}}>
+        <AppContext.Provider value={{documents: getDocuments, getDocument: getDocumentFiles, music: getMusic, getMusic: getMusicFiles, musicList: getMusicList, photos: getPhotos, getPhotos: getPhotoFiles, photoList: getPhotosList,  videos: getVideos, getVideos: getVideoFiles}}>
             {props.children}
         </AppContext.Provider>
     );

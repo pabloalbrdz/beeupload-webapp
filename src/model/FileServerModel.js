@@ -181,7 +181,27 @@ export const FileServerModel = {
     },
   
     async deleteUserImage(userId, imgId){
-      
+        try{
+            const response = await axios.delete(
+                `${fileserverSettings.USER_IMAGE}/deleteUserImage?userid=${userId}&imgid=${imgId}`,
+                {
+                    userid: `${userId}`
+                },
+                {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Access-Control-Allow-Origin' : '*'
+                    }
+                }
+            );
+            return {"status": response.status, "data": response.data};
+        }catch(error){
+            if (error.response){
+                return {"status": error.response.status, "data": error.response.data};
+            }else{
+                return {"status": 400, "data": error.message};
+            }
+        }        
     },
   
     async deleteUserVideo(userId, videoId){

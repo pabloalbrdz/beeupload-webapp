@@ -70,7 +70,7 @@ function MusicExplorer(){
                         </Player>
                     </div>
                 </div>
-                <Modal className="filemusic-preview-div-modal justify-content-center align-items-center" show={showMusicListModal} onHide={() => setShowMusicListModal(false)} dialogClassName="filedocument-preview-div-modal-dialog">
+                <Modal className="filemusic-preview-div-modal justify-content-center align-items-center" show={showMusicListModal} onHide={() => setShowMusicListModal(false)} dialogClassName="filemusic-preview-div-modal-dialog">
                     <Modal.Body className="filemusic-preview-div-modal-body">
                         <div className="d-flex flex-column gap-1">
                             {context.musicList}

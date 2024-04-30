@@ -322,8 +322,26 @@ export const UserController = {
         }      
     },
   
-    async deleteUserImage(userId, imgId){
-      
+    async deleteUserImage(userId, imgId, setDeletePhotoState){
+        try{
+            let response = await FileServerModel.deleteUserImage(userId, imgId);
+            if (response.status == 200){
+                let response2 = await UserModel.deleteUserImage(imgId);
+                if (response2.status == 200){
+                    setDeletePhotoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Imagen eliminada"}); 
+                    return true;
+                }else{
+                    setDeletePhotoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                    return false;
+                }
+            }else{
+                setDeletePhotoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data}); 
+                return false;
+            }
+        }catch(error){
+            setDeletePhotoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false;  
+        }  
     },
   
     async deleteUserVideo(userId, videoId, setDeleteVideoState){
