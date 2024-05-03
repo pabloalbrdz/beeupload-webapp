@@ -228,6 +228,31 @@ export const UserModel = {
     }
   },
 
+  async updateDocument(documentId, docName){
+    try{
+      const response = await axios.put(
+        `${apiSettings.DOCUMENT_API}/updateDocument`,
+        {
+          id: documentId,
+          name: docName
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
   async updateDocumentPath(documentId, docPath){
     try{
       const response = await axios.put(
@@ -263,6 +288,32 @@ export const UserModel = {
           artist: musicArtist,
           path: "",
           userid: userId
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async updateMusic(musicId, musicName, musicArtist){
+    try{
+      const response = await axios.put(
+        `${apiSettings.MUSIC_API}/updateMusic`,
+        {
+          id: musicId,
+          name: musicName,
+          artist: musicArtist
         },
         {
           headers: {
@@ -365,6 +416,31 @@ export const UserModel = {
           name: videoName,
           path: "",
           userid: userId
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*'
+          }
+        }
+      );
+      return {"status": response.status, "data": response.data};
+    }catch(error){
+      if (error.response){
+        return {"status": error.response.status, "data": error.response.data};
+      }else{
+        return {"status": 400, "data": error.message};
+      }
+    }
+  },
+
+  async updateVideo(videoId, videoName){
+    try{
+      const response = await axios.put(
+        `${apiSettings.VIDEO_API}/updateVideo`,
+        {
+          id: videoId,
+          name: videoName
         },
         {
           headers: {
