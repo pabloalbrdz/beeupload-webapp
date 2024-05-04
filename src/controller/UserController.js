@@ -126,6 +126,22 @@ export const UserController = {
         }
     },
 
+    async updateDocument(docId, newDocName, setUpdateDocumentState){
+        try{
+            let response = await UserModel.updateDocument(docId, newDocName);
+            if (response.status == 200){
+                setUpdateDocumentState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Documento modificado con exito"});
+                return true;
+            }else{
+                setUpdateDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});  
+                return false;
+            }
+        }catch(error){
+            setUpdateDocumentState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false; 
+        }
+    },
+
     async getAllUserDocuments(userId){
         try{
             let response = await UserModel.getAllUserDocument(userId);
@@ -167,6 +183,22 @@ export const UserController = {
             }
         }catch(error){
             setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false; 
+        }
+    },
+
+    async updateMusic(musicId, newMusicName, newMusicArtist, setUpdateMusicState){
+        try{
+            let response = await UserModel.updateMusic(musicId, newMusicName, newMusicArtist);
+            if (response.status == 200){
+                setUpdateMusicState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Música modificada con exito"});
+                return true;
+            }else{
+                setUpdateMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});  
+                return false;
+            }
+        }catch(error){
+            setUpdateMusicState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false; 
         }
     },
@@ -257,6 +289,22 @@ export const UserController = {
             }
         }catch(error){
             setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
+            return false; 
+        }
+    },
+
+    async updateVideo(videoId, newVideoName, setUpdateVideoState){
+        try{
+            let response = await UserModel.updateVideo(videoId, newVideoName);
+            if (response.status == 200){
+                setUpdateVideoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Video modificado con exito"});
+                return true;
+            }else{
+                setUpdateVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": response.data});  
+                return false;
+            }
+        }catch(error){
+            setUpdateVideoState({"visible": "alert-form-visible", "state": "alert-form-error", "message": error.message});  
             return false; 
         }
     },
