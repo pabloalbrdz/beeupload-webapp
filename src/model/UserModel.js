@@ -230,6 +230,7 @@ export const UserModel = {
 
   async updateDocument(documentId, docName){
     try{
+      filenameValidation(docName);
       const response = await axios.put(
         `${apiSettings.DOCUMENT_API}/updateDocument`,
         {
@@ -308,6 +309,7 @@ export const UserModel = {
 
   async updateMusic(musicId, musicName, musicArtist){
     try{
+      musicnameValidation(musicName, musicArtist);
       const response = await axios.put(
         `${apiSettings.MUSIC_API}/updateMusic`,
         {
@@ -436,6 +438,7 @@ export const UserModel = {
 
   async updateVideo(videoId, videoName){
     try{
+      filenameValidation(videoName);
       const response = await axios.put(
         `${apiSettings.VIDEO_API}/updateVideo`,
         {

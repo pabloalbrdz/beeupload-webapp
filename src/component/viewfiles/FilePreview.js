@@ -24,19 +24,38 @@ function FilePreview({type, id, src, title}){
     const [showDeleteFileModel, setShowDeleteFileModel] = useState(false);
     const [deleteFileState, setDeleteFileState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
 
-    const [input1, setInput1] = useState(false);
-    const [input2, setInput2] = useState(false);
+    const [input1, setInput1] = useState("");
+    const [input2, setInput2] = useState("");
 
     async function updateFile(e){
         e.preventDefault();
         if (type == "video"){
-            alert("Video modificado");
+            let updatedVideo = await UserController.updateVideo(id, input1, setUpdateFileState);
+            if (updatedVideo){
+                setTimeout(function(){
+                    setShowUpdateFileModel(false);
+                    setUpdateFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+                    context.getVideos();
+                }, 2000); 
+            }
         }else if (type == "document"){
-            alert("Documento modificado");
+            let updatedDoc = await UserController.updateDocument(id, input1, setUpdateFileState);
+            if (updatedDoc){
+                setTimeout(function(){
+                    setShowUpdateFileModel(false);
+                    setUpdateFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+                    context.getDocument();
+                }, 2000); 
+            }
         }else if(type == "music"){
-            alert("Musica modificada");
-        }else if(type == "photo"){
-            alert("Imagen modificada");
+            let updatedMusic = await UserController.updateMusic(id, input1, input2, setUpdateFileState);
+            if (updatedMusic){
+                setTimeout(function(){
+                    setShowUpdateFileModel(false);
+                    setUpdateFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); 
+                    context.getMusic();
+                }, 2000); 
+            }
         }
     }
 
@@ -112,10 +131,10 @@ function FilePreview({type, id, src, title}){
                         <Modal.Title>Modificar Video</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        <AlertForm visible={updateFileState.visible} state={updateFileState.state} message={updateFileState.message}></AlertForm>
                         <InputModelMain type="text" placeholder="Nombre Video" onChange={(e) => setInput1(e.target.value)}></InputModelMain>
                     </Modal.Body>
                     <Modal.Footer className="d-flex justify-content-center">
-                        <AlertForm visible={updateFileState.visible} state={updateFileState.state} message={updateFileState.message}></AlertForm>
                         <ButtonModelMain text="Salir" onClick={() => {setShowUpdateFileModel(false); setUpdateFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); }}></ButtonModelMain>
                         <ButtonModelMain text="Aceptar" onClick={updateFile}></ButtonModelMain>
                     </Modal.Footer>
@@ -153,10 +172,10 @@ function FilePreview({type, id, src, title}){
                         <Modal.Title>Modificar Documento</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        <AlertForm visible={updateFileState.visible} state={updateFileState.state} message={updateFileState.message}></AlertForm>
                         <InputModelMain type="text" placeholder="Nombre Documento" onChange={(e) => setInput1(e.target.value)}></InputModelMain>
                     </Modal.Body>
                     <Modal.Footer className="d-flex justify-content-center">
-                        <AlertForm visible={updateFileState.visible} state={updateFileState.state} message={updateFileState.message}></AlertForm>
                         <ButtonModelMain text="Salir" onClick={() => {setShowUpdateFileModel(false); setUpdateFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); }}></ButtonModelMain>
                         <ButtonModelMain text="Aceptar" onClick={updateFile}></ButtonModelMain>
                     </Modal.Footer>
@@ -189,11 +208,11 @@ function FilePreview({type, id, src, title}){
                         <Modal.Title>Modificar Musica</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
+                        <AlertForm visible={updateFileState.visible} state={updateFileState.state} message={updateFileState.message}></AlertForm>
                         <InputModelMain type="text" placeholder="Nombre Cancion" onChange={(e) => setInput1(e.target.value)}></InputModelMain>
                         <InputModelMain type="text" placeholder="Artista" onChange={(e) => setInput2(e.target.value)}></InputModelMain>
                     </Modal.Body>
                     <Modal.Footer className="d-flex justify-content-center">
-                        <AlertForm visible={updateFileState.visible} state={updateFileState.state} message={updateFileState.message}></AlertForm>
                         <ButtonModelMain text="Salir" onClick={() => {setShowUpdateFileModel(false); setUpdateFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); }}></ButtonModelMain>
                         <ButtonModelMain text="Aceptar" onClick={updateFile}></ButtonModelMain>
                     </Modal.Footer>
