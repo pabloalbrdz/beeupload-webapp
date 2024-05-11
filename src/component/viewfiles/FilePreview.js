@@ -30,7 +30,7 @@ function FilePreview({type, id, src, title}){
     async function updateFile(e){
         e.preventDefault();
         if (type == "video"){
-            let updatedVideo = await UserController.updateVideo(id, input1, setUpdateFileState);
+            let updatedVideo = await UserController.updateVideo(id, input1, setUpdateFileState, JSON.parse(sessionStorage.getItem("session")).token);
             if (updatedVideo){
                 setTimeout(function(){
                     setShowUpdateFileModel(false);
@@ -39,7 +39,7 @@ function FilePreview({type, id, src, title}){
                 }, 2000); 
             }
         }else if (type == "document"){
-            let updatedDoc = await UserController.updateDocument(id, input1, setUpdateFileState);
+            let updatedDoc = await UserController.updateDocument(id, input1, setUpdateFileState, JSON.parse(sessionStorage.getItem("session")).token);
             if (updatedDoc){
                 setTimeout(function(){
                     setShowUpdateFileModel(false);
@@ -48,7 +48,7 @@ function FilePreview({type, id, src, title}){
                 }, 2000); 
             }
         }else if(type == "music"){
-            let updatedMusic = await UserController.updateMusic(id, input1, input2, setUpdateFileState);
+            let updatedMusic = await UserController.updateMusic(id, input1, input2, setUpdateFileState, JSON.parse(sessionStorage.getItem("session")).token);
             if (updatedMusic){
                 setTimeout(function(){
                     setShowUpdateFileModel(false);
@@ -62,7 +62,7 @@ function FilePreview({type, id, src, title}){
     async function deleteFile(e){
         e.preventDefault();
         if (type == "video"){
-            let deletedVideo = await UserController.deleteUserVideo(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState);
+            let deletedVideo = await UserController.deleteUserVideo(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState, JSON.parse(sessionStorage.getItem("session")).token);
             if (deletedVideo){
                 setTimeout(function(){
                     setShowDeleteFileModel(false);
@@ -71,7 +71,7 @@ function FilePreview({type, id, src, title}){
                 }, 2000); 
             }
         }else if (type == "document"){
-            let deletedDoc = await UserController.deleteUserDocument(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState);
+            let deletedDoc = await UserController.deleteUserDocument(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState, JSON.parse(sessionStorage.getItem("session")).token);
             if (deletedDoc){
                 setTimeout(function(){
                     setShowDeleteFileModel(false);
@@ -80,7 +80,7 @@ function FilePreview({type, id, src, title}){
                 }, 2000); 
             }
         }else if (type == "music"){
-            let deletedMusic = await UserController.deleteUserMusic(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState);
+            let deletedMusic = await UserController.deleteUserMusic(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState, JSON.parse(sessionStorage.getItem("session")).token);
             if (deletedMusic){
                 setTimeout(function(){
                     setShowDeleteFileModel(false);
@@ -89,7 +89,7 @@ function FilePreview({type, id, src, title}){
                 }, 2000); 
             }
         }else if (type == "photo"){
-            let deletedPhoto = await UserController.deleteUserImage(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState);
+            let deletedPhoto = await UserController.deleteUserImage(JSON.parse(sessionStorage.getItem("session")).id, id, setDeleteFileState, JSON.parse(sessionStorage.getItem("session")).token);
             if (deletedPhoto){
                 setTimeout(function(){
                     setShowDeleteFileModel(false);

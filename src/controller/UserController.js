@@ -50,9 +50,9 @@ export const UserController = {
         }
     },
     
-    async changeUsername(userId, lastUsername, newUsername, setChangeUsernameState){
+    async changeUsername(userId, lastUsername, newUsername, setChangeUsernameState, token){
         try{
-            let response = await UserModel.changeUsername(userId, lastUsername, newUsername);
+            let response = await UserModel.changeUsername(userId, lastUsername, newUsername, token);
             if (response.status == 200){
                 setChangeUsernameState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Nombre de usuario modificado con exito"});
                 return true;
@@ -66,9 +66,9 @@ export const UserController = {
         }
     },
 
-    async changeEmail(userId, lastEmail, newEmail, setChangeEmailState){
+    async changeEmail(userId, lastEmail, newEmail, setChangeEmailState, token){
         try{
-            let response = await UserModel.changeEmail(userId, lastEmail, newEmail);
+            let response = await UserModel.changeEmail(userId, lastEmail, newEmail, token);
             if (response.status == 200){
                 setChangeEmailState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Correo electronico modificado con exito"});
                 return true;
@@ -82,9 +82,9 @@ export const UserController = {
         }
     },
 
-    async changePassword(userId, lastPassword, newPassword, setChangePasswordState){
+    async changePassword(userId, lastPassword, newPassword, setChangePasswordState, token){
         try{
-            let response = await UserModel.changePassword(userId, lastPassword, newPassword);
+            let response = await UserModel.changePassword(userId, lastPassword, newPassword, token);
             if (response.status == 200){
                 setChangePasswordState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Contraseña modificada con exito"});
                 return true;
@@ -98,13 +98,13 @@ export const UserController = {
         }
     },
 
-    async uploadDocument(userId, docName, docFile, setUploadDocumentState){
+    async uploadDocument(userId, docName, docFile, setUploadDocumentState, token){
         try{
-            let response = await UserModel.uploadDocument(userId, docName);
+            let response = await UserModel.uploadDocument(userId, docName, token);
             if (response.status == 200){
-                let response2 = await FileServerModel.uploadDocument(userId, response.data.id, docFile);
+                let response2 = await FileServerModel.uploadDocument(userId, response.data.id, docFile, token);
                 if (response2.status == 200){
-                    let response3 = await UserModel.updateDocumentPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\document\\${response.data.id}.pdf`);
+                    let response3 = await UserModel.updateDocumentPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\document\\${response.data.id}.pdf`, token);
                     if (response3.status == 200){
                         setUploadDocumentState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Documento subido con exito"});
                         return true;
@@ -126,9 +126,9 @@ export const UserController = {
         }
     },
 
-    async updateDocument(docId, newDocName, setUpdateDocumentState){
+    async updateDocument(docId, newDocName, setUpdateDocumentState, token){
         try{
-            let response = await UserModel.updateDocument(docId, newDocName);
+            let response = await UserModel.updateDocument(docId, newDocName, token);
             if (response.status == 200){
                 setUpdateDocumentState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Documento modificado con exito"});
                 return true;
@@ -142,9 +142,9 @@ export const UserController = {
         }
     },
 
-    async getAllUserDocuments(userId){
+    async getAllUserDocuments(userId, token){
         try{
-            let response = await UserModel.getAllUserDocument(userId);
+            let response = await UserModel.getAllUserDocument(userId, token);
             if (response.status == 200){
                 let files = new Array();
                 for (let file of response.data){
@@ -159,13 +159,13 @@ export const UserController = {
         }
     },
 
-    async uploadMusic(userId, musicName, musicArtist, musicFile, setUploadMusicState){
+    async uploadMusic(userId, musicName, musicArtist, musicFile, setUploadMusicState, token){
         try{
-            let response = await UserModel.uploadMusic(userId, musicName, musicArtist);
+            let response = await UserModel.uploadMusic(userId, musicName, musicArtist, token);
             if (response.status == 200){
-                let response2 = await FileServerModel.uploadMusic(userId, response.data.id, musicFile);
+                let response2 = await FileServerModel.uploadMusic(userId, response.data.id, musicFile, token);
                 if (response2.status == 200){
-                    let response3 = await UserModel.updateMusicPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\music\\${response.data.id}.mp3`);
+                    let response3 = await UserModel.updateMusicPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\music\\${response.data.id}.mp3`, token);
                     if (response3.status == 200){
                         setUploadMusicState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Música subida con éxito"});
                         return true;
@@ -187,9 +187,9 @@ export const UserController = {
         }
     },
 
-    async updateMusic(musicId, newMusicName, newMusicArtist, setUpdateMusicState){
+    async updateMusic(musicId, newMusicName, newMusicArtist, setUpdateMusicState, token){
         try{
-            let response = await UserModel.updateMusic(musicId, newMusicName, newMusicArtist);
+            let response = await UserModel.updateMusic(musicId, newMusicName, newMusicArtist, token);
             if (response.status == 200){
                 setUpdateMusicState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Música modificada con exito"});
                 return true;
@@ -203,9 +203,9 @@ export const UserController = {
         }
     },
 
-    async getAllUserMusic(userId){
+    async getAllUserMusic(userId, token){
         try{
-            let response = await UserModel.getAllUserMusic(userId);
+            let response = await UserModel.getAllUserMusic(userId, token);
             if (response.status == 200){
                 let files = new Array();
                 for (let file of response.data){
@@ -220,13 +220,13 @@ export const UserController = {
         }
     },
 
-    async uploadPhoto(userId, photoFile, photoExtension ,setUploadPhotoState){
+    async uploadPhoto(userId, photoFile, photoExtension ,setUploadPhotoState, token){
         try{
-            let response = await UserModel.uploadImage(userId);
+            let response = await UserModel.uploadImage(userId, token);
             if (response.status == 200){
-                let response2 = await FileServerModel.uploadImage(userId, response.data.id, photoFile);
+                let response2 = await FileServerModel.uploadImage(userId, response.data.id, photoFile, token);
                 if (response2.status == 200){
-                    let response3 = await UserModel.updateImagePath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\image\\${response.data.id}.${photoExtension}`);
+                    let response3 = await UserModel.updateImagePath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\image\\${response.data.id}.${photoExtension}`, token);
                     if (response3.status == 200){
                         setUploadPhotoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Foto subida con éxito"});
                         return true;
@@ -248,9 +248,9 @@ export const UserController = {
         }
     },
 
-    async getAllUserPhotos(userId){
+    async getAllUserPhotos(userId, token){
         try{
-            let response = await UserModel.getAllUserImage(userId);
+            let response = await UserModel.getAllUserImage(userId, token);
             if (response.status == 200){
                 let files = new Array();
                 for (let file of response.data){
@@ -265,13 +265,13 @@ export const UserController = {
         }
     },
 
-    async uploadVideo(userId, videoName, videoFile, setUploadVideoState){
+    async uploadVideo(userId, videoName, videoFile, setUploadVideoState, token){
         try{
-            let response = await UserModel.uploadVideo(userId, videoName);
+            let response = await UserModel.uploadVideo(userId, videoName, token);
             if (response.status == 200){
-                let response2 = await FileServerModel.uploadVideo(userId, response.data.id, videoFile);
+                let response2 = await FileServerModel.uploadVideo(userId, response.data.id, videoFile, token);
                 if (response2.status == 200){
-                    let response3 = await UserModel.updateVideoPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\video\\${response.data.id}.mp4`);
+                    let response3 = await UserModel.updateVideoPath(response.data.id, `${JSON.parse(sessionStorage.getItem("session")).id}\\video\\${response.data.id}.mp4`, token);
                     if (response3.status == 200){
                         setUploadVideoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Video subido con éxito"});
                         return true;
@@ -293,9 +293,9 @@ export const UserController = {
         }
     },
 
-    async updateVideo(videoId, newVideoName, setUpdateVideoState){
+    async updateVideo(videoId, newVideoName, setUpdateVideoState, token){
         try{
-            let response = await UserModel.updateVideo(videoId, newVideoName);
+            let response = await UserModel.updateVideo(videoId, newVideoName, token);
             if (response.status == 200){
                 setUpdateVideoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Video modificado con exito"});
                 return true;
@@ -309,9 +309,9 @@ export const UserController = {
         }
     },
 
-    async getAllUserVideos(userId){
+    async getAllUserVideos(userId, token){
         try{
-            let response = await UserModel.getAllUserVideo(userId);
+            let response = await UserModel.getAllUserVideo(userId, token);
             if (response.status == 200){
                 let files = new Array();
                 for (let file of response.data){
@@ -326,11 +326,11 @@ export const UserController = {
         }
     },
 
-    async deleteUserDocument(userId, docId, setDeleteDocumentState){
+    async deleteUserDocument(userId, docId, setDeleteDocumentState, token){
         try{
-            let response = await FileServerModel.deleteUserDocument(userId, docId);
+            let response = await FileServerModel.deleteUserDocument(userId, docId, token);
             if (response.status == 200){
-                let response2 = await UserModel.deleteUserDocument(docId);
+                let response2 = await UserModel.deleteUserDocument(docId, token);
                 if (response2.status == 200){
                     setDeleteDocumentState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Documento eliminado"}); 
                     return true;
@@ -348,11 +348,11 @@ export const UserController = {
         }
     },
   
-    async deleteUserMusic(userId, musicId, setDeleteMusicState){
+    async deleteUserMusic(userId, musicId, setDeleteMusicState, token){
         try{
-            let response = await FileServerModel.deleteUserMusic(userId, musicId);
+            let response = await FileServerModel.deleteUserMusic(userId, musicId, token);
             if (response.status == 200){
-                let response2 = await UserModel.deleteUserMusic(musicId);
+                let response2 = await UserModel.deleteUserMusic(musicId, token);
                 if (response2.status == 200){
                     setDeleteMusicState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Musica eliminada"}); 
                     return true;
@@ -370,11 +370,11 @@ export const UserController = {
         }      
     },
   
-    async deleteUserImage(userId, imgId, setDeletePhotoState){
+    async deleteUserImage(userId, imgId, setDeletePhotoState, token){
         try{
-            let response = await FileServerModel.deleteUserImage(userId, imgId);
+            let response = await FileServerModel.deleteUserImage(userId, imgId, token);
             if (response.status == 200){
-                let response2 = await UserModel.deleteUserImage(imgId);
+                let response2 = await UserModel.deleteUserImage(imgId, token);
                 if (response2.status == 200){
                     setDeletePhotoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Imagen eliminada"}); 
                     return true;
@@ -392,11 +392,11 @@ export const UserController = {
         }  
     },
   
-    async deleteUserVideo(userId, videoId, setDeleteVideoState){
+    async deleteUserVideo(userId, videoId, setDeleteVideoState, token){
         try{
-            let response = await FileServerModel.deleteUserVideo(userId, videoId);
+            let response = await FileServerModel.deleteUserVideo(userId, videoId, token);
             if (response.status == 200){
-                let response2 = await UserModel.deleteUserVideo(videoId);
+                let response2 = await UserModel.deleteUserVideo(videoId, token);
                 if (response2.status == 200){
                     setDeleteVideoState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Video eliminado"}); 
                     return true;
@@ -414,11 +414,11 @@ export const UserController = {
         }
     },
 
-    async deleteAllUserDocs(userId, setDocDeleteState){
+    async deleteAllUserDocs(userId, setDocDeleteState, token){
         try{
-            let response = await FileServerModel.deleteAllUserDocuments(userId);
+            let response = await FileServerModel.deleteAllUserDocuments(userId, token);
             if (response.status == 200){
-                let response2 = await UserModel.deleteAllUserDocuments(userId);
+                let response2 = await UserModel.deleteAllUserDocuments(userId, token);
                 if (response2.status == 200){
                     setDocDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminados todos los documentos"}); 
                     return true;
@@ -436,11 +436,11 @@ export const UserController = {
         }
     },
 
-    async deleteAllUserMusic(userId, setMusicDeleteState){
+    async deleteAllUserMusic(userId, setMusicDeleteState, token){
         try{
-            let response = await FileServerModel.deleteAllUserMusic(userId);
+            let response = await FileServerModel.deleteAllUserMusic(userId, token);
             if (response.status == 200){
-                let response2 = await UserModel.deleteAllUserMusic(userId);
+                let response2 = await UserModel.deleteAllUserMusic(userId, token);
                 if (response2.status == 200){
                     setMusicDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminadas todas las canciones"}); 
                     return true;
@@ -458,11 +458,11 @@ export const UserController = {
         }
     },
 
-    async deleteAllUserPhotos(userId, setImageDeleteState){
+    async deleteAllUserPhotos(userId, setImageDeleteState, token){
         try{
-            let response = await FileServerModel.deleteAllUserImages(userId);
+            let response = await FileServerModel.deleteAllUserImages(userId, token);
             if (response.status == 200){
-                let response2 = await UserModel.deleteAllUserImages(userId);
+                let response2 = await UserModel.deleteAllUserImages(userId, token);
                 if (response2.status == 200){
                     setImageDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminadas todas las imagenes"}); 
                     return true;
@@ -480,11 +480,11 @@ export const UserController = {
         }
     },
 
-    async deleteAllUserVideos(userId, setVideoDeleteState){
+    async deleteAllUserVideos(userId, setVideoDeleteState, token){
         try{
-            let response = await FileServerModel.deleteAllUserVideos(userId);
+            let response = await FileServerModel.deleteAllUserVideos(userId, token);
             if (response.status == 200){
-                let response2 = await UserModel.deleteAllUserVideos(userId);
+                let response2 = await UserModel.deleteAllUserVideos(userId, token);
                 if (response2.status == 200){
                     setVideoDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminados todos los videos"}); 
                     return true;
@@ -502,14 +502,14 @@ export const UserController = {
         }
     },
 
-    async deleteAllUserFiles(userId, setFileDeleteState){
+    async deleteAllUserFiles(userId, setFileDeleteState, token){
         try{
-            let response = await FileServerModel.deleteAllUserFiles(userId);
+            let response = await FileServerModel.deleteAllUserFiles(userId, token);
             if (response.status == 200){
-                let response2 = await UserController.deleteAllUserDocs(userId, setFileDeleteState);
-                let response3 = await UserController.deleteAllUserMusic(userId, setFileDeleteState);
-                let response4 = await UserController.deleteAllUserPhotos(userId, setFileDeleteState);
-                let response5 = await UserController.deleteAllUserVideos(userId, setFileDeleteState);
+                let response2 = await UserController.deleteAllUserDocs(userId, setFileDeleteState, token);
+                let response3 = await UserController.deleteAllUserMusic(userId, setFileDeleteState, token);
+                let response4 = await UserController.deleteAllUserPhotos(userId, setFileDeleteState, token);
+                let response5 = await UserController.deleteAllUserVideos(userId, setFileDeleteState, token);
                 setFileDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Eliminados todos los ficheros"}); 
                 return true;
             }else{
@@ -522,11 +522,11 @@ export const UserController = {
         }
     },
 
-    async deleteUser(userId, setUserDeleteState){
+    async deleteUser(userId, setUserDeleteState, token){
         try{
-            let response = await UserModel.deleteUser(userId);
+            let response = await UserModel.deleteUser(userId, token);
             if (response.status == 200){
-                let response2 = await FileServerModel.deleteUserFolder(userId);
+                let response2 = await FileServerModel.deleteUserFolder(userId, token);
                 if (response2.status == 200){
                     setUserDeleteState({"visible": "alert-form-visible", "state": "alert-form-ok", "message": "Usuario eliminado"}); 
                     sessionStorage.removeItem("session");
