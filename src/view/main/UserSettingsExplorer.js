@@ -46,7 +46,7 @@ function UserSettingsExplorer(){
     };
     async function changeUsername(e){
         e.preventDefault();
-        let changedUsername = await UserController.changeUsername(JSON.parse(sessionStorage.getItem("session")).id, changeUsernameInput1, changeUsernameInput2, setChangeUsernameState);
+        let changedUsername = await UserController.changeUsername(JSON.parse(sessionStorage.getItem("session")).id, changeUsernameInput1, changeUsernameInput2, setChangeUsernameState, JSON.parse(sessionStorage.getItem("session")).token);
         if (changedUsername){
             setTimeout(function(){
                 setShowChangeUsername(false);
@@ -67,7 +67,7 @@ function UserSettingsExplorer(){
     };
     async function changeEmail(e){
         e.preventDefault();
-        let changedEmail = await UserController.changeEmail(JSON.parse(sessionStorage.getItem("session")).id, changeEmailInput1, changeEmailInput2, setChangeEmailState);
+        let changedEmail = await UserController.changeEmail(JSON.parse(sessionStorage.getItem("session")).id, changeEmailInput1, changeEmailInput2, setChangeEmailState, JSON.parse(sessionStorage.getItem("session")).token);
         if (changedEmail){
             setTimeout(function(){
                 setShowChangeEmail(false);
@@ -83,7 +83,7 @@ function UserSettingsExplorer(){
     const [changePasswordState, setChangePasswordState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function changePassword(e){
         e.preventDefault();
-        let changedPassword = await UserController.changePassword(JSON.parse(sessionStorage.getItem("session")).id, changePasswordInput1, changePasswordInput2, setChangePasswordState);
+        let changedPassword = await UserController.changePassword(JSON.parse(sessionStorage.getItem("session")).id, changePasswordInput1, changePasswordInput2, setChangePasswordState, JSON.parse(sessionStorage.getItem("session")).token);
         if (changedPassword){
             setTimeout(function(){
                 setShowChangePassword(false);
@@ -103,7 +103,7 @@ function UserSettingsExplorer(){
     const [deleteDocsState, setDeleteDocsState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function deleteDocs(e){
         e.preventDefault();
-        let deletedDocs = await UserController.deleteAllUserDocs(JSON.parse(sessionStorage.getItem("session")).id, setDeleteDocsState);
+        let deletedDocs = await UserController.deleteAllUserDocs(JSON.parse(sessionStorage.getItem("session")).id, setDeleteDocsState, JSON.parse(sessionStorage.getItem("session")).token);
         if (deletedDocs){
             setTimeout(function(){
                 setShowDeleteDocs(false);
@@ -116,7 +116,7 @@ function UserSettingsExplorer(){
     const [deleteMusicState, setDeleteMusicState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function deleteMusic(e){
         e.preventDefault();
-        let deletedMusic = await UserController.deleteAllUserMusic(JSON.parse(sessionStorage.getItem("session")).id, setDeleteMusicState);
+        let deletedMusic = await UserController.deleteAllUserMusic(JSON.parse(sessionStorage.getItem("session")).id, setDeleteMusicState, JSON.parse(sessionStorage.getItem("session")).token);
         if (deletedMusic){
             setTimeout(function(){
                 setShowDeleteMusic(false);
@@ -128,7 +128,7 @@ function UserSettingsExplorer(){
     const [deletePhotosState, setDeletePhotosState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function deletePhotos(e){
         e.preventDefault();
-        let deletedPhotos = await UserController.deleteAllUserPhotos(JSON.parse(sessionStorage.getItem("session")).id, setDeletePhotosState);
+        let deletedPhotos = await UserController.deleteAllUserPhotos(JSON.parse(sessionStorage.getItem("session")).id, setDeletePhotosState, JSON.parse(sessionStorage.getItem("session")).token);
         if (deletedPhotos){
             setTimeout(function(){
                 setShowDeletePhotos(false);
@@ -140,7 +140,7 @@ function UserSettingsExplorer(){
     const [deleteVideoState, setDeleteVideoState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function deleteVideos(e){
         e.preventDefault();
-        let deletedVideo = await UserController.deleteAllUserVideos(JSON.parse(sessionStorage.getItem("session")).id, setDeleteVideoState);
+        let deletedVideo = await UserController.deleteAllUserVideos(JSON.parse(sessionStorage.getItem("session")).id, setDeleteVideoState, JSON.parse(sessionStorage.getItem("session")).token);
         if (deletedVideo){
             setTimeout(function(){
                 setShowDeleteVideo(false);
@@ -152,7 +152,7 @@ function UserSettingsExplorer(){
     const [deleteFilesState, setDeleteFileState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function deleteFiles(e){
         e.preventDefault();
-        let deletedFiles = await UserController.deleteAllUserFiles(JSON.parse(sessionStorage.getItem("session")).id, setDeleteFileState);
+        let deletedFiles = await UserController.deleteAllUserFiles(JSON.parse(sessionStorage.getItem("session")).id, setDeleteFileState, JSON.parse(sessionStorage.getItem("session")).token);
         if (deletedFiles){
             setTimeout(function(){
                 setShowDeleteFiles(false);
@@ -164,7 +164,7 @@ function UserSettingsExplorer(){
     const [deleteAccountState, setDeleteAccountState] = useState({"visible": "alert-form-hidden", "state": "", "message": ""});
     async function deleteAccount(e){
         e.preventDefault();
-        let deletedUser = await UserController.deleteUser(JSON.parse(sessionStorage.getItem("session")).id, setDeleteAccountState);
+        let deletedUser = await UserController.deleteUser(JSON.parse(sessionStorage.getItem("session")).id, setDeleteAccountState, JSON.parse(sessionStorage.getItem("session")).token);
         if (deletedUser){
             setTimeout(function(){
                 setShowDeleteUser(false);

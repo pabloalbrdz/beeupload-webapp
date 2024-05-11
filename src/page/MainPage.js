@@ -75,7 +75,7 @@ function MainPage(){
         e.preventDefault();
         let formdata = new FormData();
         formdata.append("docfile", changeDocumentFileInput);
-        let uploadedDocument = await UserController.uploadDocument(JSON.parse(sessionStorage.getItem("session")).id, changeDocumentNameInput, formdata, setUploadDocumentState);
+        let uploadedDocument = await UserController.uploadDocument(JSON.parse(sessionStorage.getItem("session")).id, changeDocumentNameInput, formdata, setUploadDocumentState, JSON.parse(sessionStorage.getItem("session")).token);
         if (uploadedDocument){
             setTimeout(function(){
                 setShowPopUpUploadDocument(false);
@@ -104,7 +104,7 @@ function MainPage(){
         e.preventDefault();
         let formdata = new FormData();
         formdata.append("musicfile", changeMusicFileInput);
-        let uploadedMusic = await UserController.uploadMusic(JSON.parse(sessionStorage.getItem("session")).id, changeMusicNameInput, changeMusicArtistInput, formdata, setUploadMusicState);
+        let uploadedMusic = await UserController.uploadMusic(JSON.parse(sessionStorage.getItem("session")).id, changeMusicNameInput, changeMusicArtistInput, formdata, setUploadMusicState, JSON.parse(sessionStorage.getItem("session")).token);
         if (uploadedMusic){
             setTimeout(function(){
                 setShowPopUpUploadMusic(false);
@@ -129,7 +129,7 @@ function MainPage(){
         }else{
             let formdata = new FormData();
             formdata.append("imgfile", changeImageFileInput);
-            let uploadedImage = await UserController.uploadPhoto(JSON.parse(sessionStorage.getItem("session")).id, formdata, (changeImageFileInput.name).split('.')[(changeImageFileInput.name).split('.').length - 1], setUploadImageState);
+            let uploadedImage = await UserController.uploadPhoto(JSON.parse(sessionStorage.getItem("session")).id, formdata, (changeImageFileInput.name).split('.')[(changeImageFileInput.name).split('.').length - 1], setUploadImageState, JSON.parse(sessionStorage.getItem("session")).token);
             if (uploadedImage){
                 setTimeout(function(){
                     setShowPopUpUploadImage(false);
@@ -154,7 +154,7 @@ function MainPage(){
         e.preventDefault();
         let formdata = new FormData();
         formdata.append("videofile", changeVideoFileInput);
-        let uploadedVideo = await UserController.uploadVideo(JSON.parse(sessionStorage.getItem("session")).id, changeVideoNameInput, formdata, setUploadVideoState);
+        let uploadedVideo = await UserController.uploadVideo(JSON.parse(sessionStorage.getItem("session")).id, changeVideoNameInput, formdata, setUploadVideoState, JSON.parse(sessionStorage.getItem("session")).token);
         if (uploadedVideo){
             setTimeout(function(){
                 setShowPopUpUploadVideo(false);

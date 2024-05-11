@@ -17,7 +17,7 @@ export const UserModel = {
     try {
       loginValidation(inputUsername, inputPassword);
       const response = await axios.post(
-        `${apiSettings.USER_API}/login`,
+        `${apiSettings.AUTH_API}/login`,
         {
           username: inputUsername,
           password: inputPassword
@@ -44,7 +44,7 @@ export const UserModel = {
       emailValidation(inputEmail);
       passwordValidation(inputPassword);
       const response = await axios.post(
-        `${apiSettings.USER_API}/signup`,
+        `${apiSettings.AUTH_API}/signup`,
         {
           username: inputUsername,
           email: inputEmail,
@@ -82,7 +82,7 @@ export const UserModel = {
     }
   },
 
-  async changeUsername(userId, lastUsernameInput, newUsernameInput){
+  async changeUsername(userId, lastUsernameInput, newUsernameInput, token){
     try{
       usernameValidation(newUsernameInput);
       let lastUsername = await this.getUsername(userId);
@@ -94,7 +94,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -108,13 +109,15 @@ export const UserModel = {
     }
   },
 
-  async getEmail(userId){
+  async getEmail(userId, token){
     try{
       const response = await axios.get(
         `${apiSettings.USER_API}/getUserEmail/${userId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -124,7 +127,7 @@ export const UserModel = {
     }
   },
 
-  async changeEmail(userId, lastEmailInput, newEmailInput){
+  async changeEmail(userId, lastEmailInput, newEmailInput, token){
     try{
       emailValidation(newEmailInput);
       let lastEmail = await this.getEmail(userId);
@@ -136,7 +139,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -174,7 +178,7 @@ export const UserModel = {
     }
   },
 
-  async changePassword(userId, lastPasswordInput, newPasswordInput){
+  async changePassword(userId, lastPasswordInput, newPasswordInput, token){
     try{
       passwordValidation(newPasswordInput);
       let lastPassword = await this.checkUserPassword(userId, lastPasswordInput);
@@ -184,7 +188,8 @@ export const UserModel = {
           {
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin' : '*'
+              'Access-Control-Allow-Origin' : '*',
+              'Auth': token
             }
           }
         );
@@ -201,7 +206,7 @@ export const UserModel = {
     }
   },
 
-  async uploadDocument(userId, docName){
+  async uploadDocument(userId, docName, token){
     try{
       filenameValidation(docName);
       const response = await axios.post(
@@ -214,7 +219,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -228,7 +234,7 @@ export const UserModel = {
     }
   },
 
-  async updateDocument(documentId, docName){
+  async updateDocument(documentId, docName, token){
     try{
       filenameValidation(docName);
       const response = await axios.put(
@@ -240,7 +246,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -254,7 +261,7 @@ export const UserModel = {
     }
   },
 
-  async updateDocumentPath(documentId, docPath){
+  async updateDocumentPath(documentId, docPath, token){
     try{
       const response = await axios.put(
         `${apiSettings.DOCUMENT_API}/updateDocumentPath`,
@@ -265,7 +272,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -279,7 +287,7 @@ export const UserModel = {
     }
   },
 
-  async uploadMusic(userId, musicName, musicArtist){
+  async uploadMusic(userId, musicName, musicArtist, token){
     try{
       musicnameValidation(musicName, musicArtist);
       const response = await axios.post(
@@ -293,7 +301,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -307,7 +316,7 @@ export const UserModel = {
     }
   },
 
-  async updateMusic(musicId, musicName, musicArtist){
+  async updateMusic(musicId, musicName, musicArtist, token){
     try{
       musicnameValidation(musicName, musicArtist);
       const response = await axios.put(
@@ -320,7 +329,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -334,7 +344,7 @@ export const UserModel = {
     }
   },
 
-  async updateMusicPath(musicId, musicPath){
+  async updateMusicPath(musicId, musicPath, token){
     try{
       const response = await axios.put(
         `${apiSettings.MUSIC_API}/updateMusicPath`,
@@ -345,7 +355,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -359,7 +370,7 @@ export const UserModel = {
     }
   },
 
-  async uploadImage(userId){
+  async uploadImage(userId, token){
     try{
       const response = await axios.post(
         `${apiSettings.IMAGE_API}/saveImage`,
@@ -370,7 +381,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -384,7 +396,7 @@ export const UserModel = {
     }
   },
 
-  async updateImagePath(imageId, imagePath){
+  async updateImagePath(imageId, imagePath, token){
     try{
       const response = await axios.put(
         `${apiSettings.IMAGE_API}/updateImagePath`,
@@ -395,7 +407,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -409,7 +422,7 @@ export const UserModel = {
     }
   },
 
-  async uploadVideo(userId, videoName){
+  async uploadVideo(userId, videoName, token){
     try{
       filenameValidation(videoName);
       const response = await axios.post(
@@ -422,7 +435,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -436,7 +450,7 @@ export const UserModel = {
     }
   },
 
-  async updateVideo(videoId, videoName){
+  async updateVideo(videoId, videoName, token){
     try{
       filenameValidation(videoName);
       const response = await axios.put(
@@ -448,7 +462,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -462,7 +477,7 @@ export const UserModel = {
     }
   },
 
-  async updateVideoPath(videoId, videoPath){
+  async updateVideoPath(videoId, videoPath, token){
     try{
       const response = await axios.put(
         `${apiSettings.VIDEO_API}/updateVideoPath`,
@@ -473,7 +488,8 @@ export const UserModel = {
         {
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin' : '*'
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -487,14 +503,15 @@ export const UserModel = {
     }
   },
 
-  async getAllUserDocument(userId){
+  async getAllUserDocument(userId, token){
     try{
         const response = await axios.get(
             `${apiSettings.DOCUMENT_API}/getAllDocumentsById/${userId}`,
             {
               headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin' : '*'
+                'Access-Control-Allow-Origin' : '*',
+                'Auth': token
               }
             }
         );
@@ -508,14 +525,15 @@ export const UserModel = {
     }
   },
 
-  async getAllUserMusic(userId){
+  async getAllUserMusic(userId, token){
     try{
         const response = await axios.get(
             `${apiSettings.MUSIC_API}/getAllMusicById/${userId}`,
             {
               headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin' : '*'
+                'Access-Control-Allow-Origin' : '*',
+                'Auth': token
               }
             }
         );
@@ -529,14 +547,15 @@ export const UserModel = {
     }
   },
 
-  async getAllUserImage(userId){
+  async getAllUserImage(userId, token){
     try{
         const response = await axios.get(
             `${apiSettings.IMAGE_API}/getAllImagesById/${userId}`,
             {
               headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin' : '*'
+                'Access-Control-Allow-Origin' : '*',
+                'Auth': token
               }
             }
         );
@@ -550,14 +569,15 @@ export const UserModel = {
     }
   },
 
-  async getAllUserVideo(userId){
+  async getAllUserVideo(userId, token){
     try{
         const response = await axios.get(
             `${apiSettings.VIDEO_API}/getAllVideosById/${userId}`,
             {
               headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin' : '*'
+                'Access-Control-Allow-Origin' : '*',
+                'Auth': token
               }
             }
         );
@@ -571,13 +591,15 @@ export const UserModel = {
     }
   },
 
-  async deleteUserDocument(docId){
+  async deleteUserDocument(docId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.DOCUMENT_API}/deleteDocument/${docId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -591,13 +613,15 @@ export const UserModel = {
     }
   },
 
-  async deleteUserMusic(musicId){
+  async deleteUserMusic(musicId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.MUSIC_API}/deleteMusic/${musicId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -611,13 +635,15 @@ export const UserModel = {
     }    
   },
 
-  async deleteUserImage(imgId){
+  async deleteUserImage(imgId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.IMAGE_API}/deleteImage/${imgId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -631,13 +657,15 @@ export const UserModel = {
     }  
   },
 
-  async deleteUserVideo(videoId){
+  async deleteUserVideo(videoId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.VIDEO_API}/deleteVideo/${videoId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -651,13 +679,15 @@ export const UserModel = {
     }
   },
 
-  async deleteAllUserDocuments(userId){
+  async deleteAllUserDocuments(userId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.DOCUMENT_API}/deleteAllUserDocuments/${userId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -671,13 +701,15 @@ export const UserModel = {
     }
   },
 
-  async deleteAllUserMusic(userId){
+  async deleteAllUserMusic(userId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.MUSIC_API}/deleteAllUserMusic/${userId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -691,13 +723,15 @@ export const UserModel = {
     }
   },
 
-  async deleteAllUserImages(userId){
+  async deleteAllUserImages(userId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.IMAGE_API}/deleteAllUserImages/${userId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -711,13 +745,15 @@ export const UserModel = {
     }
   },
 
-  async deleteAllUserVideos(userId){
+  async deleteAllUserVideos(userId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.VIDEO_API}/deleteAllUserVideos/${userId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );
@@ -731,13 +767,15 @@ export const UserModel = {
     }
   },
 
-  async deleteUser(userId){
+  async deleteUser(userId, token){
     try{
       const response = await axios.delete(
         `${apiSettings.USER_API}/deleteUser/${userId}`,
         {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin' : '*',
+            'Auth': token
           }
         }
       );

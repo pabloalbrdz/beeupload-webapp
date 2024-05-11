@@ -28,7 +28,7 @@ export const FileServerModel = {
         }
     },
 
-    async uploadDocument(userId, docId, docUpload){
+    async uploadDocument(userId, docId, docUpload, token){
         try{
             const response = await axios.post(
                 `${fileserverSettings.USER_DOCUMENT}/uploadUserDocument?userid=${userId}&docid=${docId}`,
@@ -36,7 +36,8 @@ export const FileServerModel = {
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Access-Control-Allow-Origin': '*'
+                        'Access-Control-Allow-Origin': '*',
+                        'Auth': token
                     },
                 }
             );
@@ -54,7 +55,7 @@ export const FileServerModel = {
         }
     },
 
-    async uploadMusic(userId, musicId, musicUpload){
+    async uploadMusic(userId, musicId, musicUpload, token){
         try{
             const response = await axios.post(
                 `${fileserverSettings.USER_MUSIC}/uploadUserMusic?userid=${userId}&musicid=${musicId}`,
@@ -62,7 +63,8 @@ export const FileServerModel = {
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Access-Control-Allow-Origin': '*'
+                        'Access-Control-Allow-Origin': '*',
+                        'Auth': token
                     },
                 }
             );
@@ -80,7 +82,7 @@ export const FileServerModel = {
         }
     },
 
-    async uploadImage(userId, imgId, imgUpload){
+    async uploadImage(userId, imgId, imgUpload, token){
         try{
           const response = await axios.post(
             `${fileserverSettings.USER_IMAGE}/uploadUserImage?userid=${userId}&imgid=${imgId}`,
@@ -88,7 +90,8 @@ export const FileServerModel = {
             {
               headers: {
                 'Content-Type': 'multipart/form-data',
-                'Access-Control-Allow-Origin': '*'
+                'Access-Control-Allow-Origin': '*',
+                'Auth': token
               },
             }
           );
@@ -106,7 +109,7 @@ export const FileServerModel = {
         }
     },
 
-    async uploadVideo(userId, videoId, videoUpload){
+    async uploadVideo(userId, videoId, videoUpload, token){
         try{
             const response = await axios.post(
                 `${fileserverSettings.USER_VIDEO}/uploadUserVideo?userid=${userId}&videoid=${videoId}`,
@@ -114,7 +117,8 @@ export const FileServerModel = {
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Access-Control-Allow-Origin': '*'
+                        'Access-Control-Allow-Origin': '*',
+                        'Auth': token
                     },
                 }
             );
@@ -132,7 +136,7 @@ export const FileServerModel = {
         }
     },
 
-    async deleteUserDocument(userId, docId){
+    async deleteUserDocument(userId, docId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_DOCUMENT}/deleteUserDocument?userid=${userId}&docid=${docId}`,
@@ -142,7 +146,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -156,7 +161,7 @@ export const FileServerModel = {
         }
     },
   
-    async deleteUserMusic(userId, musicId){
+    async deleteUserMusic(userId, musicId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_MUSIC}/deleteUserMusic?userid=${userId}&musicid=${musicId}`,
@@ -166,7 +171,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -180,7 +186,7 @@ export const FileServerModel = {
         }     
     },
   
-    async deleteUserImage(userId, imgId){
+    async deleteUserImage(userId, imgId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_IMAGE}/deleteUserImage?userid=${userId}&imgid=${imgId}`,
@@ -190,7 +196,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -204,7 +211,7 @@ export const FileServerModel = {
         }        
     },
   
-    async deleteUserVideo(userId, videoId){
+    async deleteUserVideo(userId, videoId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_VIDEO}/deleteUserVideo?userid=${userId}&videoid=${videoId}`,
@@ -214,7 +221,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -228,7 +236,7 @@ export const FileServerModel = {
         }
     },
 
-    async deleteAllUserDocuments(userId){
+    async deleteAllUserDocuments(userId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_DOCUMENT}/deleteAllUserDocuments?userid=${userId}`,
@@ -238,7 +246,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -252,7 +261,7 @@ export const FileServerModel = {
         }
     },
 
-    async deleteAllUserMusic(userId){
+    async deleteAllUserMusic(userId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_MUSIC}/deleteAllUserMusic?userid=${userId}`,
@@ -262,7 +271,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -276,8 +286,7 @@ export const FileServerModel = {
         }
     },
 
-
-    async deleteAllUserImages(userId){
+    async deleteAllUserImages(userId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_IMAGE}/deleteAllUserImages?userid=${userId}`,
@@ -287,7 +296,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -301,7 +311,7 @@ export const FileServerModel = {
         }
     },
 
-    async deleteAllUserVideos(userId){
+    async deleteAllUserVideos(userId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_VIDEO}/deleteAllUserVideos?userid=${userId}`,
@@ -311,7 +321,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -326,7 +337,7 @@ export const FileServerModel = {
     },
 
     
-    async deleteAllUserFiles(userId){
+    async deleteAllUserFiles(userId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_FOLDER}/deleteUserFiles?userid=${userId}`,
@@ -336,7 +347,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
@@ -350,7 +362,7 @@ export const FileServerModel = {
         }
     },
 
-    async deleteUserFolder(userId){
+    async deleteUserFolder(userId, token){
         try{
             const response = await axios.delete(
                 `${fileserverSettings.USER_FOLDER}/deleteUserFolder?userid=${userId}`,
@@ -360,7 +372,8 @@ export const FileServerModel = {
                 {
                     headers: {
                       'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*'
+                      'Access-Control-Allow-Origin' : '*',
+                      'Auth': token
                     }
                 }
             );
