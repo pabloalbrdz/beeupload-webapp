@@ -141,14 +141,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_DOCUMENT}/deleteUserDocument?userid=${userId}&docid=${docId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -166,14 +164,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_MUSIC}/deleteUserMusic?userid=${userId}&musicid=${musicId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -191,14 +187,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_IMAGE}/deleteUserImage?userid=${userId}&imgid=${imgId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -216,14 +210,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_VIDEO}/deleteUserVideo?userid=${userId}&videoid=${videoId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -241,14 +233,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_DOCUMENT}/deleteAllUserDocuments?userid=${userId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -266,14 +256,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_MUSIC}/deleteAllUserMusic?userid=${userId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -291,14 +279,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_IMAGE}/deleteAllUserImages?userid=${userId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -316,14 +302,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_VIDEO}/deleteAllUserVideos?userid=${userId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -342,14 +326,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_FOLDER}/deleteUserFiles?userid=${userId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
@@ -367,14 +349,12 @@ export const FileServerModel = {
             const response = await axios.delete(
                 `${fileserverSettings.USER_FOLDER}/deleteUserFolder?userid=${userId}`,
                 {
-                    userid: `${userId}`
-                },
-                {
-                    headers: {
-                      'Content-Type': 'application/json',
-                      'Access-Control-Allow-Origin' : '*',
-                      'Auth': token
-                    }
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Auth': token
+                  },
+                  data: { userid: userId }
                 }
             );
             return {"status": response.status, "data": response.data};
