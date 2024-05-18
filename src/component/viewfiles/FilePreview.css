@@ -45,8 +45,8 @@
 }
 
 .filevideo-preview-div-modal-dialog{
-    max-width: 90vw;
-    max-height: 90vw;
+    max-width: 140vw;
+    max-height: 90vh;
 }
 
 .filevideo-preview-div-modal-body{
@@ -208,20 +208,20 @@
 }
 
 .fileimage-preview-div-modal-dialog{
-    max-width: 90vw;
-    max-height: 90vw;
+    max-width: 25vw;
+    max-height: 25vw;
 }
 
 .fileimage-preview-div-modal-body{
     align-content: center;
     justify-content: center;
-    height: 50vh;
+    height: 25vh;
 }
 
 .fileimage-preview-div-modal-body > div > img{
     width: 100%;
-    max-width: 25vw;
-    max-height: 25vh;
+    max-width: 20vw;
+    max-height: 20vh;
 }
 
 

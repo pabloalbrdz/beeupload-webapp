@@ -61,7 +61,7 @@ function MusicExplorer(){
                 <div className="main-musicexplorer-div-body d-flex flex-column text-center">
                     <h2 className="mt-4">Musica</h2>
                     <ButtonMain text="Gestionar Musica" onClick={() => setShowMusicListModal(true)}></ButtonMain>
-                    <div className="main-musicexplorer-div-player row d-flex flex-row m-5">
+                    <div className="main-musicexplorer-div-player row d-flex flex-row mx-5">
                         <Player
                         trackList={context.music}
                         showPlaylist={true}

@@ -215,7 +215,7 @@ function UserSettingsExplorer(){
                     <ButtonMain text="Eliminar Usuario" onClick={() => setShowDeleteUser(true)}></ButtonMain>
                 </div>
             </div>
-            <Modal show={showChangeUsername} onHide={() => setShowChangeUsername(false)}>
+            <Modal show={showChangeUsername} onHide={() => {setShowChangeUsername(false); setChangeUsernameState({"visible": "alert-form-hidden", "state": "", "message": ""});}}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Modificar Nombre Usuario</Modal.Title>
                 </Modal.Header>
@@ -225,11 +225,11 @@ function UserSettingsExplorer(){
                     <InputModelMain type="text" placeholder="Usuario Nuevo" onChange={onchangeUsernameInput2}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowChangeUsername(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowChangeUsername(false); setChangeUsernameState({"visible": "alert-form-hidden", "state": "", "message": ""});}}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={changeUsername}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showChangeEmail} onHide={() => setShowChangeEmail(false)}>
+            <Modal show={showChangeEmail} onHide={() => {setShowChangeEmail(false); setChangeEmailState({"visible": "alert-form-hidden", "state": "", "message": ""});}}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Modificar Correo Electronico</Modal.Title>
                 </Modal.Header>
@@ -239,11 +239,11 @@ function UserSettingsExplorer(){
                     <InputModelMain type="text" placeholder="Correo Electronico Nuevo" onChange={onchangeEmailInput2}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowChangeEmail(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowChangeEmail(false); setChangeEmailState({"visible": "alert-form-hidden", "state": "", "message": ""});}}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={changeEmail}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showChangePassword} onHide={() => setShowChangePassword(false)}>
+            <Modal show={showChangePassword} onHide={() => {setShowChangePassword(false); setChangePasswordState({"visible": "alert-form-hidden", "state": "", "message": ""});}}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Modificar Contraseña</Modal.Title>
                 </Modal.Header>
@@ -253,11 +253,11 @@ function UserSettingsExplorer(){
                     <InputModelMain type="password" placeholder="Contraseña Nueva" onChange={onchangePasswordInput2}></InputModelMain>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowChangePassword(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowChangePassword(false); setChangePasswordState({"visible": "alert-form-hidden", "state": "", "message": ""});}}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={changePassword}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showDeleteDocs} onHide={() => setShowDeleteDocs(false)}>
+            <Modal show={showDeleteDocs} onHide={() => {setShowDeleteDocs(false); setDeleteDocsState({"visible": "alert-form-hidden", "state": "", "message": ""});}}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Eliminar Documentos</Modal.Title>
                 </Modal.Header>
@@ -266,11 +266,11 @@ function UserSettingsExplorer(){
                     <p className="modal-body-p">¿Desea eliminar todos los documentos?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowDeleteDocs(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowDeleteDocs(false); setDeleteDocsState({"visible": "alert-form-hidden", "state": "", "message": ""});}}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={deleteDocs}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showDeletePhotos} onHide={() => setShowDeletePhotos(false)}>
+            <Modal show={showDeletePhotos} onHide={() => {setShowDeletePhotos(false); setDeletePhotosState({"visible": "alert-form-hidden", "state": "", "message": ""});}}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Eliminar Fotos</Modal.Title>
                 </Modal.Header>
@@ -279,11 +279,11 @@ function UserSettingsExplorer(){
                     <p className="modal-body-p">¿Desea eliminar todas las fotos?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowDeletePhotos(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowDeletePhotos(false); setDeletePhotosState({"visible": "alert-form-hidden", "state": "", "message": ""});}}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={deletePhotos}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showDeleteMusic} onHide={() => setShowDeleteMusic(false)}>
+            <Modal show={showDeleteMusic} onHide={() => {setShowDeleteMusic(false); setDeleteMusicState({"visible": "alert-form-hidden", "state": "", "message": ""})}}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Eliminar Musica</Modal.Title>
                 </Modal.Header>
@@ -292,11 +292,11 @@ function UserSettingsExplorer(){
                     <p className="modal-body-p">¿Desea eliminar todas las canciones?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowDeleteMusic(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowDeleteMusic(false); setDeleteMusicState({"visible": "alert-form-hidden", "state": "", "message": ""})}}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={deleteMusic}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showDeleteVideo} onHide={() => setShowDeleteVideo(false)}>
+            <Modal show={showDeleteVideo} onHide={() => {setShowDeleteVideo(false); setDeleteVideoState({"visible": "alert-form-hidden", "state": "", "message": ""}); }}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Eliminar Videos</Modal.Title>
                 </Modal.Header>
@@ -305,11 +305,11 @@ function UserSettingsExplorer(){
                     <p className="modal-body-p">¿Desea eliminar todos los videos?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowDeleteVideo(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowDeleteVideo(false); setDeleteVideoState({"visible": "alert-form-hidden", "state": "", "message": ""}); }}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={deleteVideos}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showDeleteFiles} onHide={() => setShowDeleteFiles(false)}>
+            <Modal show={showDeleteFiles} onHide={() => {setShowDeleteFiles(false); setDeleteFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); }}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Eliminar Ficheros</Modal.Title>
                 </Modal.Header>
@@ -318,11 +318,11 @@ function UserSettingsExplorer(){
                     <p className="modal-body-p">¿Desea eliminar todos los ficheros?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowDeleteFiles(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowDeleteFiles(false); setDeleteFileState({"visible": "alert-form-hidden", "state": "", "message": ""}); }}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={deleteFiles}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showDeleteUser} onHide={() => setShowDeleteUser(false)}>
+            <Modal show={showDeleteUser} onHide={() => {setShowDeleteUser(false); setDeleteAccountState({"visible": "alert-form-hidden", "state": "", "message": ""});}}>
                 <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title>Eliminar Usuario</Modal.Title>
                 </Modal.Header>
@@ -331,7 +331,7 @@ function UserSettingsExplorer(){
                     <p className="modal-body-p">¿Desea eliminar el usuario?</p>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center">
-                    <ButtonModelMain text="Salir" onClick={() => setShowDeleteUser(false)}></ButtonModelMain>
+                    <ButtonModelMain text="Salir" onClick={() => {setShowDeleteUser(false); setDeleteAccountState({"visible": "alert-form-hidden", "state": "", "message": ""});}}></ButtonModelMain>
                     <ButtonModelMain text="Aceptar" onClick={deleteAccount}></ButtonModelMain>
                 </Modal.Footer>
             </Modal>
