@@ -89,8 +89,9 @@ export const UserModel = {
       if (lastUsername != lastUsernameInput){
         throw new IncorrectActualUsernameException();
       }
-      const response = await axios.put(
+      const response = await axios.patch(
         `${apiSettings.USER_API}/updateUserUsername/${userId}/${newUsernameInput}`,
+        {},
         {
           headers: {
             'Content-Type': 'application/json',
@@ -130,12 +131,13 @@ export const UserModel = {
   async changeEmail(userId, lastEmailInput, newEmailInput, token){
     try{
       emailValidation(newEmailInput);
-      let lastEmail = await this.getEmail(userId);
+      let lastEmail = await this.getEmail(userId, token);
       if (lastEmail != lastEmailInput){
         throw new IncorrectActualEmailException();
       }
-      const response = await axios.put(
+      const response = await axios.patch(
         `${apiSettings.USER_API}/updateUserEmail/${userId}/${newEmailInput}`,
+        {},
         {
           headers: {
             'Content-Type': 'application/json',
@@ -183,8 +185,9 @@ export const UserModel = {
       passwordValidation(newPasswordInput);
       let lastPassword = await this.checkUserPassword(userId, lastPasswordInput);
       if (lastPassword.data == true){
-        const response = await axios.put(
+        const response = await axios.patch(
           `${apiSettings.USER_API}/updateUserPassword/${userId}/${newPasswordInput}`,
+          {},
           {
             headers: {
               'Content-Type': 'application/json',
